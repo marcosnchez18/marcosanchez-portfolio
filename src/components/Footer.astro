@@ -1,0 +1,52 @@
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <a href="/" class="footer-logo">MARCOS<span>.</span></a>
+
+    <p>Diseñado y desarrollado por Marcos Sanchez.</p>
+
+    <span class="copyright">
+      © {new Date().getFullYear()} · Todos los derechos reservados.
+    </span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 32px 24px;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .footer-logo span {
+    color: #22d3ee;
+  }
+
+  .footer-content p,
+  .copyright {
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

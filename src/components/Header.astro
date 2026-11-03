@@ -1,0 +1,165 @@
+
+---
+const links = [
+  { label: "Inicio", href: "/" },
+  { label: "Sobre mí", href: "/sobre-mi" },
+  { label: "Proyectos", href: "/proyectos" },
+  { label: "Arte", href: "/arte" },
+  { label: "Contacto", href: "/contacto" },
+];
+---
+
+<header class="site-header">
+  <nav class="navigation" aria-label="Navegación principal">
+    <a class="logo" href="/" aria-label="Marcos, inicio">
+      MARCOS<span>.</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navigation-links"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="navigation-links" id="navigation-links">
+      {links.map((link) => (
+        <a class="navigation-link" href={link.href}>
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(2, 6, 23, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navigation {
+    width: min(100% - 48px, 1200px);
+    min-height: 80px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: #22d3ee;
+  }
+
+  .navigation-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 3vw, 38px);
+  }
+
+  .navigation-link {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .navigation-link:hover,
+  .navigation-link:focus-visible {
+    color: #22d3ee;
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 5px auto;
+    background: white;
+  }
+
+  @media (max-width: 700px) {
+    .navigation {
+      width: calc(100% - 32px);
+      min-height: 72px;
+      flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .navigation-links {
+      display: none;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px 0 20px;
+    }
+
+    .navigation-links.is-open {
+      display: flex;
+    }
+
+    .navigation-link {
+      padding: 14px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navigation-link {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const navigationLinks = document.querySelector<HTMLDivElement>(".navigation-links");
+
+  menuButton?.addEventListener("click", () => {
+    const isOpen = navigationLinks?.classList.toggle("is-open") ?? false;
+
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Cerrar menú" : "Abrir menú"
+    );
+  });
+
+  navigationLinks?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navigationLinks.classList.remove("is-open");
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuButton?.setAttribute("aria-label", "Abrir menú");
+    });
+  });
+</script>

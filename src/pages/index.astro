@@ -1,0 +1,41 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Inicio | Marcos Sanchez"
+  description="Portfolio personal de Marcos Sanchez."
+>
+  <section class="min-h-[75vh] flex items-center justify-center px-6">
+    <div class="max-w-4xl text-center">
+      <span class="text-cyan-400 uppercase tracking-[0.3em] text-sm">
+        Desarrollador web · Artista
+      </span>
+
+      <h1 class="mt-6 text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight">
+        Hola, soy <span class="text-cyan-400">Marcos.</span>
+      </h1>
+
+      <p class="mt-8 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+        Creo experiencias digitales y doy vida a mis ideas a través del arte.
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a
+          href="/proyectos"
+          class="rounded-full bg-cyan-400 px-7 py-3 font-semibold text-slate-950 hover:bg-cyan-300 transition"
+        >
+          Ver mis proyectos
+        </a>
+
+        <a
+          href="/contacto"
+          class="rounded-full border border-slate-600 px-7 py-3 font-semibold text-white hover:border-cyan-400 transition"
+        >
+          Contactar
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
