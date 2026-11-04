@@ -4,38 +4,355 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout
-  title="Inicio | Marcos Sanchez"
-  description="Portfolio personal de Marcos Sanchez."
+  title="Marco Sánchez | Desarrollo Web y Arte"
+  description="Portfolio de Marco Sánchez, desarrollador web y artista. Descubre proyectos de desarrollo web, creatividad digital y obras de arte."
 >
-  <section class="min-h-[75vh] flex items-center justify-center px-6">
-    <div class="max-w-4xl text-center">
-      <span class="text-cyan-400 uppercase tracking-[0.3em] text-sm">
-        Desarrollador web · Artista
-      </span>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background" aria-hidden="true"></div>
 
-      <h1 class="mt-6 text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight">
-        Hola, soy <span class="text-cyan-400">Marcos.</span>
-      </h1>
+      <div class="hero-container">
+        <div class="hero-content">
 
-      <p class="mt-8 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-        Creo experiencias digitales y doy vida a mis ideas a través del arte.
-      </p>
+          <div class="hero-eyebrow">
+            <span>DESARROLLO WEB CREATIVO</span>
+            <span class="eyebrow-line"></span>
+          </div>
 
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a
-          href="/proyectos"
-          class="rounded-full bg-cyan-400 px-7 py-3 font-semibold text-slate-950 hover:bg-cyan-300 transition"
-        >
-          Ver mis proyectos
-        </a>
+          <h1 id="hero-title">
+            Arte y programación
+            <br />
+            en perfecta
+            <em> armonía</em>
+          </h1>
 
-        <a
-          href="/contacto"
-          class="rounded-full border border-slate-600 px-7 py-3 font-semibold text-white hover:border-cyan-400 transition"
-        >
-          Contactar
-        </a>
+          <p class="hero-description">
+            Soy Marco Sánchez, desarrollador web que combina
+            código limpio, diseño cuidado y una profunda
+            sensibilidad artística.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/proyectos" class="btn btn-primary">
+              <span aria-hidden="true">&lt;/&gt;</span>
+              Ver proyectos
+            </a>
+
+            <a href="/arte" class="btn btn-secondary">
+              <span aria-hidden="true">✦</span>
+              Explorar arte
+            </a>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </section>
+
+      <a
+        href="#presentacion"
+        class="scroll-indicator"
+        aria-label="Desplazarse a la presentación"
+      >
+        <span aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <section id="presentacion" class="intro-section">
+      <div class="intro-container">
+        <span class="intro-label">DOS DISCIPLINAS, UNA VISIÓN</span>
+
+        <h2>
+          Donde la creatividad
+          <em> encuentra al código.</em>
+        </h2>
+
+        <p>
+          Exploro la conexión entre el desarrollo web y el arte,
+          combinando tecnología, estética y atención al detalle.
+        </p>
+      </div>
+    </section>
+  </main>
 </MainLayout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  .hero {
+    position: relative;
+    min-height: calc(100svh - 95px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    background: #100d0b;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url("/images/hero-desktop.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgba(12, 10, 9, 0.76) 0%,
+      rgba(12, 10, 9, 0.40) 37%,
+      rgba(12, 10, 9, 0) 68%
+    );
+    pointer-events: none;
+  }
+
+  .hero-container {
+    width: min(calc(100% - 80px), 1450px);
+    margin-inline: auto;
+    padding-block: 100px 130px;
+  }
+
+  .hero-content {
+    max-width: 740px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-bottom: 32px;
+    color: #d8c7b5;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.34em;
+  }
+
+  .eyebrow-line {
+    width: 90px;
+    height: 1px;
+    background: #d7a65c;
+  }
+
+  h1 {
+    margin: 0;
+    color: #e9ddd1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3.2rem, 5vw, 5.6rem);
+    line-height: 1.12;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  h1 em {
+    color: #dfa85e;
+    font-weight: 400;
+  }
+
+  .hero-description {
+    max-width: 580px;
+    margin-top: 32px;
+    color: #d7cbc0;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 40px;
+  }
+
+  .btn {
+    min-height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 15px 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background 250ms ease,
+      border-color 250ms ease,
+      transform 250ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn-primary {
+    background: #e0b173;
+    color: #17110b;
+  }
+
+  .btn-primary:hover {
+    background: #f0c58c;
+  }
+
+  .btn-secondary {
+    border-color: #cbb69c;
+    color: #f0e4d6;
+    background: rgba(15, 12, 10, 0.45);
+  }
+
+  .btn-secondary:hover {
+    border-color: #e0b173;
+    background: rgba(224, 177, 115, 0.1);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px;
+  }
+
+  .scroll-indicator span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-right: 2px solid #e4d1b8;
+    border-bottom: 2px solid #e4d1b8;
+    transform: rotate(45deg);
+  }
+
+  /* SEGUNDA SECCIÓN */
+
+  .intro-section {
+    padding: 120px 24px;
+    background: #120e0c;
+    text-align: center;
+  }
+
+  .intro-container {
+    max-width: 850px;
+    margin-inline: auto;
+  }
+
+  .intro-label {
+    color: #d9a965;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+  }
+
+  .intro-section h2 {
+    margin: 30px 0;
+    color: #e9ddd1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .intro-section h2 em {
+    color: #d9a965;
+  }
+
+  .intro-section p {
+    max-width: 650px;
+    margin-inline: auto;
+    color: #b9aaa0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  /* RESPONSIVE */
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: calc(100svh - 78px);
+      align-items: flex-end;
+    }
+
+    .hero-background {
+      background-position: 65% center;
+    }
+
+    .hero::before {
+      background: linear-gradient(
+        0deg,
+        rgba(12, 10, 9, 0.97) 0%,
+        rgba(12, 10, 9, 0.76) 45%,
+        rgba(12, 10, 9, 0.12) 100%
+      );
+    }
+
+    .hero-container {
+      width: calc(100% - 40px);
+      padding-block: 180px 100px;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      min-height: calc(100svh - 72px);
+    }
+
+    .hero-container {
+      width: calc(100% - 36px);
+      padding-block: 140px 100px;
+    }
+
+    .hero-eyebrow {
+      gap: 14px;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+    }
+
+    .eyebrow-line {
+      width: 40px;
+    }
+
+    h1 {
+      font-size: clamp(2.65rem, 10vw, 4rem);
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      margin-top: 25px;
+    }
+
+    .hero-actions {
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 54px;
+      padding: 13px 18px;
+      font-size: 0.9rem;
+    }
+
+    .intro-section {
+      padding: 85px 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .btn {
+      transition: none;
+    }
+  }
+</style>

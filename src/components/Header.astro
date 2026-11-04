@@ -7,14 +7,26 @@ const links = [
   { label: "Arte", href: "/arte" },
   { label: "Contacto", href: "/contacto" },
 ];
+
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
 <header class="site-header">
   <nav class="navigation" aria-label="Navegación principal">
-    <a class="logo" href="/" aria-label="Marcos, inicio">
-      MARCOS<span>.</span>
+
+    <!-- Logo de Marco Sánchez -->
+    <a class="brand" href="/" aria-label="Marco Sánchez - Inicio">
+      <img
+        src="/images/logo-header.png"
+        alt="Marco Sánchez"
+        width="420"
+        height="100"
+        class="brand-logo"
+        fetchpriority="high"
+      />
     </a>
 
+    <!-- Menú móvil -->
     <button
       class="menu-toggle"
       type="button"
@@ -24,15 +36,26 @@ const links = [
     >
       <span></span>
       <span></span>
+      <span></span>
     </button>
 
+    <!-- Navegación -->
     <div class="navigation-links" id="navigation-links">
-      {links.map((link) => (
-        <a class="navigation-link" href={link.href}>
-          {link.label}
-        </a>
-      ))}
+      {links.map((link) => {
+        const active = pathname === link.href;
+
+        return (
+          <a
+            class:list={["navigation-link", { active }]}
+            href={link.href}
+            aria-current={active ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
     </div>
+
   </nav>
 </header>
 
@@ -40,75 +63,121 @@ const links = [
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     width: 100%;
-    background: rgba(2, 6, 23, 0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(16, 14, 13, 0.96);
+    border-bottom: 1px solid rgba(212, 168, 96, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 
   .navigation {
-    width: min(100% - 48px, 1200px);
-    min-height: 80px;
+    width: min(calc(100% - 80px), 1450px);
+    min-height: 95px;
     margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 32px;
   }
 
-  .logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.06em;
+  /* LOGO */
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
     text-decoration: none;
   }
 
-  .logo span {
-    color: #22d3ee;
+  .brand-logo {
+    display: block;
+    width: clamp(230px, 27vw, 390px);
+    height: auto;
+    object-fit: contain;
+    transition: opacity 250ms ease;
   }
+
+  .brand:hover .brand-logo {
+    opacity: 0.82;
+  }
+
+  /* NAVEGACIÓN */
 
   .navigation-links {
     display: flex;
     align-items: center;
-    gap: clamp(18px, 3vw, 38px);
+    gap: clamp(20px, 3vw, 48px);
   }
 
   .navigation-link {
-    color: #94a3b8;
-    font-size: 0.9rem;
+    position: relative;
+    padding: 12px 0;
+    color: #ded5cc;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    white-space: nowrap;
     text-decoration: none;
-    transition: color 200ms ease;
+    transition: color 250ms ease;
+  }
+
+  .navigation-link::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #d7a65c;
+    transition: width 300ms ease;
   }
 
   .navigation-link:hover,
-  .navigation-link:focus-visible {
-    color: #22d3ee;
+  .navigation-link:focus-visible,
+  .navigation-link.active {
+    color: #e4b36c;
   }
+
+  .navigation-link:hover::after,
+  .navigation-link:focus-visible::after,
+  .navigation-link.active::after {
+    width: 100%;
+  }
+
+  /* MENÚ HAMBURGUESA */
 
   .menu-toggle {
     display: none;
     width: 44px;
     height: 44px;
-    border: 1px solid #334155;
-    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(212, 168, 96, 0.3);
+    border-radius: 6px;
     background: transparent;
     cursor: pointer;
   }
 
   .menu-toggle span {
     display: block;
-    width: 18px;
+    width: 21px;
     height: 2px;
     margin: 5px auto;
-    background: white;
+    background: #d7a65c;
   }
 
-  @media (max-width: 700px) {
+  /* TABLETS Y MÓVILES */
+
+  @media (max-width: 1050px) {
     .navigation {
-      width: calc(100% - 32px);
-      min-height: 72px;
+      width: calc(100% - 40px);
+      min-height: 78px;
       flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .brand-logo {
+      width: clamp(200px, 35vw, 300px);
     }
 
     .menu-toggle {
@@ -121,7 +190,7 @@ const links = [
       flex-direction: column;
       align-items: stretch;
       gap: 0;
-      padding: 8px 0 20px;
+      padding: 12px 0 24px;
     }
 
     .navigation-links.is-open {
@@ -129,37 +198,75 @@ const links = [
     }
 
     .navigation-link {
-      padding: 14px 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 15px 12px;
+      font-size: 1.05rem;
+      border-bottom: 1px solid rgba(212, 168, 96, 0.1);
+    }
+
+    .navigation-link::after {
+      display: none;
+    }
+
+    .navigation-link.active {
+      border-left: 2px solid #d7a65c;
+      padding-left: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navigation {
+      width: calc(100% - 28px);
+      min-height: 72px;
+    }
+
+    .brand-logo {
+      width: min(220px, 65vw);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .navigation-link {
+    .brand-logo,
+    .navigation-link,
+    .navigation-link::after {
       transition: none;
     }
   }
 </style>
 
 <script>
-  const menuButton = document.querySelector<HTMLButtonElement>(".menu-toggle");
-  const navigationLinks = document.querySelector<HTMLDivElement>(".navigation-links");
+  const initializeMenu = () => {
+    const menuButton =
+      document.querySelector<HTMLButtonElement>(".menu-toggle");
 
-  menuButton?.addEventListener("click", () => {
-    const isOpen = navigationLinks?.classList.toggle("is-open") ?? false;
+    const navigationLinks =
+      document.querySelector<HTMLDivElement>(".navigation-links");
 
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Cerrar menú" : "Abrir menú"
-    );
-  });
+    if (!menuButton || !navigationLinks) return;
 
-  navigationLinks?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
+    const closeMenu = () => {
       navigationLinks.classList.remove("is-open");
-      menuButton?.setAttribute("aria-expanded", "false");
-      menuButton?.setAttribute("aria-label", "Abrir menú");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Abrir menú");
+    };
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigationLinks.classList.toggle("is-open");
+
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú" : "Abrir menú"
+      );
     });
-  });
+
+    navigationLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+  };
+
+  initializeMenu();
 </script>
