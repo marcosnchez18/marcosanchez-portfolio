@@ -1,52 +1,95 @@
 
+---
+const year = new Date().getFullYear();
+---
+
 <footer class="site-footer">
   <div class="footer-content">
-    <a href="/" class="footer-logo">MARCOS<span>.</span></a>
 
-    <p>Diseñado y desarrollado por Marcos Sanchez.</p>
+    <a
+      href="/"
+      class="footer-logo"
+      aria-label="Marco Sánchez - Inicio"
+    >
+      <img
+        src="/images/logo-header.png"
+        alt="Marco Sánchez"
+        width="420"
+        height="100"
+        loading="lazy"
+      />
+    </a>
 
-    <span class="copyright">
-      © {new Date().getFullYear()} · Todos los derechos reservados.
-    </span>
+    <p class="footer-copyright">
+      © {year} Marco Sánchez.
+      Todos los derechos reservados.
+    </p>
+
+    <p class="footer-signature">
+      Donde el arte y el código se encuentran.
+    </p>
+
   </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #100d0b;
+    border-top: 1px solid rgba(215, 166, 92, 0.2);
     padding: 32px 24px;
   }
 
   .footer-content {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 1450px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 24px;
   }
 
   .footer-logo {
-    color: white;
-    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
   }
 
-  .footer-logo span {
-    color: #22d3ee;
+  .footer-logo img {
+    display: block;
+    width: 220px;
+    height: auto;
   }
 
-  .footer-content p,
-  .copyright {
-    color: #94a3b8;
+  .footer-copyright {
+    color: #a99a8c;
     font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
-  @media (max-width: 600px) {
+  .footer-signature {
+    color: #d7a65c;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 28px 20px 24px;
+    }
+
     .footer-content {
       flex-direction: column;
-      align-items: flex-start;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .footer-logo img {
+      width: 190px;
     }
   }
 </style>
