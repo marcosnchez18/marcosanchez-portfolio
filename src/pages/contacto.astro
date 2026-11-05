@@ -1,0 +1,3819 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Chatbot from "../components/Chatbot.astro";
+
+const whatsappNumber = "34622541527";
+
+const whatsappUrl =
+  `https://wa.me/${whatsappNumber}?text=` +
+  encodeURIComponent(
+    "Hola Marco, he visitado tu portfolio y me gustaría contactar contigo."
+  );
+
+const linkedinUrl =
+  "https://www.linkedin.com/in/marcosanchezES";
+
+const githubUrl =
+  "https://github.com/marcosnchez18";
+
+const instagramUrl =
+  "https://www.instagram.com/marcosnchez18/";
+
+const tiktokUrl =
+  "https://www.tiktok.com/@marcosnchez18";
+
+const mapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=Sanl%C3%BAcar%20de%20Barrameda%2C%20C%C3%A1diz";
+
+const topics = [
+  {
+    id: "web",
+    value: "Desarrollo de una página web",
+    number: "01",
+    title: "Necesito una web",
+    description:
+      "Landing page, portfolio, web corporativa, tienda online o aplicación a medida.",
+    symbol: "</>",
+  },
+  {
+    id: "job",
+    value: "Oferta de empleo",
+    number: "02",
+    title: "Oportunidad laboral",
+    description:
+      "Una oportunidad profesional relacionada con el desarrollo o la tecnología.",
+    symbol: "CV",
+  },
+  {
+    id: "collaboration",
+    value: "Colaboración profesional",
+    number: "03",
+    title: "Colaboración",
+    description:
+      "Un proyecto conjunto, una idea o una propuesta para colaborar.",
+    symbol: "↗",
+  },
+  {
+    id: "art",
+    value: "Encargo artístico",
+    number: "04",
+    title: "Encargo artístico",
+    description:
+      "Una consulta sobre pinturas al óleo, retratos u obras personalizadas.",
+    symbol: "✦",
+  },
+  {
+    id: "other",
+    value: "Otra consulta",
+    number: "05",
+    title: "Otra consulta",
+    description:
+      "Cualquier otra cuestión de la que te gustaría hablar conmigo.",
+    symbol: "...",
+  },
+];
+
+const contactSteps = [
+  {
+    number: "01",
+    title: "Cuéntame tu idea",
+    description:
+      "Explícame qué necesitas y qué te gustaría conseguir. No hace falta que tengas todos los detalles resueltos.",
+  },
+  {
+    number: "02",
+    title: "Analizamos la propuesta",
+    description:
+      "Revisamos el alcance, las necesidades y las alternativas para encontrar un planteamiento adecuado.",
+  },
+  {
+    number: "03",
+    title: "Definimos el siguiente paso",
+    description:
+      "Si podemos seguir adelante, acordamos cómo plantear la colaboración, los objetivos y las condiciones.",
+  },
+];
+
+const questions = [
+  {
+    question: "¿Realizas páginas web para clientes?",
+    answer:
+      "Sí. Puedes contactarme para consultar proyectos como páginas corporativas, landing pages, portfolios, blogs, tiendas online o aplicaciones web personalizadas. Cada propuesta se estudia individualmente.",
+  },
+  {
+    question: "¿Puedo contratarte si no vivo en Cádiz?",
+    answer:
+      "Por supuesto. Podemos hablar y coordinar proyectos a distancia. Mi ubicación está en Sanlúcar de Barrameda, pero no es necesario estar en la misma ciudad para colaborar.",
+  },
+  {
+    question: "¿Tienes una lista de precios?",
+    answer:
+      "No utilizo una tarifa única para todos los proyectos. Un sitio web sencillo y una aplicación con funcionalidades personalizadas tienen necesidades muy diferentes. Por eso prefiero estudiar cada caso y preparar un presupuesto a medida.",
+  },
+  {
+    question: "¿Puedo escribirte para una oferta de trabajo?",
+    answer:
+      "Sí. Puedes contactar conmigo para propuestas laborales relacionadas con el desarrollo web, frontend, backend o entornos tecnológicos. También puedes descargar mi currículum desde el menú superior.",
+  },
+  {
+    question: "¿Aceptas encargos de pintura al óleo?",
+    answer:
+      "Puedes consultar la posibilidad de encargar una obra personalizada. Para valorar el trabajo necesitaré conocer la imagen de referencia, las dimensiones y los detalles de la idea. Es conveniente contactar con varios meses de antelación.",
+  },
+];
+---
+
+<MainLayout
+  title="Contacto | Marco Sánchez"
+  description="Contacta con Marco Sánchez para proyectos de desarrollo web, oportunidades profesionales, colaboraciones y encargos personalizados. Solicita información directamente por WhatsApp."
+>
+  <div class="contact-page" id="contact-page">
+
+    <div
+      class="reading-progress"
+      id="contact-progress"
+      aria-hidden="true"
+    ></div>
+
+    <!-- ====================================== -->
+    <!--              HERO CONTACTO           -->
+    <!-- ====================================== -->
+
+    <section class="contact-hero" aria-labelledby="contact-title">
+
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="container hero-layout">
+
+        <div class="hero-content">
+
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            EL SIGUIENTE PASO EMPIEZA AQUÍ
+          </div>
+
+          <p class="hero-eyebrow">
+            CONTACTO / MARCO SÁNCHEZ
+          </p>
+
+          <h1 id="contact-title">
+            Las buenas ideas
+            <span>empiezan con una</span>
+            <em>conversación.</em>
+          </h1>
+
+          <p class="hero-lead">
+            ¿Tienes un proyecto en mente, una propuesta
+            profesional o simplemente quieres hablar conmigo?
+          </p>
+
+          <p class="hero-description">
+            Me gusta conocer nuevas ideas, escuchar distintos
+            puntos de vista y descubrir oportunidades
+            para crear algo interesante.
+          </p>
+
+          <p class="hero-description">
+            Cuéntame qué necesitas. A veces una buena
+            conversación es el comienzo de algo mucho mayor.
+          </p>
+
+          <div class="hero-tags">
+            <span class="featured-tag">
+              <span></span>
+              Consultas por WhatsApp
+            </span>
+
+            <span>Desarrollo web</span>
+            <span>Colaboraciones</span>
+            <span>Oportunidades laborales</span>
+          </div>
+
+          <div class="hero-buttons">
+
+            <a href="#escribeme" class="button button-primary">
+              Cuéntame tu idea
+              <span aria-hidden="true">↘</span>
+            </a>
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button button-secondary"
+            >
+              WhatsApp directo
+              <span aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+
+          <div class="hero-signature">
+            <span class="signature-line"></span>
+            <span>
+              MARCO SÁNCHEZ — SANLÚCAR DE BARRAMEDA
+            </span>
+          </div>
+
+        </div>
+
+        <!-- ================================== -->
+        <!--      ESPACIO PARA TU FOTOGRAFÍA    -->
+        <!-- ================================== -->
+
+        <div class="hero-visual">
+
+          <div
+            class="portrait-card"
+            id="contact-portrait-card"
+          >
+
+            <div class="portrait-topline">
+              <span>PROFILE / 001</span>
+              <span>MARCO SÁNCHEZ</span>
+            </div>
+
+            <!--
+              TU FOTOGRAFÍA
+
+              Guarda la imagen aquí:
+              public/images/contacto.jpg
+
+              Si todavía no la has añadido,
+              aparecerá el diseño de reserva.
+            -->
+
+            <div
+              class="portrait-placeholder"
+              aria-hidden="true"
+            >
+              <div class="portrait-circle circle-one"></div>
+              <div class="portrait-circle circle-two"></div>
+
+              <div class="portrait-placeholder-center">
+                <span class="portrait-monogram">
+                  MS<span>.</span>
+                </span>
+
+                <span class="portrait-placeholder-label">
+                  PERSONAL PORTFOLIO
+                </span>
+              </div>
+            </div>
+
+            <img
+              id="contact-portrait"
+              class="portrait-image"
+              src="/images/contacto.png"
+              alt="Fotografía de Marco Sánchez"
+              loading="eager"
+              decoding="async"
+            />
+            
+
+            <div
+              class="portrait-overlay"
+              aria-hidden="true"
+            ></div>
+
+            <div class="portrait-bottom">
+              <div>
+                <span>DETRÁS DEL CÓDIGO</span>
+                <strong>Una persona. Muchas ideas.</strong>
+              </div>
+
+              <span class="portrait-bottom-icon" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+          </div>
+
+          <div class="floating-contact-card">
+            <span class="floating-symbol" aria-hidden="true">
+              {"</>"}
+            </span>
+
+            <div>
+              <strong>Marco Sánchez</strong>
+              <small>Desarrollo web · Creatividad</small>
+            </div>
+          </div>
+
+          <div class="visual-caption">
+            <span></span>
+            <p>MS / LET'S CONNECT</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ====================================== -->
+    <!--        FORMAS DE CONTACTAR           -->
+    <!-- ====================================== -->
+
+    <section
+      class="channels-section"
+      aria-labelledby="channels-title"
+    >
+      <div class="container">
+
+        <div class="section-label" data-reveal>
+          <span></span>
+          01 / CONECTEMOS
+        </div>
+
+        <div class="section-heading" data-reveal>
+          <h2 id="channels-title">
+            Hay muchas formas
+            <span>de empezar a hablar.</span>
+          </h2>
+
+          <p>
+            Prefiero el contacto directo para
+            conocer bien cada propuesta.
+            Elige el canal que te resulte más cómodo.
+          </p>
+        </div>
+
+        <div class="channels-grid">
+
+          <!-- WHATSAPP -->
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="channel-card channel-main"
+            data-reveal
+          >
+            <div class="channel-card-top">
+              <span>01 / MENSAJERÍA DIRECTA</span>
+
+              <span class="channel-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+            <div class="channel-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3H13a8.48 8.48 0 0 1 8 8v.5Z" />
+                <path d="M8.5 9.5c1 3 3 5 6 6" />
+              </svg>
+            </div>
+
+            <div class="channel-card-copy">
+              <span class="channel-kicker">
+                MI CANAL PRINCIPAL
+              </span>
+
+              <h3>WhatsApp<span>.</span></h3>
+
+              <p>
+                La opción más directa para presentarte,
+                explicarme tu idea y empezar una conversación.
+              </p>
+
+              <strong class="channel-detail">
+                +34 622 541 527
+              </strong>
+            </div>
+          </a>
+
+          <!-- LINKEDIN -->
+
+          <a
+            href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="channel-card"
+            data-reveal
+          >
+            <div class="channel-card-top">
+              <span>02 / NETWORKING</span>
+
+              <span class="channel-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+            <div class="channel-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+              </svg>
+            </div>
+
+            <div class="channel-card-copy">
+              <span class="channel-kicker">
+                PERFIL PROFESIONAL
+              </span>
+
+              <h3>LinkedIn<span>.</span></h3>
+
+              <p>
+                Ideal para ofertas laborales,
+                contactos profesionales y
+                nuevas oportunidades de colaboración.
+              </p>
+
+              <strong class="channel-detail">
+                Conectar conmigo ↗
+              </strong>
+            </div>
+          </a>
+
+          <!-- GITHUB -->
+
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="channel-card"
+            data-reveal
+          >
+            <div class="channel-card-top">
+              <span>03 / DESARROLLO</span>
+
+              <span class="channel-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+            <div class="channel-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 .297a12 12 0 0 0-3.793 23.386c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.082-.729.082-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 6.008 0c2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.91 1.235 3.221 0 4.61-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297" />
+              </svg>
+            </div>
+
+            <div class="channel-card-copy">
+              <span class="channel-kicker">
+                CÓDIGO Y PROYECTOS
+              </span>
+
+              <h3>GitHub<span>.</span></h3>
+
+              <p>
+                Explora mis repositorios,
+                proyectos y parte de mi recorrido
+                como desarrollador web.
+              </p>
+
+              <strong class="channel-detail">
+                Explorar repositorios ↗
+              </strong>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="more-socials" data-reveal>
+          <span>TAMBIÉN PUEDES ENCONTRARME EN</span>
+
+          <div class="social-links">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href={tiktokUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TikTok <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="/arte">
+              Mi faceta artística
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!--        GENERADOR DE MENSAJES          -->
+    <!-- ====================================== -->
+
+    <section
+      class="brief-section"
+      id="escribeme"
+      aria-labelledby="brief-title"
+    >
+      <div class="container">
+
+        <div class="section-label" data-reveal>
+          <span></span>
+          02 / CUÉNTAME TU IDEA
+        </div>
+
+        <div class="section-heading" data-reveal>
+          <h2 id="brief-title">
+            Tu idea merece
+            <span>una buena conversación.</span>
+          </h2>
+
+          <p>
+            He preparado este pequeño asistente
+            para que puedas contarme qué necesitas
+            de forma sencilla y organizada.
+          </p>
+        </div>
+
+        <div class="brief-layout">
+
+          <!-- FORMULARIO -->
+
+          <div class="brief-form-card" data-reveal>
+
+            <div class="brief-card-header">
+              <div>
+                <span>CONTACT REQUEST</span>
+                <strong>Nuevo mensaje</strong>
+              </div>
+
+              <div class="brief-header-symbol" aria-hidden="true">
+                {"</>"}
+              </div>
+            </div>
+
+            <form id="contact-form" class="brief-form">
+
+              <!-- TIPO DE CONSULTA -->
+
+              <fieldset class="topic-fieldset">
+                <legend>
+                  <span class="form-step">01</span>
+                  ¿De qué quieres hablar?
+                </legend>
+
+                <p class="field-description">
+                  Selecciona la opción que mejor
+                  describa tu consulta.
+                </p>
+
+                <div class="topic-grid">
+                  {topics.map((topic, index) => (
+                    <label class="topic-option">
+                      <input
+                        type="radio"
+                        name="topic"
+                        value={topic.value}
+                        checked={index === 0}
+                      />
+
+                      <span class="topic-option-body">
+                        <span class="topic-option-top">
+                          <span>{topic.number} / 05</span>
+                          <span class="topic-symbol">
+                            {topic.symbol}
+                          </span>
+                        </span>
+
+                        <strong>{topic.title}</strong>
+                        <small>{topic.description}</small>
+
+                        <span
+                          class="topic-check"
+                          aria-hidden="true"
+                        >
+                          ✓
+                        </span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <!-- DATOS BÁSICOS -->
+
+              <div class="form-section">
+                <div class="form-section-heading">
+                  <span class="form-step">02</span>
+                  <h3>¿Cómo te llamas?</h3>
+                </div>
+
+                <label class="field-label" for="contact-name">
+                  TU NOMBRE
+                </label>
+
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  maxlength="80"
+                  placeholder="Escribe tu nombre..."
+                  required
+                />
+              </div>
+
+              <!-- MENSAJE -->
+
+              <div class="form-section">
+                <div class="form-section-heading">
+                  <span class="form-step">03</span>
+                  <h3>Cuéntame un poco más</h3>
+                </div>
+
+                <label class="field-label" for="contact-details">
+                  TU IDEA O PROPUESTA
+                </label>
+
+                <textarea
+                  id="contact-details"
+                  name="details"
+                  rows="5"
+                  maxlength="1800"
+                  placeholder="Por ejemplo: Me gustaría crear una web para mi negocio, con información de mis servicios y una forma de contactar con mis clientes..."
+                  required
+                ></textarea>
+
+                <p class="input-helper">
+                  No hace falta utilizar términos técnicos.
+                  Cuéntamelo con tus palabras.
+                </p>
+              </div>
+
+              <!-- PLAZO -->
+
+              <div class="form-section last-form-section">
+                <div class="form-section-heading">
+                  <span class="form-step">04</span>
+                  <h3>¿Tienes algún plazo en mente?</h3>
+                </div>
+
+                <label class="field-label" for="contact-deadline">
+                  PLAZO APROXIMADO
+                </label>
+
+                <select
+                  id="contact-deadline"
+                  name="deadline"
+                >
+                  <option value="Sin plazo definido">
+                    Sin plazo definido
+                  </option>
+
+                  <option value="Lo antes posible">
+                    Lo antes posible
+                  </option>
+
+                  <option value="Durante el próximo mes">
+                    Durante el próximo mes
+                  </option>
+
+                  <option value="En los próximos 2-3 meses">
+                    En los próximos 2-3 meses
+                  </option>
+
+                  <option value="Solo quiero consultar una idea">
+                    Solo quiero consultar una idea
+                  </option>
+                </select>
+              </div>
+
+              <!-- ENVIAR -->
+
+              <div class="form-footer">
+                <button
+                  type="submit"
+                  class="submit-button"
+                >
+                  Continuar en WhatsApp
+                  <span aria-hidden="true">↗</span>
+                </button>
+
+                <p>
+                  Al pulsar, se abrirá WhatsApp con
+                  el mensaje preparado. Podrás revisarlo
+                  antes de enviarlo.
+                </p>
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- PREVISUALIZACIÓN INTERACTIVA -->
+
+          <aside class="brief-aside" data-reveal>
+
+            <div class="preview-card">
+
+              <div class="preview-header">
+                <div class="preview-dots" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <span>message-preview.txt</span>
+
+                <span class="preview-header-status">
+                  ● LIVE
+                </span>
+              </div>
+
+              <div class="preview-content">
+
+                <span class="preview-eyebrow">
+                  VISTA PREVIA / MENSAJE
+                </span>
+
+                <h3>
+                  Así llegará
+                  <span>tu mensaje.</span>
+                </h3>
+
+                <p class="preview-description">
+                  El contenido se actualizará mientras
+                  completas los campos.
+                </p>
+
+                <div class="preview-message">
+                  <div class="message-top">
+                    <span class="message-avatar">
+                      MS
+                    </span>
+
+                    <div>
+                      <strong>Marco Sánchez</strong>
+                      <span>Conversación de WhatsApp</span>
+                    </div>
+                  </div>
+
+                  <pre
+                    id="message-preview"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  >Hola Marco, soy [tu nombre].
+
+Te contacto por: Desarrollo de una página web.
+
+Mi idea/consulta:
+[Cuéntame qué necesitas].
+
+Plazo aproximado: Sin plazo definido.
+
+He llegado desde tu portfolio.</pre>
+                </div>
+
+                <button
+                  type="button"
+                  class="copy-button"
+                  id="copy-message"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="8" y="8" width="12" height="12" rx="2" />
+                    <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+                  </svg>
+
+                  <span id="copy-button-label">
+                    Copiar mensaje
+                  </span>
+                </button>
+
+              </div>
+
+              <div class="preview-footer">
+                <span>
+                  <span class="preview-status-dot"></span>
+                  VISTA PREVIA LOCAL
+                </span>
+
+                <span>MS / CONTACT</span>
+              </div>
+
+            </div>
+
+            <!-- NOTA DE PRIVACIDAD -->
+
+            <div class="privacy-card">
+              <div class="privacy-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="5" y="10" width="14" height="11" rx="2" />
+                  <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                  <circle cx="12" cy="15" r="1" />
+                </svg>
+              </div>
+
+              <div>
+                <strong>Sin formularios externos.</strong>
+
+                <p>
+                  La información que escribas se
+                  prepara en tu navegador. Esta página
+                  no la envía a ningún servidor propio:
+                  tú decides si finalmente la compartes
+                  por WhatsApp.
+                </p>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!--        CÓMO PLANTEAMOS UN PROYECTO     -->
+    <!-- ====================================== -->
+
+    <section
+      class="process-section"
+      aria-labelledby="process-title"
+    >
+      <div class="container">
+
+        <div class="section-label" data-reveal>
+          <span></span>
+          03 / DEL PRIMER MENSAJE A LA IDEA
+        </div>
+
+        <div class="section-heading" data-reveal>
+          <h2 id="process-title">
+            Sin complicaciones.
+            <span>Empecemos por hablar.</span>
+          </h2>
+
+          <p>
+            No necesitas llegar con un documento
+            perfectamente definido. Podemos empezar
+            con una conversación y valorar la propuesta.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          {contactSteps.map((step) => (
+            <article class="process-card" data-reveal>
+
+              <div class="process-top">
+                <span>STEP / {step.number}</span>
+                <span aria-hidden="true">↗</span>
+              </div>
+
+              <div class="process-number">
+                {step.number}
+              </div>
+
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!--            UBICACIÓN                 -->
+    <!-- ====================================== -->
+
+    <section
+      class="location-section"
+      aria-labelledby="location-title"
+    >
+      <div class="container location-layout">
+
+        <div class="location-content" data-reveal>
+
+          <div class="section-label">
+            <span></span>
+            04 / DÓNDE ESTOY
+          </div>
+
+          <h2 id="location-title">
+            Desde Sanlúcar.
+            <span>Sin fronteras digitales.</span>
+          </h2>
+
+          <p>
+            Mi ubicación está en
+            <strong>Sanlúcar de Barrameda, Cádiz.</strong>
+            Sin embargo, gran parte de las oportunidades
+            tecnológicas y colaboraciones pueden
+            desarrollarse a distancia.
+          </p>
+
+          <p>
+            No importa demasiado desde dónde me
+            escribas. Lo interesante es descubrir
+            qué podemos hacer con tu idea.
+          </p>
+
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="location-link"
+          >
+            Ver Sanlúcar de Barrameda
+            <span aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+        <div class="location-visual" data-reveal>
+
+          <div class="location-visual-header">
+            <span>LOCATION / 36.78° N</span>
+            <span>ESPAÑA</span>
+          </div>
+
+          <div class="location-center">
+            <div class="radar radar-one"></div>
+            <div class="radar radar-two"></div>
+            <div class="radar radar-three"></div>
+
+            <div class="location-marker">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="location-visual-bottom">
+            <span>MI CIUDAD</span>
+
+            <h3>
+              Sanlúcar de Barrameda<span>.</span>
+            </h3>
+
+            <p>Cádiz · Andalucía · España</p>
+          </div>
+
+          <div class="location-grid" aria-hidden="true"></div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!--           PREGUNTAS FRECUENTES        -->
+    <!-- ====================================== -->
+
+    <section
+      class="faq-section"
+      aria-labelledby="faq-title"
+    >
+      <div class="container faq-layout">
+
+        <div class="faq-heading" data-reveal>
+          <div class="section-label">
+            <span></span>
+            05 / PREGUNTAS FRECUENTES
+          </div>
+
+          <h2 id="faq-title">
+            Algunas dudas
+            <span>antes de escribir.</span>
+          </h2>
+
+          <p>
+            Aquí tienes respuestas a algunas
+            preguntas habituales sobre proyectos,
+            colaboraciones y formas de contacto.
+          </p>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          {questions.map((item, index) => (
+            <details class="faq-item">
+              <summary>
+                <span class="faq-index">
+                  0{index + 1}
+                </span>
+
+                <span class="faq-question">
+                  {item.question}
+                </span>
+
+                <span class="faq-icon" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!--                CIERRE                -->
+    <!-- ====================================== -->
+
+    <section class="closing-section">
+
+      <div class="container closing-inner" data-reveal>
+
+        <div class="section-label centered">
+          <span></span>
+          EL SIGUIENTE PASO
+          <span></span>
+        </div>
+
+        <h2>
+          Las grandes ideas
+          <span>también empiezan con un hola.</span>
+        </h2>
+
+        <p>
+          Si has llegado hasta aquí, ya conoces
+          un poco mejor quién soy y lo que hago.
+          Ahora me encantará conocer tu historia,
+          tu proyecto o tu propuesta.
+        </p>
+
+        <div class="closing-buttons">
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary"
+          >
+            Escribirme por WhatsApp
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-secondary"
+          >
+            Conectar en LinkedIn
+            <span aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+        <div class="closing-signature">
+          <span>MARCO SÁNCHEZ</span>
+          <span class="signature-separator"></span>
+          <span>DESARROLLADOR WEB</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- CHATBOT CON EL ESTILO GLOBAL -->
+
+  <Chatbot />
+
+</MainLayout>
+
+<style>
+  /* ====================================== */
+  /*           COLORES Y GENERALES         */
+  /* ====================================== */
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #101216;
+  }
+
+  .contact-page {
+    --gold: #d7a65c;
+    --gold-light: #edbe79;
+    --background: #101216;
+    --surface: #171b21;
+    --surface-raised: #20242b;
+    --border: #383e47;
+    --white: #f0f1f3;
+    --muted: #adb5c1;
+
+    color: var(--white);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+
+  .contact-page,
+  .contact-page * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: min(calc(100% - 96px), 1360px);
+    margin-inline: auto;
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    z-index: 1001;
+    width: 0%;
+    height: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 14px rgba(215,166,92,.5);
+    pointer-events: none;
+  }
+
+  .contact-page.effects-enabled [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+
+    transition:
+      opacity .7s ease,
+      transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .contact-page.effects-enabled [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ====================================== */
+  /*                 HERO                  */
+  /* ====================================== */
+
+  .contact-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 105px 0 120px;
+    background: var(--background);
+  }
+
+  .hero-grid-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      );
+
+    background-size: 64px 64px;
+
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 65%
+    );
+
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 65%
+    );
+
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    right: -190px;
+    z-index: -1;
+
+    width: 850px;
+    height: 850px;
+
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.11),
+      transparent 67%
+    );
+
+    pointer-events: none;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.08fr)
+      minmax(0,.92fr);
+
+    align-items: center;
+    gap: clamp(45px,6vw,100px);
+  }
+
+  .hero-content,
+  .hero-visual {
+    min-width: 0;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 15px;
+    border: 1px solid rgba(215,166,92,.4);
+    border-radius: 999px;
+
+    background: rgba(215,166,92,.07);
+    color: var(--gold);
+
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .badge-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(215,166,92,.12);
+  }
+
+  .hero-eyebrow {
+    margin: 38px 0 18px;
+    color: #bca889;
+    font-size: .75rem;
+    font-weight: 750;
+    letter-spacing: .2em;
+  }
+
+  .hero-content h1 {
+    margin: 0 0 27px;
+    font-size: clamp(3.2rem,5.2vw,6.15rem);
+    font-weight: 800;
+    line-height: 1.07;
+    letter-spacing: -.068em;
+  }
+
+  .hero-content h1 span,
+  .hero-content h1 em {
+    display: block;
+  }
+
+  .hero-content h1 span {
+    color: var(--gold);
+  }
+
+  .hero-content h1 em {
+    color: #f0f1f3;
+    font-size: .84em;
+    font-style: normal;
+  }
+
+  .hero-lead {
+    max-width: 600px;
+    margin: 0 0 15px;
+
+    color: #e1e4e9;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+
+  .hero-description {
+    max-width: 600px;
+    margin: 0 0 13px;
+
+    color: #aeb6c1;
+    font-size: .97rem;
+    line-height: 1.85;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+  }
+
+  .hero-tags > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 11px;
+    border: 1px solid #3a4049;
+    border-radius: 999px;
+
+    background: #1c2027;
+    color: #c2cad5;
+
+    font-size: .72rem;
+  }
+
+  .hero-tags .featured-tag {
+    border-color: rgba(215,166,92,.4);
+    background: rgba(215,166,92,.07);
+    color: #e0b173;
+  }
+
+  .featured-tag > span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero-buttons,
+  .closing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    min-height: 53px;
+    padding: 13px 21px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font-size: .88rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      background .2s ease,
+      border-color .2s ease,
+      transform .2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-3px);
+  }
+
+  .button-primary {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: #141619;
+  }
+
+  .button-primary:hover {
+    background: var(--gold-light);
+  }
+
+  .button-secondary {
+    border-color: #424852;
+    background: #1e222a;
+    color: #e7e9ed;
+  }
+
+  .button-secondary:hover {
+    border-color: var(--gold);
+  }
+
+  .hero-signature {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 46px;
+
+    color: #929ba7;
+    font-family: Consolas, monospace;
+    font-size: .68rem;
+    letter-spacing: .11em;
+  }
+
+  .signature-line {
+    width: 32px;
+    height: 1px;
+    flex-shrink: 0;
+    background: var(--gold);
+  }
+
+  /* ====================================== */
+  /*              FOTOGRAFÍA               */
+  /* ====================================== */
+
+  .hero-visual {
+    position: relative;
+    padding: 30px 18px;
+  }
+
+  .portrait-card {
+    position: relative;
+    isolation: isolate;
+    height: 565px;
+    overflow: hidden;
+
+    border: 1px solid rgba(215,166,92,.43);
+    border-radius: 20px;
+
+    background: #20242b;
+
+    box-shadow:
+      0 35px 90px rgba(0,0,0,.38),
+      0 0 0 7px rgba(255,255,255,.015);
+
+    transform: rotate(2deg);
+    transition: transform .35s ease;
+  }
+
+  .portrait-card:hover {
+    transform: rotate(0deg) translateY(-3px);
+  }
+
+  .portrait-topline {
+    position: absolute;
+    z-index: 5;
+    top: 23px;
+    right: 23px;
+    left: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    color: #d7b988;
+    font-family: Consolas, monospace;
+    font-size: .66rem;
+    letter-spacing: .1em;
+
+    text-shadow: 0 2px 10px rgba(0,0,0,.7);
+  }
+
+  .portrait-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    background:
+      radial-gradient(
+        circle at 50% 45%,
+        rgba(215,166,92,.13),
+        transparent 60%
+      ),
+      #20242b;
+  }
+
+  .portrait-circle {
+    position: absolute;
+    border: 1px solid rgba(215,166,92,.14);
+    border-radius: 50%;
+  }
+
+  .circle-one {
+    width: 360px;
+    height: 360px;
+  }
+
+  .circle-two {
+    width: 260px;
+    height: 260px;
+    border-color: rgba(215,166,92,.3);
+  }
+
+  .portrait-placeholder-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .portrait-monogram {
+    color: #f0f1f3;
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: -.1em;
+  }
+
+  .portrait-monogram span {
+    color: var(--gold);
+  }
+
+  .portrait-placeholder-label {
+    color: #c3a67b;
+    font-family: Consolas, monospace;
+    font-size: .7rem;
+    letter-spacing: .18em;
+  }
+
+  .portrait-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .portrait-card.is-loaded .portrait-image {
+    opacity: 1;
+  }
+
+  .portrait-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    background: linear-gradient(
+      180deg,
+      rgba(12,15,20,.4),
+      transparent 30%,
+      rgba(12,15,20,.1) 55%,
+      rgba(12,15,20,.92) 100%
+    );
+
+    pointer-events: none;
+  }
+
+  .portrait-bottom {
+    position: absolute;
+    right: 25px;
+    bottom: 28px;
+    left: 25px;
+    z-index: 4;
+
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .portrait-bottom > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .portrait-bottom > div > span {
+    color: #e0b173;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .14em;
+  }
+
+  .portrait-bottom strong {
+    color: #f2f3f4;
+    font-size: clamp(1.35rem,2vw,2rem);
+    line-height: 1.2;
+    letter-spacing: -.035em;
+  }
+
+  .portrait-bottom-icon {
+    color: var(--gold);
+    font-size: 1.8rem;
+  }
+
+  .floating-contact-card {
+    position: absolute;
+    right: -7px;
+    bottom: 13px;
+    z-index: 6;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    max-width: 260px;
+    padding: 14px;
+
+    border: 1px solid #464b55;
+    border-radius: 11px;
+
+    background: #252a32;
+    box-shadow: 0 12px 35px rgba(0,0,0,.36);
+  }
+
+  .floating-symbol {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(215,166,92,.38);
+    border-radius: 9px;
+
+    background: rgba(215,166,92,.08);
+    color: var(--gold);
+
+    font-family: Consolas,monospace;
+    font-size: .82rem;
+    font-weight: 700;
+  }
+
+  .floating-contact-card strong,
+  .floating-contact-card small {
+    display: block;
+  }
+
+  .floating-contact-card strong {
+    color: #f0f1f3;
+    font-size: .84rem;
+  }
+
+  .floating-contact-card small {
+    margin-top: 5px;
+    color: #aeb6c1;
+    font-size: .68rem;
+  }
+
+  .visual-caption {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 17px;
+  }
+
+  .visual-caption span {
+    width: 31px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .visual-caption p {
+    margin: 0;
+    color: #969fab;
+    font-family: Consolas,monospace;
+    font-size: .69rem;
+    letter-spacing: .13em;
+  }
+
+  /* ====================================== */
+  /*            CABECERAS GENERALES        */
+  /* ====================================== */
+
+  .channels-section,
+  .brief-section,
+  .process-section,
+  .location-section,
+  .faq-section {
+    scroll-margin-top: 115px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+
+    color: var(--gold);
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .17em;
+  }
+
+  .section-label > span {
+    width: 29px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.1fr)
+      minmax(0,.9fr);
+
+    align-items: end;
+    gap: 45px;
+    margin-bottom: 50px;
+  }
+
+  .section-heading h2,
+  .location-content h2,
+  .faq-heading h2,
+  .closing-inner h2 {
+    margin: 0;
+    color: #f1f2f4;
+
+    font-size: clamp(2.65rem,4.35vw,4.7rem);
+    font-weight: 770;
+    line-height: 1.13;
+    letter-spacing: -.057em;
+  }
+
+  .section-heading h2 span,
+  .location-content h2 span,
+  .faq-heading h2 span,
+  .closing-inner h2 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .section-heading > p {
+    max-width: 480px;
+    margin: 0 0 6px;
+
+    color: #aeb6c2;
+    font-size: .97rem;
+    line-height: 1.85;
+  }
+
+  /* ====================================== */
+  /*            CANALES DE CONTACTO        */
+  /* ====================================== */
+
+  .channels-section {
+    padding: 120px 0;
+    border-block: 1px solid #303640;
+    background: var(--surface);
+  }
+
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 17px;
+  }
+
+  .channel-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+    padding: 27px;
+
+    border: 1px solid #373e48;
+    border-radius: 15px;
+
+    background: #20242b;
+    text-decoration: none;
+
+    transition:
+      border-color .25s ease,
+      transform .25s ease,
+      background .25s ease;
+  }
+
+  .channel-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(215,166,92,.6);
+    background: #252a33;
+  }
+
+  .channel-main {
+    border-color: rgba(215,166,92,.45);
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(215,166,92,.1),
+        transparent 65%
+      ),
+      #22262e;
+  }
+
+  .channel-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-bottom: 27px;
+
+    color: #a0aab8;
+    font-family: Consolas,monospace;
+    font-size: .68rem;
+    letter-spacing: .08em;
+  }
+
+  .channel-arrow {
+    color: var(--gold);
+    font-size: 1.3rem;
+  }
+
+  .channel-icon {
+    display: grid;
+    place-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: auto;
+
+    border: 1px solid rgba(215,166,92,.4);
+    border-radius: 12px;
+
+    background: rgba(215,166,92,.08);
+    color: var(--gold);
+  }
+
+  .channel-icon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .channel-card-copy {
+    padding-top: 25px;
+  }
+
+  .channel-kicker {
+    color: var(--gold);
+    font-size: .66rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+  }
+
+  .channel-card h3 {
+    margin: 10px 0;
+    color: #f0f1f3;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -.035em;
+  }
+
+  .channel-card h3 span {
+    color: var(--gold);
+  }
+
+  .channel-card p {
+    margin: 0 0 19px;
+    color: #aeb7c2;
+    font-size: .86rem;
+    line-height: 1.8;
+  }
+
+  .channel-detail {
+    display: inline-block;
+    color: #e1b77b;
+    font-size: .87rem;
+    font-weight: 650;
+  }
+
+  .more-socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 30px;
+    padding: 21px 0 0;
+    border-top: 1px solid #383e47;
+  }
+
+  .more-socials > span {
+    color: #969fab;
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 13px;
+
+    border: 1px solid #404650;
+    border-radius: 8px;
+
+    background: #22262e;
+    color: #d1d6de;
+
+    font-size: .8rem;
+    text-decoration: none;
+
+    transition: border-color .2s ease;
+  }
+
+  .social-links a:hover {
+    border-color: var(--gold);
+  }
+
+  .social-links a span {
+    color: var(--gold);
+  }
+
+  /* ====================================== */
+  /*              GENERADOR BRIEF          */
+  /* ====================================== */
+
+  .brief-section {
+    padding: 120px 0 130px;
+    background: var(--background);
+  }
+
+  .brief-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.1fr)
+      minmax(0,.9fr);
+
+    align-items: start;
+    gap: 25px;
+  }
+
+  .brief-form-card,
+  .preview-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid #3a404a;
+    border-radius: 17px;
+
+    background: #1a1e25;
+  }
+
+  .brief-form-card {
+    border-color: rgba(215,166,92,.3);
+  }
+
+  .brief-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 23px 27px;
+    border-bottom: 1px solid #393f48;
+
+    background: #232730;
+  }
+
+  .brief-card-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .brief-card-header > div:first-child span {
+    color: var(--gold);
+    font-family: Consolas,monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+  }
+
+  .brief-card-header strong {
+    color: #f0f1f3;
+    font-size: 1.12rem;
+  }
+
+  .brief-header-symbol {
+    color: var(--gold);
+    font-family: Consolas,monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .brief-form {
+    padding: 28px;
+  }
+
+  .topic-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .topic-fieldset legend,
+  .form-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    margin-bottom: 12px;
+
+    color: #f0f1f3;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .form-step {
+    display: inline-grid;
+    place-items: center;
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(215,166,92,.38);
+    border-radius: 8px;
+
+    background: rgba(215,166,92,.08);
+    color: var(--gold);
+
+    font-family: Consolas,monospace;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+
+  .field-description {
+    margin: 0 0 20px;
+    color: #a7b0bc;
+    font-size: .85rem;
+    line-height: 1.7;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+  }
+
+  .topic-option {
+    position: relative;
+    display: block;
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  .topic-option > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .topic-option-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 154px;
+
+    padding: 17px;
+    overflow: hidden;
+
+    border: 1px solid #3d434e;
+    border-radius: 11px;
+
+    background: #22262e;
+
+    transition:
+      background .2s ease,
+      border-color .2s ease;
+  }
+
+  .topic-option:hover .topic-option-body {
+    border-color: rgba(215,166,92,.55);
+  }
+
+  .topic-option input:checked + .topic-option-body {
+    border-color: var(--gold);
+    background: rgba(215,166,92,.08);
+  }
+
+  .topic-option input:focus-visible + .topic-option-body {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
+  }
+
+  .topic-option-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 23px;
+
+    color: #9ca6b4;
+    font-family: Consolas,monospace;
+    font-size: .66rem;
+  }
+
+  .topic-symbol {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: .88rem;
+  }
+
+  .topic-option-body > strong {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #ecedf0;
+    font-size: .94rem;
+  }
+
+  .topic-option-body > small {
+    display: block;
+    max-width: 220px;
+
+    color: #aeb6c1;
+    font-size: .74rem;
+    line-height: 1.65;
+  }
+
+  .topic-check {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+
+    display: grid;
+    place-items: center;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+    background: var(--gold);
+    color: #15171b;
+
+    font-size: .67rem;
+    font-weight: 800;
+
+    opacity: 0;
+    transform: scale(.75);
+    transition:
+      opacity .2s ease,
+      transform .2s ease;
+  }
+
+  .topic-option input:checked
+  + .topic-option-body .topic-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* CAMPOS */
+
+  .form-section {
+    margin-top: 34px;
+    padding-top: 27px;
+    border-top: 1px solid #363c46;
+  }
+
+  .form-section-heading {
+    margin-bottom: 23px;
+  }
+
+  .form-section-heading h3 {
+    margin: 0;
+    color: #f0f1f3;
+    font-size: 1.09rem;
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 10px;
+
+    color: var(--gold);
+    font-size: .66rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .brief-form input[type="text"],
+  .brief-form textarea,
+  .brief-form select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 14px 15px;
+
+    border: 1px solid #424954;
+    border-radius: 10px;
+    outline: none;
+
+    background: #232830;
+    color: #f0f1f3;
+
+    font-family: Inter,Arial,Helvetica,sans-serif;
+    font-size: .9rem;
+    line-height: 1.6;
+
+    transition: border-color .2s ease;
+  }
+
+  .brief-form input[type="text"],
+  .brief-form select {
+    min-height: 49px;
+  }
+
+  .brief-form textarea {
+    min-height: 145px;
+    resize: vertical;
+  }
+
+  .brief-form input[type="text"]:focus,
+  .brief-form textarea:focus,
+  .brief-form select:focus {
+    border-color: var(--gold);
+  }
+
+  .brief-form input::placeholder,
+  .brief-form textarea::placeholder {
+    color: #858e9a;
+  }
+
+  .brief-form select {
+    cursor: pointer;
+  }
+
+  .brief-form select option {
+    background: #232830;
+    color: #f0f1f3;
+  }
+
+  .input-helper {
+    margin: 10px 0 0;
+    color: #919ba7;
+    font-size: .75rem;
+    line-height: 1.7;
+  }
+
+  .form-footer {
+    margin-top: 34px;
+    padding-top: 26px;
+    border-top: 1px solid #363c46;
+  }
+
+  .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    width: 100%;
+    min-height: 55px;
+    padding: 15px 20px;
+
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+
+    background: var(--gold);
+    color: #15171b;
+
+    font-family: inherit;
+    font-size: .94rem;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+      background .2s ease,
+      transform .2s ease;
+  }
+
+  .submit-button:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .submit-button > span {
+    font-size: 1.25rem;
+  }
+
+  .form-footer > p {
+    margin: 12px 0 0;
+    color: #989faa;
+    font-size: .77rem;
+    line-height: 1.75;
+  }
+
+  /* ====================================== */
+  /*           VISTA PREVIA EN VIVO         */
+  /* ====================================== */
+
+  .brief-aside {
+    position: sticky;
+    top: 160px;
+    min-width: 0;
+  }
+
+  .preview-card {
+    border-color: rgba(215,166,92,.32);
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+  }
+
+  .preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
+
+    min-height: 53px;
+    padding: 0 17px;
+
+    border-bottom: 1px solid #393f49;
+    background: #232730;
+  }
+
+  .preview-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .preview-dots > span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .preview-dots > span:nth-child(1) {
+    background: #ca7472;
+  }
+
+  .preview-dots > span:nth-child(2) {
+    background: #d9b878;
+  }
+
+  .preview-dots > span:nth-child(3) {
+    background: #82b799;
+  }
+
+  .preview-header > span {
+    color: #a5aeba;
+    font-family: Consolas,monospace;
+    font-size: .7rem;
+  }
+
+  .preview-header .preview-header-status {
+    color: #a6d0b0;
+    font-size: .63rem;
+  }
+
+  .preview-content {
+    padding: 27px;
+  }
+
+  .preview-eyebrow {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .preview-content h3 {
+    margin: 18px 0 14px;
+    color: #f0f1f3;
+
+    font-size: clamp(1.7rem,2.4vw,2.5rem);
+    letter-spacing: -.045em;
+    line-height: 1.2;
+  }
+
+  .preview-content h3 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .preview-description {
+    margin: 0 0 25px;
+    color: #acb5c0;
+    font-size: .86rem;
+    line-height: 1.8;
+  }
+
+  .preview-message {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid #424953;
+    border-radius: 12px;
+    background: #222730;
+  }
+
+  .message-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px;
+    border-bottom: 1px solid #383f49;
+  }
+
+  .message-avatar {
+    display: grid;
+    place-items: center;
+
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(215,166,92,.45);
+    border-radius: 10px;
+
+    background: rgba(215,166,92,.1);
+    color: var(--gold);
+
+    font-size: .8rem;
+    font-weight: 800;
+  }
+
+  .message-top > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .message-top strong {
+    color: #ecedf0;
+    font-size: .84rem;
+  }
+
+  .message-top > div > span {
+    color: #a0a9b4;
+    font-size: .7rem;
+  }
+
+  #message-preview {
+    display: block;
+    min-height: 200px;
+    margin: 0;
+    padding: 19px;
+
+    color: #d4dae3;
+
+    font-family: Consolas,"Courier New",monospace;
+    font-size: .78rem;
+    line-height: 1.9;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    width: 100%;
+    min-height: 47px;
+    margin-top: 18px;
+
+    padding: 11px 15px;
+    border: 1px solid #484e58;
+    border-radius: 9px;
+
+    background: #282d36;
+    color: #e8eaee;
+
+    font-family: inherit;
+    font-size: .82rem;
+    font-weight: 650;
+
+    cursor: pointer;
+  }
+
+  .copy-button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .copy-button svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .preview-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 15px 18px;
+    border-top: 1px solid #383e47;
+
+    background: #232730;
+  }
+
+  .preview-footer span {
+    color: #a5aeba;
+    font-family: Consolas,monospace;
+    font-size: .62rem;
+  }
+
+  .preview-footer > span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .preview-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a5cfb0;
+  }
+
+  /* NOTA DE PRIVACIDAD */
+
+  .privacy-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    margin-top: 17px;
+    padding: 20px;
+
+    border: 1px solid #373e47;
+    border-radius: 12px;
+    background: #1b1f26;
+  }
+
+  .privacy-icon {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(215,166,92,.35);
+    border-radius: 9px;
+
+    color: var(--gold);
+  }
+
+  .privacy-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .privacy-card strong {
+    color: #edf0f2;
+    font-size: .85rem;
+  }
+
+  .privacy-card p {
+    margin: 8px 0 0;
+
+    color: #a9b2be;
+    font-size: .78rem;
+    line-height: 1.75;
+  }
+
+  /* ====================================== */
+  /*              PROCESO                  */
+  /* ====================================== */
+
+  .process-section {
+    padding: 120px 0;
+    border-block: 1px solid #303640;
+    background: var(--surface);
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 16px;
+  }
+
+  .process-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 305px;
+
+    padding: 28px;
+    border: 1px solid #3a414b;
+    border-radius: 14px;
+
+    background: #20242b;
+
+    transition: border-color .2s ease;
+  }
+
+  .process-card:hover {
+    border-color: rgba(215,166,92,.6);
+  }
+
+  .process-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    color: #9ca5b2;
+    font-family: Consolas,monospace;
+    font-size: .72rem;
+  }
+
+  .process-top > span:last-child {
+    color: var(--gold);
+    font-size: 1.3rem;
+  }
+
+  .process-number {
+    margin: 35px 0 20px;
+
+    color: rgba(215,166,92,.35);
+    font-size: 4.3rem;
+    font-weight: 800;
+    letter-spacing: -.09em;
+    line-height: 1;
+  }
+
+  .process-card h3 {
+    margin: 0 0 13px;
+    color: #f0f1f3;
+    font-size: 1.2rem;
+  }
+
+  .process-card p {
+    margin: 0;
+    color: #aeb6c1;
+    font-size: .85rem;
+    line-height: 1.8;
+  }
+
+  /* ====================================== */
+  /*              UBICACIÓN                */
+  /* ====================================== */
+
+  .location-section {
+    padding: 120px 0;
+    background: var(--background);
+  }
+
+  .location-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(40px,7vw,100px);
+  }
+
+  .location-content h2 {
+    margin-bottom: 24px;
+  }
+
+  .location-content > p {
+    margin: 0 0 16px;
+    color: #aeb7c2;
+    font-size: .96rem;
+    line-height: 1.86;
+  }
+
+  .location-content > p strong {
+    color: #e4e7eb;
+  }
+
+  .location-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 18px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid var(--gold);
+
+    color: #e0b173;
+    font-size: .89rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .location-link:hover {
+    color: var(--gold-light);
+  }
+
+  .location-visual {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 420px;
+    padding: 25px;
+    overflow: hidden;
+
+    border: 1px solid rgba(215,166,92,.38);
+    border-radius: 17px;
+
+    background:
+      radial-gradient(
+        circle at 50% 38%,
+        rgba(215,166,92,.09),
+        transparent 65%
+      ),
+      #1e222a;
+  }
+
+  .location-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      );
+
+    background-size: 35px 35px;
+    pointer-events: none;
+  }
+
+  .location-visual-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    color: #aab3bf;
+    font-family: Consolas,monospace;
+    font-size: .65rem;
+    letter-spacing: .1em;
+  }
+
+  .location-center {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 215px;
+  }
+
+  .radar {
+    position: absolute;
+    border: 1px solid rgba(215,166,92,.18);
+    border-radius: 50%;
+  }
+
+  .radar-one {
+    width: 210px;
+    height: 210px;
+  }
+
+  .radar-two {
+    width: 155px;
+    height: 155px;
+  }
+
+  .radar-three {
+    width: 105px;
+    height: 105px;
+    border-color: rgba(215,166,92,.4);
+  }
+
+  .location-marker {
+    display: grid;
+    place-items: center;
+
+    width: 70px;
+    height: 70px;
+
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 50%;
+
+    background: #292c31;
+    color: var(--gold);
+  }
+
+  .location-marker svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .location-visual-bottom {
+    position: relative;
+    z-index: 2;
+  }
+
+  .location-visual-bottom > span {
+    color: var(--gold);
+    font-size: .67rem;
+    font-weight: 750;
+    letter-spacing: .16em;
+  }
+
+  .location-visual-bottom h3 {
+    margin: 10px 0;
+    color: #f0f1f3;
+
+    font-size: clamp(1.6rem,2.55vw,2.35rem);
+    letter-spacing: -.04em;
+  }
+
+  .location-visual-bottom h3 span {
+    color: var(--gold);
+  }
+
+  .location-visual-bottom p {
+    margin: 0;
+    color: #aeb7c2;
+    font-size: .85rem;
+  }
+
+  /* ====================================== */
+  /*                FAQ                   */
+  /* ====================================== */
+
+  .faq-section {
+    padding: 120px 0;
+    border-block: 1px solid #303640;
+    background: var(--surface);
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,.82fr)
+      minmax(0,1.18fr);
+
+    align-items: start;
+    gap: clamp(40px,6vw,95px);
+  }
+
+  .faq-heading h2 {
+    margin-bottom: 23px;
+  }
+
+  .faq-heading > p {
+    max-width: 420px;
+    margin: 0;
+
+    color: #adb6c1;
+    font-size: .95rem;
+    line-height: 1.85;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .faq-item {
+    overflow: hidden;
+    border: 1px solid #3b424b;
+    border-radius: 11px;
+    background: #22262e;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(215,166,92,.55);
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    min-height: 70px;
+    padding: 18px 20px;
+
+    color: #ecedf0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-index {
+    color: var(--gold);
+    font-family: Consolas,monospace;
+    font-size: .75rem;
+  }
+
+  .faq-question {
+    flex: 1;
+    font-size: .93rem;
+    font-weight: 650;
+    line-height: 1.5;
+  }
+
+  .faq-icon {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    flex-shrink: 0;
+
+    border: 1px solid #4a4f58;
+    border-radius: 7px;
+
+    color: var(--gold);
+    font-size: 1.35rem;
+    line-height: 1;
+
+    transition: transform .2s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 20px 20px 50px;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    color: #afb7c2;
+    font-size: .87rem;
+    line-height: 1.85;
+  }
+
+  /* ====================================== */
+  /*                CIERRE                */
+  /* ====================================== */
+
+  .closing-section {
+    padding: 120px 0 135px;
+
+    background:
+      radial-gradient(
+        ellipse at 50% 115%,
+        rgba(215,166,92,.09),
+        transparent 60%
+      ),
+      #101216;
+
+    text-align: center;
+  }
+
+  .closing-inner {
+    max-width: 930px;
+  }
+
+  .section-label.centered {
+    justify-content: center;
+  }
+
+  .closing-inner h2 {
+    margin-bottom: 26px;
+  }
+
+  .closing-inner > p {
+    max-width: 665px;
+    margin: 0 auto;
+
+    color: #acb6c1;
+    font-size: .97rem;
+    line-height: 1.88;
+  }
+
+  .closing-buttons {
+    justify-content: center;
+    margin-top: 35px;
+  }
+
+  .closing-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 17px;
+
+    margin-top: 63px;
+
+    color: #9aa4b0;
+    font-family: Consolas,monospace;
+    font-size: .69rem;
+    letter-spacing: .13em;
+  }
+
+  .signature-separator {
+    width: 26px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ====================================== */
+  /*              RESPONSIVE              */
+  /* ====================================== */
+
+  @media (max-width: 1150px) {
+    .container {
+      width: min(calc(100% - 56px),1000px);
+    }
+
+    .hero-layout {
+      gap: 40px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.9rem,5.2vw,5.2rem);
+    }
+
+    .portrait-card {
+      height: 480px;
+    }
+
+    .brief-layout {
+      grid-template-columns: 1fr .85fr;
+      gap: 17px;
+    }
+
+    .brief-form,
+    .preview-content {
+      padding: 21px;
+    }
+
+    .channel-card {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-layout,
+    .section-heading,
+    .brief-layout,
+    .location-layout,
+    .faq-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(3.2rem,7.5vw,5.3rem);
+    }
+
+    .hero-visual {
+      width: min(100%,580px);
+      margin-inline: auto;
+    }
+
+    .portrait-card {
+      height: 555px;
+    }
+
+    .section-heading {
+      gap: 22px;
+    }
+
+    .channels-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .channels-grid > .channel-card:last-child {
+      grid-column: 1 / -1;
+      min-height: 270px;
+    }
+
+    .brief-aside {
+      position: relative;
+      top: auto;
+    }
+
+    .preview-content {
+      padding: 27px;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .process-grid > .process-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .location-visual {
+      width: min(100%,650px);
+      margin-inline: auto;
+    }
+
+    .faq-layout {
+      gap: 38px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .container {
+      width: calc(100% - 36px);
+    }
+
+    .reading-progress {
+      top: 70px;
+    }
+
+    /* HERO */
+
+    .contact-hero {
+      padding: 58px 0 75px;
+    }
+
+    .hero-badge {
+      font-size: .6rem;
+      letter-spacing: .09em;
+    }
+
+    .hero-eyebrow {
+      margin-top: 32px;
+      font-size: .68rem;
+      letter-spacing: .13em;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.55rem,10vw,4rem);
+    }
+
+    .hero-lead {
+      font-size: .97rem;
+    }
+
+    .hero-description {
+      font-size: .9rem;
+    }
+
+    .hero-tags > span {
+      font-size: .67rem;
+    }
+
+    .hero-buttons,
+    .closing-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .hero-signature {
+      margin-top: 32px;
+      font-size: .58rem;
+    }
+
+    /* FOTOGRAFÍA */
+
+    .hero-visual {
+      padding: 20px 11px 28px;
+    }
+
+    .portrait-card {
+      height: 450px;
+      border-radius: 14px;
+      transform: none;
+    }
+
+    .portrait-card:hover {
+      transform: none;
+    }
+
+    .portrait-circle.circle-one {
+      width: 290px;
+      height: 290px;
+    }
+
+    .portrait-circle.circle-two {
+      width: 210px;
+      height: 210px;
+    }
+
+    .portrait-monogram {
+      font-size: 4.7rem;
+    }
+
+    .portrait-bottom {
+      right: 18px;
+      bottom: 20px;
+      left: 18px;
+    }
+
+    .portrait-bottom strong {
+      font-size: 1.25rem;
+    }
+
+    .portrait-topline {
+      top: 17px;
+      right: 17px;
+      left: 17px;
+      font-size: .58rem;
+    }
+
+    .floating-contact-card {
+      right: -3px;
+      bottom: 9px;
+      padding: 10px;
+    }
+
+    .floating-contact-card strong {
+      font-size: .72rem;
+    }
+
+    .floating-contact-card small {
+      font-size: .6rem;
+    }
+
+    /* SECCIONES */
+
+    .channels-section,
+    .brief-section,
+    .process-section,
+    .location-section,
+    .faq-section,
+    .closing-section {
+      padding: 75px 0;
+    }
+
+    .section-label {
+      font-size: .61rem;
+      letter-spacing: .12em;
+    }
+
+    .section-heading {
+      margin-bottom: 33px;
+    }
+
+    .section-heading h2,
+    .location-content h2,
+    .faq-heading h2,
+    .closing-inner h2 {
+      font-size: clamp(2.2rem,9vw,3.4rem);
+    }
+
+    .section-heading > p {
+      font-size: .91rem;
+    }
+
+    /* CANALES */
+
+    .channels-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .channel-card,
+    .channels-grid > .channel-card:last-child {
+      grid-column: auto;
+      min-height: 275px;
+      padding: 23px;
+    }
+
+    .channel-card-top {
+      margin-bottom: 20px;
+    }
+
+    .more-socials {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    /* FORMULARIO */
+
+    .brief-card-header {
+      padding: 20px;
+    }
+
+    .brief-form {
+      padding: 19px;
+    }
+
+    .topic-grid {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .topic-option-body {
+      min-height: 110px;
+      padding: 14px;
+    }
+
+    .topic-option-top {
+      margin-bottom: 13px;
+    }
+
+    .topic-option-body > small {
+      max-width: 100%;
+    }
+
+    .form-section {
+      margin-top: 29px;
+      padding-top: 24px;
+    }
+
+    .form-section-heading h3 {
+      font-size: 1rem;
+    }
+
+    /* VISTA PREVIA */
+
+    .preview-content {
+      padding: 20px;
+    }
+
+    .preview-header > span {
+      font-size: .59rem;
+    }
+
+    #message-preview {
+      padding: 15px;
+      font-size: .73rem;
+    }
+
+    /* PROCESO */
+
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .process-grid > .process-card:last-child {
+      grid-column: auto;
+    }
+
+    .process-card {
+      min-height: 255px;
+      padding: 23px;
+    }
+
+    .process-number {
+      margin-top: 25px;
+      font-size: 3.7rem;
+    }
+
+    /* UBICACIÓN */
+
+    .location-visual {
+      min-height: 360px;
+      padding: 21px;
+    }
+
+    .location-center {
+      height: 180px;
+    }
+
+    .radar-one {
+      width: 175px;
+      height: 175px;
+    }
+
+    .radar-two {
+      width: 125px;
+      height: 125px;
+    }
+
+    .radar-three {
+      width: 85px;
+      height: 85px;
+    }
+
+    .location-marker {
+      width: 60px;
+      height: 60px;
+    }
+
+    .location-marker svg {
+      width: 27px;
+      height: 27px;
+    }
+
+    .location-visual-bottom h3 {
+      font-size: 1.6rem;
+    }
+
+    /* FAQ */
+
+    .faq-item summary {
+      min-height: 67px;
+      padding: 16px;
+      gap: 11px;
+    }
+
+    .faq-question {
+      font-size: .85rem;
+    }
+
+    .faq-answer {
+      padding: 0 16px 18px 44px;
+    }
+
+    .faq-answer p {
+      font-size: .83rem;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .hero-content h1 {
+      font-size: 2.35rem;
+    }
+
+    .portrait-card {
+      height: 390px;
+    }
+
+    .floating-contact-card {
+      max-width: 220px;
+    }
+
+    .preview-header-status {
+      display: none;
+    }
+  }
+
+  /* ====================================== */
+  /*             ACCESIBILIDAD             */
+  /* ====================================== */
+
+  .contact-page a:focus-visible,
+  .contact-page button:focus-visible,
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .contact-page.effects-enabled [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .button,
+    .portrait-card,
+    .channel-card,
+    .process-card,
+    .topic-option-body,
+    .topic-check,
+    .faq-icon {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // ======================================
+  //      GENERADOR DE MENSAJES
+  // ======================================
+
+  function initContactPage(): void {
+    const page =
+      document.querySelector<HTMLElement>(
+        "#contact-page"
+      );
+
+    if (
+      !page ||
+      page.dataset.initialized === "true"
+    ) {
+      return;
+    }
+
+    page.dataset.initialized = "true";
+
+    // ======================================
+    //       FOTOGRAFÍA CON FALLBACK
+    // ======================================
+
+    const portrait =
+      page.querySelector<HTMLImageElement>(
+        "#contact-portrait"
+      );
+
+    const portraitCard =
+      page.querySelector<HTMLElement>(
+        "#contact-portrait-card"
+      );
+
+    if (portrait && portraitCard) {
+      const showPhoto = () => {
+        if (portrait.naturalWidth > 0) {
+          portraitCard.classList.add("is-loaded");
+        }
+      };
+
+      portrait.addEventListener("load", showPhoto);
+
+      if (portrait.complete) {
+        showPhoto();
+      }
+    }
+
+    // ======================================
+    //         FORMULARIO
+    // ======================================
+
+    const form =
+      page.querySelector<HTMLFormElement>(
+        "#contact-form"
+      );
+
+    const preview =
+      page.querySelector<HTMLElement>(
+        "#message-preview"
+      );
+
+    const copyButton =
+      page.querySelector<HTMLButtonElement>(
+        "#copy-message"
+      );
+
+    const copyLabel =
+      page.querySelector<HTMLElement>(
+        "#copy-button-label"
+      );
+
+    function createMessage(): string {
+      if (!form) {
+        return "";
+      }
+
+      const data = new FormData(form);
+
+      const name =
+        String(data.get("name") ?? "").trim();
+
+      const topic =
+        String(
+          data.get("topic") ??
+          "Consulta general"
+        );
+
+      const details =
+        String(
+          data.get("details") ?? ""
+        ).trim();
+
+      const deadline =
+        String(
+          data.get("deadline") ??
+          "Sin plazo definido"
+        );
+
+      return [
+        `Hola Marco, soy ${name || "[tu nombre]"}.`,
+        "",
+        `Te contacto por: ${topic}.`,
+        "",
+        "Mi idea/consulta:",
+        details || "[Cuéntame qué necesitas].",
+        "",
+        `Plazo aproximado: ${deadline}.`,
+        "",
+        "He llegado desde tu portfolio.",
+      ].join("\n");
+    }
+
+    function updatePreview(): void {
+      if (!preview) {
+        return;
+      }
+
+      preview.textContent = createMessage();
+    }
+
+    if (form) {
+      form.addEventListener(
+        "input",
+        updatePreview
+      );
+
+      form.addEventListener(
+        "change",
+        updatePreview
+      );
+
+      form.addEventListener(
+        "submit",
+        (event) => {
+          event.preventDefault();
+
+          if (!form.reportValidity()) {
+            return;
+          }
+
+          const message = createMessage();
+
+          const url =
+            "https://wa.me/34622541527?text=" +
+            encodeURIComponent(message);
+
+          window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+          );
+        }
+      );
+
+      updatePreview();
+    }
+
+    // ======================================
+    //          COPIAR MENSAJE
+    // ======================================
+
+    if (copyButton && copyLabel) {
+      const button = copyButton;
+      const label = copyLabel;
+
+      button.addEventListener(
+        "click",
+        async () => {
+          const message = createMessage();
+
+          try {
+            await navigator.clipboard.writeText(
+              message
+            );
+
+            label.textContent = "¡Mensaje copiado! ✓";
+
+            window.setTimeout(() => {
+              label.textContent = "Copiar mensaje";
+            }, 2200);
+          } catch {
+            label.textContent =
+              "Selecciona el texto para copiarlo";
+
+            if (preview) {
+              const selection = window.getSelection();
+
+              const range =
+                document.createRange();
+
+              range.selectNodeContents(preview);
+
+              selection?.removeAllRanges();
+              selection?.addRange(range);
+            }
+          }
+        }
+      );
+    }
+
+    // ======================================
+    //       ANIMACIONES AL HACER SCROLL
+    // ======================================
+
+    const elements =
+      page.querySelectorAll<HTMLElement>(
+        "[data-reveal]"
+      );
+
+    const reducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      !reducedMotion &&
+      "IntersectionObserver" in window
+    ) {
+      page.classList.add("effects-enabled");
+
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              currentObserver.unobserve(
+                entry.target
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.04,
+          rootMargin: "0px 0px 50px 0px",
+        }
+      );
+
+      elements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+    }
+
+    // ======================================
+    //       BARRA DE PROGRESO
+    // ======================================
+
+    const progress =
+      page.querySelector<HTMLElement>(
+        "#contact-progress"
+      );
+
+    function updateProgress(): void {
+      if (!progress) {
+        return;
+      }
+
+      const maximum =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const percentage =
+        maximum > 0
+          ? Math.max(
+              0,
+              Math.min(
+                100,
+                (window.scrollY / maximum) * 100
+              )
+            )
+          : 0;
+
+      progress.style.width =
+        `${percentage}%`;
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateProgress,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateProgress
+    );
+
+    updateProgress();
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initContactPage
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initContactPage
+  );
+
+  initContactPage();
+</script>

@@ -981,77 +981,22 @@ const architecture = [
             </span>
 
             <span class="video-browser-badge">
-              LOCAL PROJECT
+              YOUTUBE · DEMO
             </span>
 
           </div>
 
+          <!-- Demostración alojada en YouTube: no ocupa espacio en GitHub. -->
           <div class="video-frame" id="barbers-video-frame">
-
-        
-
-            <video
-              id="barbers-video"
-              class="barbers-video"
-              controls
-              playsinline
-              preload="metadata"
-              aria-label="Demostración de la aplicación Barber's 18"
-            >
-              <source
-                src="/videos/video.mp4"
-                type="video/mp4"
-              />
-
-              Tu navegador no puede reproducir este vídeo.
-            </video>
-
-            <!-- DISEÑO DE ESPERA DEL VÍDEO -->
-
-            <div class="video-placeholder" id="video-placeholder">
-
-              <div class="video-placeholder-glow" aria-hidden="true"></div>
-
-              <div class="demo-window">
-
-                <div class="demo-top">
-                  <span class="demo-logo">B<span>18</span></span>
-                  <span>BARBER’S 18</span>
-                  <span>DEMO</span>
-                </div>
-
-                <div class="demo-center">
-                  <span class="demo-eyebrow">
-                    PRESENTACIÓN DEL PROYECTO
-                  </span>
-
-                  <span class="demo-play" aria-hidden="true">
-                    ▶
-                  </span>
-
-                  <strong>
-                    Barber’s <span>18</span>
-                  </strong>
-
-                  <small>
-                    Laravel · React · Inertia.js
-                  </small>
-                </div>
-
-                <div class="demo-bottom">
-                  <span>DEVELOPED BY MARCO SÁNCHEZ</span>
-                  <span>TFG / 2024</span>
-                </div>
-
-              </div>
-
-              <div class="video-overlay-caption">
-                <span class="video-status-dot"></span>
-                ESPACIO RESERVADO PARA TU VÍDEO
-              </div>
-
-            </div>
-
+            <iframe
+              class="youtube-embed"
+              src="https://www.youtube-nocookie.com/embed/vIcqcjt9wr8?rel=0"
+              title="Barber’s 18 | Demostración del proyecto Full Stack de Marco Sánchez"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div class="video-browser-footer">
@@ -1065,7 +1010,15 @@ const architecture = [
 
         </div>
 
-       
+        <p class="video-help">
+          Demostración de Barber’s 18, mi Trabajo de Fin de Grado,
+          desarrollado con Laravel, React e Inertia.js y calificado con un 10/10. <br>
+          <a
+            href="https://youtu.be/vIcqcjt9wr8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Ver también en YouTube ↗</a>
+        </p>
       </div>
 
       <!-- =================================== -->
@@ -3125,8 +3078,7 @@ const architecture = [
     gap: 8px;
   }
 
-  .video-footer-dot,
-  .video-status-dot {
+  .video-footer-dot {
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -3141,147 +3093,14 @@ const architecture = [
     background: #101216;
   }
 
-  .barbers-video {
+  .youtube-embed {
     position: absolute;
     inset: 0;
     display: block;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    pointer-events: none;
+    border: 0;
     background: #101216;
-    object-fit: contain;
-  }
-
-  .video-frame.is-ready .barbers-video {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .video-frame.is-ready .video-placeholder {
-    display: none;
-  }
-
-  .video-placeholder {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    isolation: isolate;
-    padding: clamp(15px,4vw,45px);
-    overflow: hidden;
-    background: #14181f;
-  }
-
-  .video-placeholder-glow {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: radial-gradient(
-      ellipse at 50% 55%,
-      rgba(215,166,92,.17),
-      transparent 60%
-    );
-  }
-
-  .demo-window {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: min(100%,880px);
-    height: min(100%,430px);
-    min-height: 0;
-    padding: clamp(14px,2.5vw,27px);
-    border: 1px solid rgba(215,166,92,.25);
-    border-radius: 13px;
-    background:
-      linear-gradient(
-        140deg,
-        rgba(215,166,92,.08),
-        transparent 55%
-      ),
-      #1c2129;
-    box-shadow: 0 25px 75px rgba(0,0,0,.3);
-  }
-
-  .demo-top,
-  .demo-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    color: #9ca6b3;
-    font-family: Consolas,monospace;
-    font-size: .68rem;
-    letter-spacing: .1em;
-  }
-
-  .demo-logo {
-    color: #f2f2f3;
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -.05em;
-  }
-
-  .demo-logo span {
-    color: #d7a65c;
-  }
-
-  .demo-center {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .demo-eyebrow {
-    color: #c1ad8c;
-    font-size: .69rem;
-    letter-spacing: .16em;
-  }
-
-  .demo-play {
-    display: grid;
-    place-items: center;
-    width: clamp(54px,6vw,80px);
-    height: clamp(54px,6vw,80px);
-    margin-block: 8px;
-    border: 1px solid rgba(215,166,92,.65);
-    border-radius: 50%;
-    background: rgba(215,166,92,.13);
-    color: #d7a65c;
-    font-size: 1.5rem;
-  }
-
-  .demo-center strong {
-    color: #f0f1f3;
-    font-size: clamp(1.65rem,4vw,3.8rem);
-    font-weight: 800;
-    letter-spacing: -.065em;
-    line-height: 1;
-  }
-
-  .demo-center strong span {
-    color: #d7a65c;
-  }
-
-  .demo-center small {
-    color: #aeb7c4;
-    font-size: .78rem;
-  }
-
-  .video-overlay-caption {
-    position: absolute;
-    right: 20px;
-    bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #d4bf9c;
-    font-size: .63rem;
-    letter-spacing: .1em;
   }
 
   .video-help {
@@ -3292,9 +3111,15 @@ const architecture = [
     text-align: center;
   }
 
-  .video-help code {
-    color: #d7a65c;
-    font-family: Consolas,monospace;
+  .video-help a {
+    color: #e0b173;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .video-help a:hover {
+    color: #edbe79;
   }
 
   /* FUNCIONALIDADES CLIENTE */
@@ -4557,44 +4382,7 @@ const architecture = [
     }
 
     .video-frame {
-      aspect-ratio: 4 / 3;
-    }
-
-    .video-placeholder {
-      padding: 10px;
-    }
-
-    .demo-window {
-      padding: 12px;
-    }
-
-    .demo-top,
-    .demo-bottom {
-      font-size: .5rem;
-    }
-
-    .demo-eyebrow {
-      font-size: .53rem;
-    }
-
-    .demo-play {
-      width: 49px;
-      height: 49px;
-      font-size: 1.1rem;
-    }
-
-    .demo-center strong {
-      font-size: 2.3rem;
-    }
-
-    .demo-center small {
-      font-size: .62rem;
-    }
-
-    .video-overlay-caption {
-      right: 11px;
-      bottom: 7px;
-      font-size: .5rem;
+      aspect-ratio: 16 / 9;
     }
 
     /* FUNCIONES DEL PROYECTO */
@@ -4824,46 +4612,6 @@ const architecture = [
     );
 
     updateReadingProgress();
-  }
-
-  // ======================================
-  //       DETECCIÓN DEL VÍDEO
-  // ======================================
-
-  function initProjectVideo(): void {
-    const frame =
-      document.querySelector<HTMLElement>(
-        "#barbers-video-frame"
-      );
-
-    const video =
-      document.querySelector<HTMLVideoElement>(
-        "#barbers-video"
-      );
-
-    if (!frame || !video) {
-      return;
-    }
-
-    if (video.dataset.videoReady === "true") {
-      return;
-    }
-
-    video.dataset.videoReady = "true";
-
-    function showPlayer(): void {
-  frame?.classList.add("is-ready");
-}
-
-    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
-      showPlayer();
-    } else {
-      video.addEventListener(
-        "loadedmetadata",
-        showPlayer,
-        { once: true }
-      );
-    }
   }
 
   // ======================================
@@ -5489,7 +5237,6 @@ const architecture = [
 
   function initDevelopmentPage(): void {
     initScrollExperience();
-    initProjectVideo();
     initMarcoChat();
   }
 

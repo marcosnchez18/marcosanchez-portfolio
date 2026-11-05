@@ -1,0 +1,4865 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Chatbot from "../components/Chatbot.astro";
+
+const instagram = "https://www.instagram.com/marcosnchez18/";
+const tiktok = "https://www.tiktok.com/@marcosnchez18";
+const anitaWeb = "https://anitapalacios.es/";
+
+const whatsapp =
+  "https://wa.me/34622541527?text=" +
+  encodeURIComponent(
+    "Hola Marco, he visto tu galería de pintura y me gustaría hablar contigo sobre tus obras."
+  );
+
+const mapExhibition =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(
+    "Casa Manolo Peña El Chusco, Chipiona, Cádiz"
+  );
+
+/*
+  ==============================================
+  TUS 15 OBRAS — EDITA AQUÍ TÍTULO Y FOTO
+  ==============================================
+
+  CÓMO ACTUALIZAR UNA PINTURA:
+  - Guarda la foto en public/images/ (ejemplo: obra-02.png).
+  - En la ficha de esa obra cambia:
+       title       → título que se verá debajo de la imagen
+       type        → técnica (por ejemplo, Óleo sobre lienzo)
+       year        → año real de creación
+       description → texto que aparece al ampliar la obra
+       image       → URL desde /images/...
+  - featured es una etiqueta reservada para futuras mejoras.
+
+  Para añadir una obra 16, copia la ficha 15 y cambia
+  number: "16" y sus demás campos. Los contadores
+  se ajustan automáticamente según artworks.length.
+*/
+
+const artworks = [
+  // ───────────── OBRA 01 ─────────────
+  {
+    number: "01",
+    title: "El Incensario 2026",
+    type: "Cartel artístico",
+    year: "2026",
+    description:
+      "Una obra dedicada al incensario, a su humo y a su presencia en la Semana Santa de Sanlúcar de Barrameda.",
+    image: "/images/obra-1.png",
+    featured: true,
+  },
+  // ───────────── OBRA 02 ─────────────
+  {
+    number: "02",
+    title: "Santísimo Cristo De Las Tres Caídas De Triana",
+    type: "Pintura al óleo",
+    year: "2025",
+    description:
+      "Obra dedicada al Santísimo Cristo De Las Tres Caídas De Triana (Sevilla).",
+    image: "/images/triana.png",
+    featured: false,
+  },
+  // ───────────── OBRA 03 ─────────────
+  {
+    number: "03",
+    title: "Agüita de Cai",
+    type: "Pintura al óleo",
+    year: "2024",
+    description:
+      "Obra dedicada al agua de la playa de Santa María del Mar.",
+    image: "/images/aguita.jpg",
+    featured: false,
+  },
+  // ───────────── OBRA 04 ─────────────
+  {
+    number: "04",
+    title: "Abuela Virtudes",
+    type: "Pintura al óleo",
+    year: "2023",
+    description:
+      "Obra dedicada a mi querida abuela Virtudes.",
+    image: "/images/abuela.png",
+    featured: false,
+  },
+  // ───────────── OBRA 05 ─────────────
+  {
+    number: "05",
+    title: "Comunión de Cayetano",
+    type: "Pintura al óleo",
+    year: "2023",
+    description:
+      "Obra dedicada a mi hermano pequeño Cayetano el día de su primera comunión.",
+    image: "/images/caye.png",
+    featured: false,
+  },
+  // ───────────── OBRA 06 ─────────────
+  {
+    number: "06",
+    title: "",
+    type: "Ntra. Sra de la Victoria",
+    year: "2022",
+    description:
+      "Obra dedicada Ntra. Sra de la Victoria (Sanlúcar de Bda).",
+    image: "/images/vic.png",
+    featured: false,
+  },
+  // ───────────── OBRA 07 ─────────────
+  {
+    number: "07",
+    title: "Prendimiento",
+    type: "Pintura al óleo",
+    year: "2022",
+    description:
+      "Obra dedicada a Nuestro Padre Jesús del Prendimiento (Sanlúcar de Bda).",
+    image: "/images/prendi.png",
+    featured: false,
+  },
+  // ───────────── OBRA 08 ─────────────
+  {
+    number: "08",
+    title: "Santísimo Cristo de la Expiración",
+    type: "Pintura al óleo",
+    year: "2016",
+    description:
+      "Obra dedicada al Santísimo Cristo de la Expiración (Sanlúcar de Bda).",
+    image: "/images/expiracion.png",
+    featured: false,
+  },
+  // ───────────── OBRA 09 ─────────────
+  {
+    number: "09",
+    title: "María Santísima de la Esperanza Coronada",
+    type: "Pintura al óleo",
+    year: "2016",
+    description:
+      "Obra dedicada a María Santísima de la Esperanza Coronada (Sanlúcar de Bda).",
+    image: "/images/espe.png",
+    featured: false,
+  },
+  
+];
+
+const milestones = [
+  {
+    year: "DESDE LOS 5 AÑOS",
+    heading: "Los primeros pinceles.",
+    text:
+      "Mi historia con la pintura comenzó siendo un niño. Con apenas cinco años asistía a distintas clases de pintura en Sanlúcar de Barrameda. Entonces todavía no sabía hasta dónde podría llevarme aquella afición; simplemente disfrutaba creando y descubriendo lo que podía expresar sobre un papel o un lienzo.",
+    marker: "01",
+  },
+  {
+    year: "2013",
+    heading: "El encuentro que lo cambió todo.",
+    text:
+      "En 2013 comencé a asistir en Chipiona a las clases de Anita Palacios. Su manera de enseñar, su exigencia y su confianza me ayudaron a descubrir y desarrollar una capacidad artística que todavía tenía mucho por mostrar. Con ella aprendí a observar de otra manera y a trabajar cada obra con paciencia, sensibilidad y dedicación.",
+    marker: "02",
+  },
+  {
+    year: "2025",
+    heading: "Compartir mi pintura con los demás.",
+    text:
+      "Participé en una exposición en el espacio Espacio Vacío, situado en Casa Manolo–Peña El Chusco, en Chipiona. Ver mi trabajo expuesto y compartirlo con otras personas fue una experiencia especialmente importante dentro de mi evolución como pintor.",
+    marker: "03",
+  },
+  {
+    year: "2026",
+    heading: "El Incensario: un paso más.",
+    text:
+      "La realización de El Incensario 2026 supuso uno de los momentos más significativos de mi trayectoria artística: la oportunidad de presentar mi primer cartel relacionado con nuestra Semana Santa y de convertir en una obra una tradición que forma parte de mi ciudad.",
+    marker: "04",
+  },
+  {
+    year: "HOY",
+    heading: "Seguir aprendiendo.",
+    text:
+      "Actualmente continúo asistiendo a las clases de Anita Palacios y profundizando en la pintura realista al óleo. Cada cuadro plantea un reto diferente. Cuanto más aprendo, más consciente soy de todo lo que todavía me queda por descubrir.",
+    marker: "05",
+  },
+];
+
+const processItems = [
+  {
+    number: "01",
+    label: "DENTRO DEL TALLER",
+    title: "Obras en proceso",
+    description:
+      "Un espacio para mostrar cómo va tomando forma una pintura, desde sus primeras etapas hasta los últimos detalles.",
+    image: "/images/proceso.png",
+    status: "EN ACTUALIZACIÓN",
+  },
+  {
+    number: "02",
+    label: "PRÓXIMOS PROYECTOS",
+    title: "Lo que está por llegar",
+    description:
+      "Aquí compartiré nuevas ideas, próximas obras y proyectos artísticos cuando estén listos para enseñarlos.",
+    image: "/images/cap.png",
+    status: "PRÓXIMAMENTE",
+  },
+  {
+    number: "03",
+    label: "ACTUALIDAD ARTÍSTICA",
+    title: "Novedades y exposiciones",
+    description:
+      "Un pequeño diario donde anunciar futuras exposiciones, presentaciones y otras noticias relacionadas con mi pintura.",
+    image: "/images/ex.png",
+    status: "SIN FECHAS ANUNCIADAS",
+  },
+];
+---
+
+<MainLayout
+  title="Arte y pintura al óleo | Marco Sánchez"
+  description="Descubre la faceta artística de Marco Sánchez: pintura realista al óleo, su trayectoria desde la infancia, sus obras, El Incensario 2026 y exposiciones en Chipiona."
+>
+  <main class="art-page" id="art-page">
+
+    <div
+      class="reading-progress"
+      id="reading-progress"
+      aria-hidden="true"
+    ></div>
+
+    <!-- ================================== -->
+    <!--              HERO                 -->
+    <!-- ================================== -->
+
+    <section class="art-hero" aria-labelledby="art-title">
+
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-light" aria-hidden="true"></div>
+
+      <div class="container hero-layout">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow-pill">
+            <span class="gold-dot"></span>
+            MI OTRA FORMA DE EXPRESARME
+          </div>
+
+          <p class="hero-kicker">
+            MARCO SÁNCHEZ / ARTISTA AFICIONADO
+          </p>
+
+          <h1 id="art-title">
+            Hay historias
+            <span>que solo sé contar</span>
+            <em>con pinceles.</em>
+          </h1>
+
+          
+
+          <p class="hero-description">
+            Desde pequeño, el arte ha formado parte
+            de mi vida. Hoy encuentro en el
+            <strong> óleo realista</strong> una forma
+            de detenerme, observar y dar vida a
+            aquello que me inspira.
+          </p>
+
+          <div class="hero-tags">
+            <span class="hero-tag-gold">
+              <span></span>
+              Pintura al óleo
+            </span>
+            <span>23 años (18/04/2003)</span>
+            <span>Realismo</span>
+            <span>Aprendizaje continuo</span>
+          </div>
+
+          <div class="hero-actions">
+
+            <a href="#galeria" class="art-button primary-button">
+              Explorar mis obras
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="#historia" class="art-button outline-button">
+              Conocer mi historia
+              <span aria-hidden="true">↓</span>
+            </a>
+
+          </div>
+
+          <div class="hero-bottom-label">
+            <span class="small-line"></span>
+            <span>EL ARTE COMO PARTE DE QUIÉN SOY</span>
+          </div>
+
+        </div>
+
+        <!-- FOTO PRINCIPAL DEL ARTISTA -->
+
+        <div class="hero-visual">
+
+          <div class="hero-art-frame photo-frame">
+
+            <div class="photo-placeholder">
+              <span class="placeholder-corner corner-tl"></span>
+              <span class="placeholder-corner corner-tr"></span>
+              <span class="placeholder-corner corner-bl"></span>
+              <span class="placeholder-corner corner-br"></span>
+
+              <div class="placeholder-mark">
+                <span>MS</span>
+                <i>.</i>
+              </div>
+
+              <p>EL ARTISTA Y SU TALLER</p>
+              <small>ESPACIO PARA FOTOGRAFÍA</small>
+            </div>
+
+            <img
+              src="/images/abuela.png"
+              alt="Marco Sánchez en su faceta como pintor"
+              class="optional-photo"
+              data-optional-image
+            />
+
+            <div class="hero-photo-shade"></div>
+
+            <div class="photo-heading">
+              <span>ART JOURNAL — 001</span>
+              <strong>El arte de mirar.</strong>
+            </div>
+
+          </div>
+
+          <div class="floating-note">
+            <span class="floating-note-icon">✦</span>
+            <div>
+              <strong>Óleo & Realismo</strong>
+              <small>Crear · Observar · Aprender</small>
+            </div>
+          </div>
+
+          <div class="visual-side-label">
+            <span>UNA PASIÓN QUE CRECE CON EL TIEMPO</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <a href="#manifiesto" class="hero-scroll">
+        <span>↓</span>
+        DESLIZA PARA EXPLORAR
+      </a>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--           MANIFIESTO               -->
+    <!-- ================================== -->
+
+    <section class="manifesto-section" id="manifiesto">
+
+      <div class="container manifesto-inner" data-reveal>
+
+        <span class="manifesto-quote" aria-hidden="true">
+          “
+        </span>
+
+        <p>
+          Pintar no consiste únicamente en reproducir
+          lo que vemos.
+          <strong>
+            Consiste en aprender a mirar aquello
+            que antes pasaba desapercibido.
+          </strong>
+        </p>
+
+        <div class="manifesto-signature">
+          <span></span>
+          <small>MI MANERA DE ENTENDER LA PINTURA</small>
+          <span></span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--          HISTORIA PERSONAL         -->
+    <!-- ================================== -->
+
+    <section
+      class="history-section"
+      id="historia"
+      aria-labelledby="history-title"
+    >
+      <div class="container">
+
+        <div class="section-eyebrow" data-reveal>
+          <span></span>
+          01 / MI HISTORIA CON LA PINTURA
+        </div>
+
+        <div class="history-layout">
+
+          <div class="history-intro" data-reveal>
+
+            <h2 id="history-title">
+              Una pasión
+              <span>que empezó</span>
+              <em>mucho antes.</em>
+            </h2>
+
+            <p>
+              Mi relación con el arte no comenzó
+              como una profesión ni como un proyecto
+              con objetivos definidos.
+            </p>
+
+            <p>
+              Empezó siendo una afición de niño,
+              una ilusión que se mantuvo con los años
+              y que, gracias al aprendizaje y a la
+              constancia, fue creciendo conmigo.
+            </p>
+
+            <div class="history-mini-card">
+              <span>MI RECORRIDO</span>
+              <strong>De los primeros trazos al realismo.</strong>
+              <small>
+                UNA HISTORIA QUE SIGUE ESCRIBIÉNDOSE.
+              </small>
+            </div>
+
+          </div>
+
+          <div class="timeline">
+
+            {milestones.map((milestone) => (
+              <article class="timeline-item" data-reveal>
+
+                <div class="timeline-marker">
+                  <span>{milestone.marker}</span>
+                </div>
+
+                <div class="timeline-content">
+                  <span class="timeline-year">
+                    {milestone.year}
+                  </span>
+
+                  <h3>{milestone.heading}</h3>
+
+                  <p>{milestone.text}</p>
+                </div>
+
+              </article>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================== -->
+    <!--          ANITA PALACIOS            -->
+    <!-- ================================== -->
+
+    <section class="mentor-section" aria-labelledby="mentor-title">
+
+      <div class="container mentor-layout">
+
+        <div class="mentor-visual" data-reveal>
+
+          <div class="mentor-photo-frame photo-frame">
+
+            <div class="photo-placeholder">
+              <span class="placeholder-symbol">✦</span>
+              <p>UNA ETAPA FUNDAMENTAL</p>
+              <small>FOTOGRAFÍA DEL TALLER O DE CLASE</small>
+            </div>
+
+            <img
+              src="/images/pint.png"
+              alt="Recuerdo de las clases de pintura en el taller de Anita Palacios"
+              class="optional-photo"
+              data-optional-image
+            />
+
+          </div>
+
+          <div class="mentor-frame-caption">
+            <span>DESDE 2013</span>
+            <span>CHIPIONA · CÁDIZ</span>
+          </div>
+
+        </div>
+
+        <div class="mentor-copy" data-reveal>
+
+          <div class="section-eyebrow">
+            <span></span>
+            UNA PERSONA FUNDAMENTAL
+          </div>
+
+          <h2 id="mentor-title">
+            Hay maestros
+            <span>que enseñan.</span>
+            <em>Y otros que dejan huella.</em>
+          </h2>
+
+          <p>
+            En 2013 comencé una etapa que cambiaría
+            profundamente mi manera de entender la
+            pintura: las clases de
+            <strong> Anita Palacios, en Chipiona.</strong>
+          </p>
+
+          <p>
+            Anita no solo me enseñó técnicas.
+            Supo reconocer posibilidades en mí
+            que yo todavía no había descubierto
+            por completo. Con su orientación,
+            su paciencia y su exigencia,
+            fui ganando confianza, aprendiendo
+            a observar y desarrollando mi propia
+            sensibilidad artística.
+          </p>
+
+          <p>
+            Con los años, aquella afición infantil
+            fue evolucionando hacia la pintura
+            realista al óleo, un camino que sigo
+            recorriendo hoy.
+          </p>
+
+          <div class="mentor-quote">
+            <span>“</span>
+            <p>
+              A día de hoy sigo aprendiendo de ella,
+              porque cuanto más avanzas en el arte,
+              más comprendes que nunca dejas
+              de ser alumno.
+            </p>
+          </div>
+
+          <a
+            href={anitaWeb}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="art-text-link"
+          >
+            Conocer el trabajo de Anita Palacios
+            <span aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================== -->
+    <!--       EL INCENSARIO 2026           -->
+    <!-- ================================== -->
+
+    <section
+      class="incensario-section"
+      id="incensario"
+      aria-labelledby="incensario-title"
+    >
+
+      <div class="incensario-background" aria-hidden="true"></div>
+
+      <div class="container">
+
+        <div class="section-eyebrow" data-reveal>
+          <span></span>
+          02 / UNA OBRA ESPECIAL
+        </div>
+
+        <div class="incensario-heading" data-reveal>
+
+          <div>
+            <span class="incensario-pretitle">
+              CARTEL ARTÍSTICO · SEMANA SANTA
+            </span>
+
+            <h2 id="incensario-title">
+              El Incensario
+              <em>2026.</em>
+            </h2>
+
+            <p>
+              Una obra que representa uno de los
+              momentos más importantes de mi recorrido
+              como pintor.
+            </p>
+          </div>
+
+          <div class="incensario-year">
+            <span>OBRA DESTACADA</span>
+            <strong>2026</strong>
+          </div>
+
+        </div>
+
+        <div class="incensario-layout">
+
+          <!-- CARTEL -->
+
+          <div class="incensario-artwork" data-reveal>
+
+            <div class="incensario-gold-frame">
+
+              <div class="incensario-photo photo-frame">
+
+                <div class="photo-placeholder incensario-placeholder">
+                  <span class="placeholder-symbol">✦</span>
+
+                  <strong>
+                    EL INCENSARIO
+                    <em>2026</em>
+                  </strong>
+
+                  <small>
+                    AQUÍ APARECERÁ EL CARTEL ORIGINAL
+                  </small>
+                </div>
+
+                <img
+                  src="/images/incensario.png"
+                  alt="El Incensario 2026, cartel realizado por Marco Sánchez"
+                  class="optional-photo"
+                  data-optional-image
+                />
+
+              </div>
+
+            </div>
+
+            <div class="artwork-caption">
+              <span>OBRA ORIGINAL / MARCO SÁNCHEZ</span>
+              <span>2026</span>
+            </div>
+
+          </div>
+
+          <!-- HISTORIA DEL CARTEL -->
+
+          <div class="incensario-story" data-reveal>
+
+            <span class="story-number">
+              ARTWORK / 001
+            </span>
+
+            <h3>
+              El aroma de
+              <em>una tradición.</em>
+            </h3>
+
+            <p>
+              Esta obra nace de la intención
+              de dar protagonismo a un elemento
+              tan característico de nuestra
+              Semana Santa como el
+              <strong> incensario.</strong>
+            </p>
+
+            <p>
+              Su humo, su aroma y su movimiento
+              forman parte de una atmósfera única.
+              Quise llevar esa esencia al lienzo
+              y transmitir, a través de la pintura,
+              una pequeña parte de lo que representa
+              esta tradición para Sanlúcar de Barrameda.
+            </p>
+
+            <p>
+              Realizar <strong> El Incensario 2026 </strong>
+              significó dar un paso que recordaría
+              especialmente: presentar mi primer cartel
+              para nuestra Semana Grande y compartir
+              públicamente una obra muy personal.
+            </p>
+
+            <div class="incensario-details">
+
+              <div>
+                <span>OBRA</span>
+                <strong>El Incensario 2026</strong>
+              </div>
+
+              <div>
+                <span>TEMÁTICA</span>
+                <strong>Semana Santa de Sanlúcar</strong>
+              </div>
+
+              
+<div>
+    <span>DÓNDE VISITAR</span>
+  
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=Taberna%20La%20O%20Sanl%C3%BAcar%20de%20Barrameda"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display:inline-flex;align-items:center;gap:10px;color:#e1e4e8;text-decoration:none;font-size:.83rem;font-weight:600;"
+    >
+      Taberna La O · Sanlúcar
+  
+      <span
+        aria-hidden="true"
+        style="color:#d7a65c;font-size:1.3rem;"
+      >
+        ↗
+      </span>
+    </a>
+  </div>
+  
+
+            </div>
+
+            <div class="incensario-thanks">
+              <span>AGRADECIMIENTOS</span>
+
+              <p>
+                Este proyecto también fue posible
+                gracias a quienes confiaron en mí:
+                <strong> Raúl Rodríguez</strong>,
+                por brindarme la oportunidad
+                de presentar mi primer cartel;
+                <strong> Raúl Machuca</strong>,
+                por facilitar la casa de hermandad
+                del Prendimiento; y, muy especialmente,
+                <strong> Anita Palacios</strong>,
+                mi maestra, por acompañarme y enseñarme
+                durante todos estos años.
+              </p>
+            </div>
+
+            <a href="#galeria" class="art-text-link">
+              Descubrir el resto de mis obras
+              <span aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--         EXPOSICIÓN CHIPIONA        -->
+    <!-- ================================== -->
+
+    <section
+      class="exhibition-section"
+      id="exposiciones"
+      aria-labelledby="exhibition-title"
+    >
+      <div class="container">
+
+        <div class="section-eyebrow" data-reveal>
+          <span></span>
+          03 / EXPOSICIONES Y ENCUENTROS
+        </div>
+
+        <div class="exhibition-layout">
+
+          <div class="exhibition-copy" data-reveal>
+
+            <div class="exhibition-year-badge">
+              <span>EXPOSICIÓN</span>
+              <strong>2025</strong>
+            </div>
+
+            <h2 id="exhibition-title">
+              Cuando la pintura
+              <span>sale del taller.</span>
+            </h2>
+
+            <p class="exhibition-lead">
+              Compartir una obra con los demás
+              es una experiencia muy diferente
+              a crearla en la intimidad del estudio.
+            </p>
+
+            <p>
+              En 2025 participé en una exposición
+              colectiva en <strong>Espacio Vacío</strong>,
+              en Casa Manolo–Peña El Chusco,
+              en Chipiona, junto a obras de otros
+              alumnos de Anita Palacios.
+            </p>
+
+            <p>
+              Fue una oportunidad para mostrar
+              mi trabajo, descubrir otras miradas
+              y vivir la pintura como algo que
+              también conecta a las personas.
+            </p>
+
+            <div class="exhibition-info">
+
+              <div class="exhibition-info-item">
+                <span>FECHAS</span>
+                <strong>
+                  27 de junio – 6 de julio de 2025
+                </strong>
+              </div>
+
+              <div class="exhibition-info-item">
+                <span>LUGAR</span>
+                <strong>Espacio Vacío</strong>
+              </div>
+
+              <div class="exhibition-info-item">
+                <span>UBICACIÓN</span>
+                <strong>
+                  Casa Manolo–Peña El Chusco,
+                  Chipiona (Cádiz)
+                </strong>
+              </div>
+
+            </div>
+
+            <a
+              href={mapExhibition}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="art-text-link"
+            >
+              Ver ubicación en Google Maps
+              <span aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+
+          <!-- FOTOS EXPOSICIÓN -->
+
+          <div class="exhibition-gallery" data-reveal>
+
+            <div class="exhibition-picture picture-large photo-frame">
+              <div class="photo-placeholder">
+                <span class="placeholder-symbol">✦</span>
+                <p>EXPOSICIÓN DE CHIPIONA</p>
+                <small>FOTOGRAFÍA PRINCIPAL · 2025</small>
+              </div>
+
+              <img
+                src="/images/exposicion.png"
+                alt="Fotografía de la exposición de pintura celebrada en Chipiona en 2025"
+                class="optional-photo"
+                data-optional-image
+              />
+            </div>
+
+    
+            
+<div
+class="exhibition-picture picture-small photo-frame"
+style="height: 380px; width: 100%; aspect-ratio: 3 / 4;"
+>
+<div class="photo-placeholder">
+  <span class="placeholder-symbol">✦</span>
+  <small>RECUERDOS DE LA EXPOSICIÓN</small>
+</div>
+
+<img
+  src="/images/expo.png"
+  alt="Recuerdo de la exposición artística de Chipiona"
+  class="optional-photo"
+  data-optional-image
+  style="width: 100%; height: 100%; object-fit: cover;"
+/>
+</div>
+
+<div
+class="exhibition-picture picture-small photo-frame"
+style="height: 380px; width: 100%; aspect-ratio: 3 / 4;"
+>
+<div class="photo-placeholder">
+  <span class="placeholder-symbol">✦</span>
+  <small>RECUERDOS DE LA EXPOSICIÓN</small>
+</div>
+
+<img
+  src="/images/victoria.png"
+  alt="Recuerdo de la exposición artística de Chipiona"
+  class="optional-photo"
+  data-optional-image
+  style="width: 100%; height: 100%; object-fit: cover;"
+/>
+</div>
+
+
+            <div class="exhibition-photo-label">
+              <span>EXHIBITION ARCHIVE</span>
+              <strong>CHIPIONA / 2025</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================== -->
+    <!--         GALERÍA DE OBRAS           -->
+    <!-- ================================== -->
+
+    <section
+      class="gallery-section"
+      id="galeria"
+      aria-labelledby="gallery-title"
+    >
+
+      <div class="gallery-grid-pattern" aria-hidden="true"></div>
+
+      <div class="container">
+
+        <div class="section-eyebrow" data-reveal>
+          <span></span>
+          04 / GALERÍA DE OBRAS
+        </div>
+
+        <div class="gallery-heading" data-reveal>
+
+          <div>
+            <span class="gallery-pretitle">
+              MI COLECCIÓN PERSONAL
+            </span>
+
+            <h2 id="gallery-title">
+              Un recorrido
+              <span>por mis cuadros.</span>
+            </h2>
+          </div>
+
+          <div class="gallery-heading-side">
+            <strong>{String(artworks.length).padStart(2, "0")}</strong>
+            <span>ESPACIOS PARA OBRAS</span>
+          </div>
+
+        </div>
+
+        <p class="gallery-description" data-reveal>
+          Cada pintura es el resultado de muchas horas
+          de observación, trabajo y aprendizaje.
+          He creado esta galería para reunir mis cuadros
+          en un mismo lugar y poder compartirlos
+          de una manera sencilla.
+        </p>
+
+        <div class="gallery-instructions" data-reveal>
+          <span class="instructions-icon" aria-hidden="true">
+            ⌕
+          </span>
+
+          <span>
+            Selecciona cualquier obra para verla
+            ampliada, conocer sus detalles y pasar
+            a la siguiente.
+          </span>
+        </div>
+
+        <!-- CUADROS -->
+
+        <div class="artworks-grid">
+
+          {artworks.map((artwork, index) => (
+            <button
+              type="button"
+              class:list={[
+                "artwork-card",
+                { "artwork-featured": artwork.featured },
+              ]}
+              data-artwork
+              data-index={index}
+              data-title={artwork.title}
+              data-type={artwork.type}
+              data-year={artwork.year}
+              data-description={artwork.description}
+              data-image={artwork.image}
+              aria-label={`Ver obra: ${artwork.title}`}
+              data-reveal
+            >
+
+              <span class="artwork-visual photo-frame">
+
+                <span class="artwork-placeholder">
+                  <span class="artwork-placeholder-number">
+                    {artwork.number}
+                  </span>
+
+                  <span class="artwork-placeholder-symbol">
+                    ✦
+                  </span>
+
+                  <span class="artwork-placeholder-text">
+                    {artwork.title}
+                  </span>
+
+                  <small>
+                    FOTOGRAFÍA PENDIENTE
+                  </small>
+                </span>
+
+                <img
+                  src={artwork.image}
+                  alt={artwork.title}
+                  class="optional-photo"
+                  data-optional-image
+                  loading="lazy"
+                />
+
+                <span class="artwork-zoom">
+                  <span aria-hidden="true">↗</span>
+                  AMPLIAR OBRA
+                </span>
+
+                <span class="artwork-overlay-number">
+                  {artwork.number} / {String(artworks.length).padStart(2, "0")}
+                </span>
+
+              </span>
+
+              <span class="artwork-info">
+
+                <span>
+                  <strong>{artwork.title}</strong>
+                  <small>{artwork.type}</small>
+                </span>
+
+                <span class="artwork-info-arrow" aria-hidden="true">
+                  ↗
+                </span>
+
+              </span>
+
+            </button>
+          ))}
+
+        </div>
+
+        <div class="gallery-bottom-note" data-reveal>
+
+          <div>
+            <span class="gallery-bottom-icon">✦</span>
+
+            <p>
+              <strong>Una galería que seguirá creciendo.</strong>
+              Iré incorporando nuevas fotografías,
+              obras terminadas y detalles de cada pintura.
+            </p>
+          </div>
+
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="art-text-link"
+          >
+            Ver más en Instagram
+            <span aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--        OBRAS EN PROCESO            -->
+    <!-- ================================== -->
+
+    <section
+      class="process-section"
+      id="en-proceso"
+      aria-labelledby="process-title"
+    >
+      <div class="container">
+
+        <div class="section-eyebrow" data-reveal>
+          <span></span>
+          05 / DETRÁS DE CADA OBRA
+        </div>
+
+        <div class="process-heading" data-reveal>
+
+          <h2 id="process-title">
+            El arte también
+            <span>está en el proceso.</span>
+          </h2>
+
+          <p>
+            No todo lo que merece la pena mostrar
+            es una obra terminada. Me gusta también
+            compartir el camino que hay detrás:
+            las primeras capas, los cambios,
+            los detalles y las ideas que están naciendo.
+          </p>
+
+        </div>
+
+        <div class="process-grid">
+
+          {processItems.map((item) => (
+            <article class="process-card" data-reveal>
+
+              <div class="process-image photo-frame">
+
+                <div class="photo-placeholder">
+                  <span class="placeholder-symbol">
+                    ✦
+                  </span>
+
+                  <p>{item.title}</p>
+
+                  <small>IMAGEN PARA ACTUALIZAR</small>
+                </div>
+
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="optional-photo"
+                  data-optional-image
+                  loading="lazy"
+                />
+
+                <div class="process-image-label">
+                  {item.label}
+                </div>
+
+              </div>
+
+              <div class="process-card-content">
+
+                <div class="process-card-top">
+                  <span>{item.number} / ACTUALIDAD</span>
+                  <span>✦</span>
+                </div>
+
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+
+                <span class="process-status">
+                  <span></span>
+                  {item.status}
+                </span>
+
+              </div>
+
+            </article>
+          ))}
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================== -->
+    <!--       APRENDIZAJE CONTINUO         -->
+    <!-- ================================== -->
+
+    <section class="reflection-section">
+
+      <div class="container reflection-inner" data-reveal>
+
+        <span class="reflection-symbol">✦</span>
+
+        <p class="reflection-eyebrow">
+          LO QUE ME ENSEÑA LA PINTURA
+        </p>
+
+        <h2>
+          Cada obra me recuerda
+          <em>todo lo que aún me queda por aprender.</em>
+        </h2>
+
+        <p class="reflection-description">
+          La paciencia para trabajar un detalle.
+          La humildad para aceptar una corrección.
+          La constancia para volver a empezar
+          cuando algo no sale como esperaba.
+          El arte me ha enseñado valores que
+          también intento llevar a otros
+          ámbitos de mi vida.
+        </p>
+
+        <span class="reflection-line"></span>
+
+        <strong>MARCO SÁNCHEZ</strong>
+
+      </div>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--              CONTACTO             -->
+    <!-- ================================== -->
+
+    <section class="art-closing">
+
+      <div class="container closing-layout">
+
+        <div data-reveal>
+
+          <div class="section-eyebrow">
+            <span></span>
+            06 / SIGAMOS EN CONTACTO
+          </div>
+
+          <h2>
+            Gracias por mirar
+            <span>un poco más allá.</span>
+          </h2>
+
+          <p>
+            Pintar es una faceta muy personal
+            que me alegra poder compartir.
+            Si alguna obra te ha llamado
+            la atención, tienes curiosidad por
+            mi proceso o quieres preguntarme
+            por la posibilidad de realizar
+            un encargo, estaré encantado
+            de escucharte.
+          </p>
+
+          <div class="closing-actions">
+
+            <a
+              href={instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="art-button primary-button"
+            >
+              Mi Instagram de arte
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="art-button outline-button"
+            >
+              Hablar conmigo
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href={tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="art-button outline-button"
+            >
+              TikTok
+              <span aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+
+        </div>
+
+        
+<div class="closing-monogram" data-reveal>
+    <img
+      src="/images/ms.png"
+      alt="Logo artístico de Marco Sánchez"
+      class="closing-art-logo"
+    />
+  </div>
+  
+
+      </div>
+
+    </section>
+
+    <!-- ================================== -->
+    <!--     GALERÍA INMERSIVA PANTALLA     -->
+    <!-- ================================== -->
+
+    <div
+      class="art-lightbox"
+      id="art-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Visor a pantalla completa de las obras de Marco Sánchez"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="lightbox-stage">
+        <div class="lightbox-top">
+          <div class="lightbox-top-left">
+            <span class="lightbox-indicator"></span>
+            MARCO SÁNCHEZ / GALERÍA
+          </div>
+
+          <div class="lightbox-top-actions">
+            <span class="lightbox-top-hint">VISTA A PANTALLA COMPLETA</span>
+            <button
+              type="button"
+              id="lightbox-close"
+              class="lightbox-close"
+              aria-label="Cerrar imagen ampliada"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lightbox-canvas">
+          <button
+            type="button"
+            id="lightbox-prev"
+            class="lightbox-nav lightbox-prev"
+            aria-label="Ver obra anterior"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+
+          <div class="lightbox-image-container">
+            <img
+              id="lightbox-image"
+              alt=""
+              hidden
+            />
+            <div class="lightbox-empty" id="lightbox-empty" hidden>
+              <span>✦</span>
+              <strong id="lightbox-empty-title">Obra de arte</strong>
+              <p>La fotografía de esta obra todavía no se ha incorporado.</p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            id="lightbox-next"
+            class="lightbox-nav lightbox-next"
+            aria-label="Ver obra siguiente"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <div class="lightbox-bottom">
+          <div class="lightbox-caption-main">
+            <span class="lightbox-count" id="lightbox-count">01 / {String(artworks.length).padStart(2, "0")}</span>
+            <h3 id="lightbox-title">El Incensario 2026</h3>
+            <span class="lightbox-medium" id="lightbox-medium">Cartel artístico</span>
+          </div>
+
+          <div class="lightbox-caption-side">
+            <p id="lightbox-description"></p>
+            <div class="lightbox-metadata">
+              <span>AÑO / DATOS</span>
+              <strong id="lightbox-year">2026</strong>
+            </div>
+          </div>
+        </div>
+        <p class="lightbox-help">
+          Usa ← → para cambiar de obra · Pulsa ESC para cerrar
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <Chatbot />
+
+</MainLayout>
+
+<style>
+  /* ======================================== */
+  /*            CONFIGURACIÓN GENERAL        */
+  /* ======================================== */
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #101216;
+  }
+
+  .art-page {
+    --gold: #d7a65c;
+    --gold-light: #efc58d;
+    --dark: #101216;
+    --surface: #171b21;
+    --card: #20242b;
+    --border: #3b4049;
+    --white: #f0f1f3;
+    --muted: #abb3be;
+
+    background: var(--dark);
+    color: var(--white);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+
+  .art-page,
+  .art-page * {
+    box-sizing: border-box;
+  }
+
+  .art-page button,
+  .art-page a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .container {
+    width: min(calc(100% - 96px), 1360px);
+    margin-inline: auto;
+  }
+
+  section[id] {
+    scroll-margin-top: 105px;
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    z-index: 1100;
+
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(215,166,92,.55);
+    pointer-events: none;
+  }
+
+  .art-page.reveal-enabled [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+
+    transition:
+      opacity .7s ease,
+      transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .art-page.reveal-enabled [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+
+    color: var(--gold);
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .17em;
+  }
+
+  .section-eyebrow > span {
+    width: 29px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ======================================== */
+  /*                 BOTONES                 */
+  /* ======================================== */
+
+  .art-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    min-height: 53px;
+    padding: 13px 21px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    font-size: .87rem;
+    font-weight: 720;
+    text-decoration: none;
+    text-align: center;
+
+    transition:
+      transform .22s ease,
+      border-color .22s ease,
+      background .22s ease;
+  }
+
+  .art-button:hover {
+    transform: translateY(-3px);
+  }
+
+  .art-button > span {
+    font-size: 1.13rem;
+  }
+
+  .primary-button {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: #15171b;
+  }
+
+  .primary-button:hover {
+    background: var(--gold-light);
+  }
+
+  .outline-button {
+    border-color: #4a4e58;
+    background: #1e2229;
+    color: #e8eaee;
+  }
+
+  .outline-button:hover {
+    border-color: var(--gold);
+  }
+
+  .art-text-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gold);
+
+    color: #e4b67a;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: color .2s ease;
+  }
+
+  .art-text-link:hover {
+    color: var(--gold-light);
+  }
+
+  .art-text-link span {
+    font-size: 1.25rem;
+  }
+
+  /* ======================================== */
+  /*            FOTOGRAFÍAS OPCIONALES       */
+  /* ======================================== */
+
+  .photo-frame {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+      radial-gradient(
+        circle at 50% 42%,
+        rgba(215,166,92,.12),
+        transparent 58%
+      ),
+      #23262c;
+  }
+
+  .optional-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    object-fit: cover;
+    opacity: 0;
+    transition:
+      opacity .35s ease,
+      transform .7s ease;
+  }
+
+  .photo-frame.has-photo > .optional-photo {
+    opacity: 1;
+  }
+
+  .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    padding: 25px;
+    text-align: center;
+  }
+
+  .photo-placeholder p {
+    margin: 0;
+    color: #d7b685;
+    font-size: .78rem;
+    font-weight: 720;
+    letter-spacing: .12em;
+    line-height: 1.5;
+  }
+
+  .photo-placeholder small {
+    color: #919aa6;
+    font-size: .62rem;
+    letter-spacing: .14em;
+  }
+
+  .placeholder-symbol {
+    color: rgba(215,166,92,.65);
+    font-family: Georgia,serif;
+    font-size: 4rem;
+  }
+
+  
+.closing-art-logo {
+  width: 75%;
+  max-width: 340px;
+  max-height: 280px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.closing-monogram:hover .closing-art-logo {
+  transform: scale(1.06);
+}
+
+
+  /* ======================================== */
+  /*                  HERO                   */
+  /* ======================================== */
+
+  .art-hero {
+    position: relative;
+    isolation: isolate;
+
+    padding: 95px 0 115px;
+    min-height: 780px;
+
+    overflow: hidden;
+    background: #101216;
+  }
+
+  .hero-grid,
+  .gallery-grid-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,.021) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.021) 1px,
+        transparent 1px
+      );
+
+    background-size: 65px 65px;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    mask-image:
+      linear-gradient(90deg,transparent,#000 60%);
+
+    -webkit-mask-image:
+      linear-gradient(90deg,transparent,#000 60%);
+  }
+
+  .hero-light {
+    position: absolute;
+    top: -170px;
+    right: -230px;
+    z-index: -1;
+
+    width: 860px;
+    height: 860px;
+
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.12),
+      transparent 70%
+    );
+
+    pointer-events: none;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.12fr)
+      minmax(0,.88fr);
+
+    align-items: center;
+    gap: clamp(40px,6vw,100px);
+  }
+
+  .hero-copy,
+  .hero-visual {
+    min-width: 0;
+  }
+
+  .eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 15px;
+    border: 1px solid rgba(215,166,92,.35);
+    border-radius: 999px;
+
+    background: rgba(215,166,92,.065);
+    color: var(--gold);
+
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .gold-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+
+    box-shadow: 0 0 0 4px rgba(215,166,92,.12);
+  }
+
+  .hero-kicker {
+    margin: 36px 0 19px;
+
+    color: #c2ae8d;
+    font-size: .74rem;
+    font-weight: 720;
+    letter-spacing: .19em;
+  }
+
+  .hero-copy h1 {
+    margin: 0 0 28px;
+
+    color: #f0f1f3;
+    font-size: clamp(3.2rem,5.5vw,6.3rem);
+    font-weight: 790;
+    line-height: 1.07;
+    letter-spacing: -.065em;
+  }
+
+  .hero-copy h1 span,
+  .hero-copy h1 em {
+    display: block;
+  }
+
+  .hero-copy h1 span {
+    color: #f0f1f3;
+  }
+
+  .hero-copy h1 em {
+    color: var(--gold);
+
+    font-family: Georgia,"Times New Roman",serif;
+    font-size: .94em;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -.064em;
+  }
+
+  .hero-lead {
+    max-width: 600px;
+    margin: 0 0 15px;
+
+    color: #e0e3e8;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.85;
+  }
+
+  .hero-description {
+    max-width: 600px;
+    margin: 0;
+
+    color: #aeb7c3;
+    font-size: .96rem;
+    line-height: 1.85;
+  }
+
+  .hero-description strong {
+    color: #e5c393;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 27px;
+  }
+
+  .hero-tags > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+    border: 1px solid #3d434d;
+    border-radius: 999px;
+
+    background: #1c2027;
+    color: #c3cbd5;
+    font-size: .72rem;
+  }
+
+  .hero-tags .hero-tag-gold {
+    border-color: rgba(215,166,92,.45);
+    background: rgba(215,166,92,.07);
+    color: #e5b982;
+  }
+
+  .hero-tag-gold > span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero-actions,
+  .closing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+  }
+
+  .hero-bottom-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 50px;
+
+    color: #929aa6;
+    font-size: .65rem;
+    letter-spacing: .15em;
+    font-weight: 650;
+  }
+
+  .small-line {
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* FOTO PRINCIPAL */
+
+  .hero-visual {
+    position: relative;
+    padding: 30px 5px 40px;
+  }
+
+  .hero-art-frame {
+    height: 565px;
+
+    border: 1px solid rgba(215,166,92,.6);
+    border-radius: 16px;
+
+    box-shadow:
+      0 35px 90px rgba(0,0,0,.42),
+      0 0 0 9px rgba(215,166,92,.025);
+
+    transform: rotate(2deg);
+    transition: transform .35s ease;
+  }
+
+  .hero-art-frame:hover {
+    transform: rotate(0deg);
+  }
+
+  .placeholder-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    opacity: .7;
+  }
+
+  .corner-tl {
+    top: 24px;
+    left: 24px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+  }
+
+  .corner-tr {
+    top: 24px;
+    right: 24px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+  }
+
+  .corner-bl {
+    bottom: 24px;
+    left: 24px;
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+  }
+
+  .corner-br {
+    bottom: 24px;
+    right: 24px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+  }
+
+  .placeholder-mark {
+    display: flex;
+    align-items: baseline;
+
+    font-size: 7rem;
+    font-weight: 800;
+    letter-spacing: -.12em;
+  }
+
+  .placeholder-mark span {
+    color: #e9ebee;
+  }
+
+  .placeholder-mark i {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .hero-photo-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    background: linear-gradient(
+      180deg,
+      rgba(10,12,16,.15),
+      transparent 48%,
+      rgba(10,12,16,.9)
+    );
+
+    pointer-events: none;
+  }
+
+  .photo-heading {
+    position: absolute;
+    right: 26px;
+    bottom: 30px;
+    left: 26px;
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .photo-heading span {
+    color: #e0b884;
+    font-family: Consolas,monospace;
+    font-size: .66rem;
+    letter-spacing: .13em;
+  }
+
+  .photo-heading strong {
+    color: #fff;
+    font-family: Georgia,"Times New Roman",serif;
+    font-size: clamp(1.8rem,2.7vw,3rem);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .floating-note {
+    position: absolute;
+    right: -20px;
+    bottom: 20px;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    max-width: 280px;
+    padding: 15px 18px;
+
+    border: 1px solid #4a4d54;
+    border-radius: 11px;
+
+    background: #252932;
+    box-shadow: 0 13px 30px rgba(0,0,0,.37);
+  }
+
+  .floating-note-icon {
+    display: grid;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(215,166,92,.45);
+    border-radius: 9px;
+
+    color: var(--gold);
+    font-size: 1.4rem;
+  }
+
+  .floating-note strong,
+  .floating-note small {
+    display: block;
+  }
+
+  .floating-note strong {
+    font-size: .88rem;
+  }
+
+  .floating-note small {
+    margin-top: 6px;
+    color: #aeb7c1;
+    font-size: .69rem;
+  }
+
+  .visual-side-label {
+    position: absolute;
+    right: 10px;
+    top: 0;
+
+    color: #a59b8b;
+    font-size: .61rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+  }
+
+  .hero-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    margin-top: 55px;
+
+    color: #9da6b2;
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-decoration: none;
+  }
+
+  .hero-scroll > span {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+
+    border: 1px solid rgba(215,166,92,.4);
+    border-radius: 50%;
+
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ======================================== */
+  /*               MANIFIESTO                */
+  /* ======================================== */
+
+  .manifesto-section {
+    padding: 105px 0 112px;
+    border-block: 1px solid #31363f;
+    background: #171b21;
+  }
+
+  .manifesto-inner {
+    max-width: 1000px;
+    text-align: center;
+  }
+
+  .manifesto-quote {
+    display: block;
+    height: 70px;
+    color: var(--gold);
+
+    font-family: Georgia,serif;
+    font-size: 7rem;
+    line-height: 1;
+  }
+
+  .manifesto-inner > p {
+    margin: 22px auto 35px;
+
+    color: #e7e8eb;
+    font-family: Georgia,"Times New Roman",serif;
+    font-size: clamp(1.55rem,3.2vw,3rem);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -.03em;
+  }
+
+  .manifesto-inner > p strong {
+    color: var(--gold);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .manifesto-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .manifesto-signature span {
+    width: 38px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .manifesto-signature small {
+    color: #9da6b1;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+
+  /* ======================================== */
+  /*                 HISTORIA                */
+  /* ======================================== */
+
+  .history-section {
+    padding: 125px 0;
+    background: #101216;
+  }
+
+  .history-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,.84fr)
+      minmax(0,1.16fr);
+
+    align-items: start;
+    gap: clamp(50px,7vw,110px);
+  }
+
+  .history-intro {
+    position: sticky;
+    top: 140px;
+  }
+
+  .history-intro h2,
+  .mentor-copy h2,
+  .exhibition-copy h2,
+  .gallery-heading h2,
+  .process-heading h2,
+  .art-closing h2 {
+    margin: 0;
+
+    color: #f0f1f3;
+    font-size: clamp(2.7rem,4.5vw,5rem);
+    font-weight: 770;
+    line-height: 1.12;
+    letter-spacing: -.058em;
+  }
+
+  .history-intro h2 span,
+  .history-intro h2 em {
+    display: block;
+  }
+
+  .history-intro h2 span {
+    color: var(--gold);
+  }
+
+  .history-intro h2 em {
+    color: #f0f1f3;
+    font-family: Georgia,serif;
+    font-size: .85em;
+    font-weight: 400;
+  }
+
+  .history-intro > p {
+    margin: 25px 0 0;
+
+    color: #aeb6c1;
+    font-size: .96rem;
+    line-height: 1.9;
+  }
+
+  .history-mini-card {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    margin-top: 40px;
+    padding: 23px;
+
+    border: 1px solid rgba(215,166,92,.36);
+    border-radius: 12px;
+
+    background: #1d2128;
+  }
+
+  .history-mini-card > span,
+  .history-mini-card > small {
+    color: #c4a57b;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+
+  .history-mini-card strong {
+    color: #f0f1f3;
+    font-family: Georgia,serif;
+    font-size: 1.42rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .history-mini-card small {
+    color: #949da8;
+  }
+
+  /* LÍNEA TEMPORAL */
+
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 14px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    bottom: 35px;
+    left: 22px;
+
+    width: 1px;
+
+    background: linear-gradient(
+      to bottom,
+      var(--gold),
+      #444a53,
+      rgba(215,166,92,.3)
+    );
+  }
+
+  .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 45px minmax(0,1fr);
+    gap: 20px;
+  }
+
+  .timeline-marker {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    place-items: start center;
+
+    padding-top: 25px;
+  }
+
+  .timeline-marker > span {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 50%;
+
+    background: #20242b;
+    color: var(--gold);
+
+    font-family: Consolas,monospace;
+    font-size: .79rem;
+    font-weight: 700;
+  }
+
+  .timeline-content {
+    padding: 26px 28px 29px;
+    border: 1px solid #353b45;
+    border-radius: 13px;
+
+    background: #1a1e25;
+  }
+
+  .timeline-item:hover .timeline-content {
+    border-color: rgba(215,166,92,.45);
+  }
+
+  .timeline-year {
+    color: var(--gold);
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .timeline-content h3 {
+    margin: 15px 0 13px;
+
+    color: #eff0f2;
+    font-family: Georgia,serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .timeline-content p {
+    margin: 0;
+
+    color: #aeb6c1;
+    font-size: .88rem;
+    line-height: 1.85;
+  }
+
+  /* ======================================== */
+  /*                 ANITA                   */
+  /* ======================================== */
+
+  .mentor-section {
+    padding: 125px 0;
+    border-block: 1px solid #303640;
+    background: #171b21;
+  }
+
+  .mentor-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,.9fr)
+      minmax(0,1.1fr);
+
+    align-items: center;
+    gap: clamp(45px,7vw,105px);
+  }
+
+  .mentor-visual,
+  .mentor-copy {
+    min-width: 0;
+  }
+
+  .mentor-photo-frame {
+    height: 600px;
+
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 13px;
+
+    box-shadow: 0 30px 70px rgba(0,0,0,.28);
+  }
+
+  .mentor-frame-caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-top: 18px;
+
+    color: #9fa7b2;
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+
+  .mentor-copy h2 {
+    margin-bottom: 30px;
+    font-size: clamp(2.5rem,4vw,4.4rem);
+  }
+
+  .mentor-copy h2 span,
+  .mentor-copy h2 em {
+    display: block;
+  }
+
+  .mentor-copy h2 span {
+    color: var(--gold);
+  }
+
+  .mentor-copy h2 em {
+    margin-top: 5px;
+
+    font-family: Georgia,serif;
+    font-size: .7em;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .mentor-copy > p {
+    margin: 0 0 19px;
+
+    color: #afb7c2;
+    font-size: .94rem;
+    line-height: 1.9;
+  }
+
+  .mentor-copy > p strong {
+    color: #e8c394;
+  }
+
+  .mentor-quote {
+    display: flex;
+    gap: 13px;
+
+    margin: 28px 0;
+    padding: 23px;
+
+    border-left: 2px solid var(--gold);
+    background: rgba(215,166,92,.055);
+  }
+
+  .mentor-quote > span {
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-size: 3rem;
+    line-height: .9;
+  }
+
+  .mentor-quote p {
+    margin: 0;
+
+    color: #dedfe3;
+    font-family: Georgia,serif;
+    font-size: 1.13rem;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ======================================== */
+  /*             EL INCENSARIO               */
+  /* ======================================== */
+
+  .incensario-section {
+    position: relative;
+    isolation: isolate;
+
+    padding: 130px 0;
+    overflow: hidden;
+
+    background: #101216;
+  }
+
+  .incensario-background {
+    position: absolute;
+    top: -150px;
+    right: -250px;
+    z-index: -1;
+
+    width: 800px;
+    height: 800px;
+
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.09),
+      transparent 70%
+    );
+
+    pointer-events: none;
+  }
+
+  .incensario-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-bottom: 57px;
+  }
+
+  .incensario-pretitle,
+  .gallery-pretitle {
+    color: #bbab91;
+    font-size: .71rem;
+    font-weight: 750;
+    letter-spacing: .19em;
+  }
+
+  .incensario-heading h2 {
+    margin: 12px 0 15px;
+
+    color: #f0f1f3;
+    font-size: clamp(4rem,7vw,8.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.075em;
+  }
+
+  .incensario-heading h2 em {
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-weight: 400;
+  }
+
+  .incensario-heading p {
+    max-width: 570px;
+    margin: 0;
+
+    color: #adb6c1;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .incensario-year {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .incensario-year span {
+    color: #b6a17d;
+    font-size: .65rem;
+    font-weight: 750;
+    letter-spacing: .15em;
+  }
+
+  .incensario-year strong {
+    color: rgba(215,166,92,.5);
+    font-size: 4.7rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.07em;
+  }
+
+  .incensario-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,.93fr)
+      minmax(0,1.07fr);
+
+    align-items: center;
+    gap: clamp(45px,7vw,115px);
+  }
+
+  .incensario-artwork,
+  .incensario-story {
+    min-width: 0;
+  }
+
+  .incensario-gold-frame {
+    padding: 13px;
+
+    border: 1px solid #a88855;
+    border-radius: 4px;
+
+    background: #242322;
+    box-shadow:
+      0 27px 70px rgba(0,0,0,.35),
+      0 0 0 7px rgba(215,166,92,.025);
+  }
+
+  .incensario-photo {
+    height: 690px;
+
+    border: 1px solid rgba(215,166,92,.25);
+  }
+
+  .incensario-photo .optional-photo {
+    object-fit: contain;
+    background: #191a1c;
+  }
+
+  .incensario-placeholder {
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(215,166,92,.12),
+        transparent 65%
+      ),
+      #1e2127;
+  }
+
+  .incensario-placeholder strong {
+    display: flex;
+    flex-direction: column;
+
+    color: #e8e4dc;
+    font-family: Georgia,serif;
+    font-size: clamp(2rem,4vw,3.8rem);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -.04em;
+  }
+
+  .incensario-placeholder strong em {
+    color: var(--gold);
+    font-size: 1.6em;
+    font-weight: 400;
+  }
+
+  .artwork-caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 19px;
+
+    color: #a0a8b3;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+
+  .story-number {
+    color: var(--gold);
+    font-family: Consolas,monospace;
+    font-size: .74rem;
+    letter-spacing: .15em;
+  }
+
+  .incensario-story h3 {
+    margin: 16px 0 25px;
+
+    color: #f0f1f3;
+    font-size: clamp(2.3rem,3.4vw,4rem);
+    font-weight: 750;
+    letter-spacing: -.06em;
+    line-height: 1.15;
+  }
+
+  .incensario-story h3 em {
+    display: block;
+
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .incensario-story > p {
+    margin: 0 0 19px;
+
+    color: #aeb7c2;
+    font-size: .95rem;
+    line-height: 1.9;
+  }
+
+  .incensario-story > p strong {
+    color: #e6c290;
+  }
+
+  .incensario-details {
+    display: grid;
+    gap: 0;
+
+    margin: 31px 0;
+    border-block: 1px solid #3b4049;
+  }
+
+  .incensario-details > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px 0;
+    border-bottom: 1px solid #343942;
+  }
+
+  .incensario-details > div:last-child {
+    border-bottom: 0;
+  }
+
+  .incensario-details span {
+    color: #aa936e;
+    font-size: .66rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+  }
+
+  .incensario-details strong {
+    color: #e1e4e8;
+    font-size: .83rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .incensario-thanks {
+    margin-bottom: 29px;
+    padding: 21px 23px;
+
+    border: 1px solid rgba(215,166,92,.28);
+    border-radius: 11px;
+
+    background: #1c2026;
+  }
+
+  .incensario-thanks > span {
+    color: var(--gold);
+    font-size: .67rem;
+    font-weight: 750;
+    letter-spacing: .14em;
+  }
+
+  .incensario-thanks p {
+    margin: 14px 0 0;
+
+    color: #b0b7c1;
+    font-size: .86rem;
+    line-height: 1.85;
+  }
+
+  .incensario-thanks strong {
+    color: #e4c18e;
+  }
+
+  /* ======================================== */
+  /*            EXPOSICIÓN CHIPIONA          */
+  /* ======================================== */
+
+  .exhibition-section {
+    padding: 125px 0;
+    border-block: 1px solid #303640;
+    background: #171b21;
+  }
+
+  .exhibition-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1fr)
+      minmax(0,1fr);
+
+    align-items: center;
+    gap: clamp(40px,6vw,90px);
+  }
+
+  .exhibition-copy,
+  .exhibition-gallery {
+    min-width: 0;
+  }
+
+  .exhibition-year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 24px;
+    padding: 10px 14px;
+
+    border: 1px solid rgba(215,166,92,.42);
+    border-radius: 8px;
+
+    background: rgba(215,166,92,.07);
+    color: var(--gold);
+  }
+
+  .exhibition-year-badge span {
+    font-size: .67rem;
+    letter-spacing: .13em;
+  }
+
+  .exhibition-year-badge strong {
+    font-family: Consolas,monospace;
+    font-size: 1rem;
+  }
+
+  .exhibition-copy h2 {
+    margin-bottom: 25px;
+  }
+
+  .exhibition-copy h2 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .exhibition-copy > p {
+    margin: 0 0 17px;
+
+    color: #b1b9c3;
+    font-size: .95rem;
+    line-height: 1.9;
+  }
+
+  .exhibition-copy > p strong {
+    color: #e6c18e;
+  }
+
+  .exhibition-copy .exhibition-lead {
+    color: #e2e5e9;
+    font-size: 1.05rem;
+  }
+
+  .exhibition-info {
+    display: grid;
+    gap: 13px;
+
+    margin: 28px 0 32px;
+    padding: 22px;
+
+    border: 1px solid #3d434c;
+    border-radius: 11px;
+
+    background: #20242b;
+  }
+
+  .exhibition-info-item {
+    display: grid;
+    grid-template-columns: 105px minmax(0,1fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  .exhibition-info-item > span {
+    color: var(--gold);
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+
+  .exhibition-info-item > strong {
+    color: #e1e4e8;
+    font-size: .84rem;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+
+  .exhibition-gallery {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 12px;
+  }
+
+  .exhibition-picture {
+    min-width: 0;
+    border: 1px solid rgba(215,166,92,.3);
+    border-radius: 10px;
+  }
+
+  .picture-large {
+    grid-column: 1 / -1;
+    height: 370px;
+  }
+
+  .picture-small {
+    height: 195px;
+  }
+
+  .exhibition-photo-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    grid-column: 1 / -1;
+    margin-top: 6px;
+  }
+
+  .exhibition-photo-label span,
+  .exhibition-photo-label strong {
+    color: #9aa3af;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .exhibition-photo-label strong {
+    color: var(--gold);
+  }
+
+  /* ======================================== */
+  /*                 GALERÍA                 */
+  /* ======================================== */
+
+  .gallery-section {
+    position: relative;
+    isolation: isolate;
+
+    padding: 130px 0;
+    background: #101216;
+  }
+
+  .gallery-grid-pattern {
+    z-index: -1;
+
+    mask-image: linear-gradient(
+      180deg,
+      #000,
+      transparent 700px
+    );
+
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      #000,
+      transparent 700px
+    );
+  }
+
+  .gallery-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .gallery-heading h2 {
+    margin-top: 15px;
+  }
+
+  .gallery-heading h2 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .gallery-heading-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .gallery-heading-side strong {
+    color: rgba(215,166,92,.6);
+    font-size: 5.6rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.075em;
+  }
+
+  .gallery-heading-side span {
+    color: #9da6b2;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+
+  .gallery-description {
+    max-width: 730px;
+    margin: 24px 0 30px;
+
+    color: #adb6c1;
+    font-size: .96rem;
+    line-height: 1.9;
+  }
+
+  .gallery-instructions {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 35px;
+    padding: 12px 16px;
+
+    border: 1px solid #3d434c;
+    border-radius: 9px;
+
+    background: #1b1f26;
+    color: #b8c0ca;
+
+    font-size: .79rem;
+    line-height: 1.5;
+  }
+
+  .instructions-icon {
+    color: var(--gold);
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .artworks-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 26px 18px;
+  }
+
+  .artwork-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    min-width: 0;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .artwork-visual {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    border: 1px solid #44454a;
+    border-radius: 10px;
+
+    transition:
+      border-color .25s ease,
+      transform .25s ease,
+      box-shadow .25s ease;
+  }
+
+  .artwork-card:hover .artwork-visual {
+    transform: translateY(-4px);
+    border-color: rgba(215,166,92,.7);
+
+    box-shadow: 0 19px 40px rgba(0,0,0,.25);
+  }
+
+  .artwork-visual .optional-photo {
+    object-fit: contain;
+    background: #1b1e22;
+  }
+
+  .artwork-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 24px;
+
+    background:
+      radial-gradient(
+        circle at 50% 43%,
+        rgba(215,166,92,.11),
+        transparent 63%
+      ),
+      #20242b;
+
+    text-align: center;
+  }
+
+  .artwork-placeholder-number {
+    position: absolute;
+    top: 20px;
+    left: 21px;
+
+    color: #a8aeb7;
+    font-family: Consolas,monospace;
+    font-size: .72rem;
+  }
+
+  .artwork-placeholder-symbol {
+    color: rgba(215,166,92,.6);
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .artwork-placeholder-text {
+    color: #e9e9e9;
+    font-family: Georgia,serif;
+    font-size: clamp(1.3rem,2vw,2rem);
+    line-height: 1.3;
+  }
+
+  .artwork-placeholder small {
+    color: #929ba6;
+    font-size: .59rem;
+    letter-spacing: .12em;
+  }
+
+  .artwork-zoom {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 44px;
+    padding: 9px 15px;
+
+    border: 1px solid rgba(215,166,92,.42);
+    border-radius: 8px;
+
+    background: rgba(22,25,30,.9);
+    color: #e5c08f;
+
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition:
+      opacity .22s ease,
+      transform .22s ease;
+  }
+
+  .artwork-card:hover .artwork-zoom,
+  .artwork-card:focus-visible .artwork-zoom {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .artwork-zoom > span {
+    font-size: 1.2rem;
+  }
+
+  .artwork-overlay-number {
+    position: absolute;
+    z-index: 3;
+    top: 14px;
+    right: 14px;
+
+    padding: 8px 10px;
+    border-radius: 5px;
+
+    background: rgba(16,18,22,.75);
+    color: #e8d1b0;
+
+    font-family: Consolas,monospace;
+    font-size: .66rem;
+  }
+
+  .artwork-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+
+    padding: 19px 2px;
+  }
+
+  .artwork-info > span:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .artwork-info strong {
+    color: #edf0f2;
+    font-size: 1.04rem;
+    font-weight: 700;
+  }
+
+  .artwork-info small {
+    color: #abb3bd;
+    font-size: .76rem;
+  }
+
+  .artwork-info-arrow {
+    color: var(--gold);
+    font-size: 1.27rem;
+  }
+
+  .gallery-bottom-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-top: 45px;
+    padding: 26px 0;
+
+    border-top: 1px solid #3b404a;
+  }
+
+  .gallery-bottom-note > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+
+    max-width: 630px;
+  }
+
+  .gallery-bottom-icon {
+    color: var(--gold);
+    font-size: 1.5rem;
+  }
+
+  .gallery-bottom-note p {
+    margin: 0;
+
+    color: #aeb7c1;
+    font-size: .85rem;
+    line-height: 1.8;
+  }
+
+  .gallery-bottom-note p strong {
+    display: block;
+    color: #edf0f2;
+  }
+
+  .gallery-bottom-note > a {
+    flex-shrink: 0;
+  }
+
+  /* ======================================== */
+  /*            EN PROCESO                  */
+  /* ======================================== */
+
+  .process-section {
+    padding: 125px 0;
+    border-block: 1px solid #303640;
+    background: #171b21;
+  }
+
+  .process-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 50px;
+
+    margin-bottom: 49px;
+  }
+
+  .process-heading h2 {
+    max-width: 650px;
+  }
+
+  .process-heading h2 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .process-heading > p {
+    max-width: 435px;
+    margin: 0;
+
+    color: #aeb6c1;
+    font-size: .91rem;
+    line-height: 1.85;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 17px;
+  }
+
+  .process-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid #3c424b;
+    border-radius: 13px;
+
+    background: #20242b;
+
+    transition: border-color .2s ease;
+  }
+
+  .process-card:hover {
+    border-color: rgba(215,166,92,.55);
+  }
+
+  .process-image {
+    height: 245px;
+    border-bottom: 1px solid #3c424b;
+  }
+
+  .process-image-label {
+    position: absolute;
+    z-index: 3;
+    top: 16px;
+    left: 16px;
+
+    padding: 8px 11px;
+
+    border: 1px solid rgba(215,166,92,.42);
+    border-radius: 5px;
+
+    background: rgba(21,24,29,.8);
+    color: #e4ba81;
+
+    font-size: .62rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .process-card-content {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 246px;
+    padding: 23px;
+  }
+
+  .process-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    color: #a5adb8;
+    font-family: Consolas,monospace;
+    font-size: .66rem;
+  }
+
+  .process-card-top > span:last-child {
+    color: var(--gold);
+    font-size: 1.3rem;
+  }
+
+  .process-card h3 {
+    margin: 0 0 14px;
+
+    color: #f0f1f3;
+    font-family: Georgia,serif;
+    font-size: 1.56rem;
+    font-weight: 400;
+  }
+
+  .process-card p {
+    margin: 0 0 21px;
+
+    color: #aeb6c1;
+    font-size: .84rem;
+    line-height: 1.8;
+  }
+
+  .process-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: auto;
+
+    color: #d5ae78;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .process-status > span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ======================================== */
+  /*                REFLEXIÓN               */
+  /* ======================================== */
+
+  .reflection-section {
+    padding: 135px 0;
+    background:
+      radial-gradient(
+        ellipse at 50% 80%,
+        rgba(215,166,92,.075),
+        transparent 65%
+      ),
+      #101216;
+  }
+
+  .reflection-inner {
+    max-width: 1000px;
+    text-align: center;
+  }
+
+  .reflection-symbol {
+    display: block;
+
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-size: 3.1rem;
+  }
+
+  .reflection-eyebrow {
+    margin: 20px 0 24px;
+
+    color: #c1a57f;
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .18em;
+  }
+
+  .reflection-inner h2 {
+    margin: 0 auto 27px;
+
+    color: #f0f1f3;
+    font-size: clamp(2.3rem,4.6vw,5.4rem);
+    font-weight: 780;
+    line-height: 1.13;
+    letter-spacing: -.058em;
+  }
+
+  .reflection-inner h2 em {
+    display: block;
+    margin-top: 10px;
+
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-size: .82em;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.36;
+  }
+
+  .reflection-description {
+    max-width: 680px;
+    margin: 0 auto;
+
+    color: #aeb7c1;
+    font-size: .98rem;
+    line-height: 1.9;
+  }
+
+  .reflection-line {
+    display: block;
+    width: 50px;
+    height: 1px;
+    margin: 33px auto 17px;
+    background: var(--gold);
+  }
+
+  .reflection-inner > strong {
+    color: #d8dbe0;
+    font-size: .75rem;
+    letter-spacing: .16em;
+  }
+
+  /* ======================================== */
+  /*                CIERRE                 */
+  /* ======================================== */
+
+  .art-closing {
+    padding: 115px 0;
+    border-top: 1px solid #303640;
+    background: #171b21;
+  }
+
+  .closing-layout {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 65px;
+  }
+
+  .art-closing h2 {
+    margin-bottom: 25px;
+  }
+
+  .art-closing h2 span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .art-closing p {
+    max-width: 665px;
+    margin: 0;
+
+    color: #b2bac4;
+    font-size: .96rem;
+    line-height: 1.9;
+  }
+
+  .closing-monogram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    min-height: 335px;
+
+    border: 1px solid rgba(215,166,92,.34);
+    border-radius: 15px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(215,166,92,.085),
+        transparent 65%
+      ),
+      #20242b;
+  }
+
+  .closing-monogram > span {
+    color: #e5e5e5;
+    font-size: clamp(6rem,10vw,10rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.12em;
+  }
+
+  .closing-monogram > small {
+    color: var(--gold);
+    font-family: Georgia,serif;
+    font-size: 1.17rem;
+    font-style: italic;
+    letter-spacing: .07em;
+  }
+
+  /* ======================================== */
+  /*       VISOR DE GALERÍA INMERSIVO         */
+  /* ======================================== */
+
+  .art-lightbox[hidden] {
+    display: none !important;
+  }
+
+  .art-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #0b0d10;
+    color: #f0f1f3;
+  }
+
+  .lightbox-stage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: #0b0d10;
+  }
+
+  .lightbox-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 62px;
+    padding: 10px clamp(17px,4vw,55px);
+    background: #101216;
+    border-bottom: 1px solid rgba(215,166,92,.15);
+  }
+
+  .lightbox-top-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #d7a65c;
+    font-size: .7rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .lightbox-indicator {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #d7a65c;
+    box-shadow: 0 0 0 5px rgba(215,166,92,.1);
+  }
+
+  .lightbox-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lightbox-top-hint {
+    color: #8c95a2;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .lightbox-close {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    padding: 0;
+    border: 1px solid #454a52;
+    border-radius: 50%;
+    background: #242831;
+    color: #f0f1f3;
+    font-family: inherit;
+    font-size: 1.85rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease;
+  }
+
+  .lightbox-close:hover {
+    background: #35333a;
+    border-color: #d7a65c;
+    color: #d7a65c;
+  }
+
+  .lightbox-canvas {
+    display: grid;
+    grid-template-columns: clamp(44px,7vw,100px) minmax(0,1fr) clamp(44px,7vw,100px);
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    padding: 12px 0;
+    background: #0b0d10;
+  }
+
+  .lightbox-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #lightbox-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 15px 45px rgba(0,0,0,.3);
+  }
+
+  #lightbox-image[hidden],
+  .lightbox-empty[hidden] {
+    display: none !important;
+  }
+
+  .lightbox-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: min(100%,350px);
+    text-align: center;
+  }
+
+  .lightbox-empty > span {
+    color: #d7a65c;
+    font-size: 3.8rem;
+  }
+
+  .lightbox-empty > strong {
+    color: #f1f2f3;
+    font-family: Georgia,serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+  }
+
+  .lightbox-empty > p {
+    margin: 0;
+    color: #aeb7c2;
+    font-size: .84rem;
+    line-height: 1.75;
+  }
+
+  .lightbox-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    width: clamp(34px,4vw,50px);
+    height: clamp(50px,7vw,75px);
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #e5bc7b;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+  }
+
+  .lightbox-nav > span {
+    display: block;
+    font-size: clamp(2.3rem,4vw,3.6rem);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(215,166,92,.12);
+    color: #f3d1a0;
+  }
+
+  .lightbox-bottom {
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+    align-items: center;
+    gap: clamp(22px,5vw,70px);
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 110px;
+    max-height: 165px;
+    padding: 13px clamp(23px,7vw,120px);
+    border-top: 1px solid rgba(215,166,92,.2);
+    background: #101216;
+  }
+
+  .lightbox-caption-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  .lightbox-count {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .7rem;
+    letter-spacing: .12em;
+  }
+
+  .lightbox-caption-main h3 {
+    margin: 0;
+    color: #f0f1f3;
+    font-family: Georgia,serif;
+    font-size: clamp(1.2rem,2vw,2.1rem);
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  .lightbox-medium {
+    color: #c8a377;
+    font-size: .78rem;
+  }
+
+  .lightbox-caption-side {
+    min-width: 0;
+  }
+
+  .lightbox-caption-side > p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    margin: 0 0 10px;
+    color: #aeb7c2;
+    font-size: .8rem;
+    line-height: 1.55;
+  }
+
+  .lightbox-metadata {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .lightbox-metadata > span {
+    color: #b59b78;
+    font-size: .63rem;
+    font-weight: 750;
+    letter-spacing: .1em;
+  }
+
+  .lightbox-metadata > strong {
+    color: #f0f1f3;
+    font-size: .75rem;
+  }
+
+  .lightbox-help {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 7px 12px 9px;
+    background: #101216;
+    color: #747e8b;
+    font-size: .63rem;
+    text-align: center;
+    letter-spacing: .04em;
+  }
+
+  /* ======================================== */
+  /*             TABLETS                   */
+  /* ======================================== */
+
+  @media (max-width: 1150px) {
+    .container {
+      width: min(calc(100% - 60px),1060px);
+    }
+
+    .hero-layout {
+      gap: 42px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem,5.3vw,5.2rem);
+    }
+
+    .hero-art-frame {
+      height: 510px;
+    }
+
+    .mentor-photo-frame {
+      height: 550px;
+    }
+
+    .incensario-photo {
+      height: 590px;
+    }
+
+    .incensario-layout {
+      gap: 45px;
+    }
+
+    .artworks-grid {
+      gap: 22px 14px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-layout,
+    .history-layout,
+    .mentor-layout,
+    .incensario-layout,
+    .exhibition-layout,
+    .closing-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3.2rem,7.5vw,5.5rem);
+    }
+
+    .hero-visual {
+      width: min(100%,600px);
+      margin-inline: auto;
+    }
+
+    .hero-art-frame {
+      height: 570px;
+    }
+
+    .history-intro {
+      position: static;
+      top: auto;
+    }
+
+    .timeline {
+      margin-top: 10px;
+    }
+
+    .mentor-layout {
+      gap: 45px;
+    }
+
+    .mentor-visual {
+      width: min(100%,630px);
+    }
+
+    .mentor-photo-frame {
+      height: 500px;
+    }
+
+    .incensario-photo {
+      height: 620px;
+    }
+
+    .incensario-artwork {
+      width: min(100%,570px);
+      margin-inline: auto;
+    }
+
+    .exhibition-gallery {
+      max-width: 720px;
+    }
+
+    .artworks-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .process-heading {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .process-grid > .process-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .closing-monogram {
+      min-height: 260px;
+    }
+
+  }
+
+  /* ======================================== */
+  /*               MÓVILES                 */
+  /* ======================================== */
+
+  @media (max-width: 650px) {
+    .container {
+      width: calc(100% - 36px);
+    }
+
+    .reading-progress {
+      top: 70px;
+    }
+
+    .section-eyebrow {
+      font-size: .62rem;
+      letter-spacing: .12em;
+    }
+
+    .art-hero {
+      min-height: auto;
+      padding: 55px 0 75px;
+    }
+
+    .eyebrow-pill {
+      font-size: .59rem;
+    }
+
+    .hero-kicker {
+      margin-top: 29px;
+      font-size: .65rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.7rem,10vw,4.3rem);
+    }
+
+    .hero-lead {
+      font-size: .98rem;
+    }
+
+    .hero-description {
+      font-size: .9rem;
+    }
+
+    .hero-tags > span {
+      font-size: .65rem;
+    }
+
+    .hero-actions,
+    .closing-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .art-button {
+      width: 100%;
+    }
+
+    .hero-bottom-label {
+      margin-top: 32px;
+      font-size: .58rem;
+    }
+
+    .hero-visual {
+      padding: 20px 7px 35px;
+    }
+
+    .hero-art-frame {
+      height: 450px;
+      transform: none;
+    }
+
+    .hero-art-frame:hover {
+      transform: none;
+    }
+
+    .placeholder-mark {
+      font-size: 5rem;
+    }
+
+    .floating-note {
+      right: -5px;
+      bottom: 10px;
+      padding: 11px;
+    }
+
+    .floating-note strong {
+      font-size: .76rem;
+    }
+
+    .floating-note small {
+      font-size: .62rem;
+    }
+
+    .hero-scroll {
+      margin-top: 35px;
+      font-size: .6rem;
+    }
+
+    /* MANIFIESTO */
+
+    .manifesto-section {
+      padding: 75px 0 80px;
+    }
+
+    .manifesto-quote {
+      height: 48px;
+      font-size: 5rem;
+    }
+
+    .manifesto-inner > p {
+      font-size: clamp(1.45rem,5.6vw,2.3rem);
+    }
+
+    .manifesto-signature small {
+      font-size: .56rem;
+    }
+
+    /* SECCIONES */
+
+    .history-section,
+    .mentor-section,
+    .incensario-section,
+    .exhibition-section,
+    .gallery-section,
+    .process-section,
+    .reflection-section,
+    .art-closing {
+      padding: 80px 0;
+    }
+
+    .history-intro h2,
+    .mentor-copy h2,
+    .exhibition-copy h2,
+    .gallery-heading h2,
+    .process-heading h2,
+    .art-closing h2 {
+      font-size: clamp(2.3rem,9.3vw,3.7rem);
+    }
+
+    /* HISTORIA */
+
+    .history-layout {
+      gap: 35px;
+    }
+
+    .history-intro > p {
+      font-size: .89rem;
+    }
+
+    .timeline::before {
+      left: 17px;
+    }
+
+    .timeline-item {
+      grid-template-columns: 35px minmax(0,1fr);
+      gap: 12px;
+    }
+
+    .timeline-marker {
+      padding-top: 18px;
+    }
+
+    .timeline-marker > span {
+      width: 35px;
+      height: 35px;
+      font-size: .7rem;
+    }
+
+    .timeline-content {
+      padding: 21px;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.33rem;
+    }
+
+    .timeline-content p {
+      font-size: .83rem;
+    }
+
+    /* ANITA */
+
+    .mentor-photo-frame {
+      height: 420px;
+    }
+
+    .mentor-copy > p {
+      font-size: .88rem;
+    }
+
+    .mentor-quote {
+      padding: 17px;
+    }
+
+    .mentor-quote p {
+      font-size: 1rem;
+    }
+
+    /* INCENSARIO */
+
+    .incensario-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .incensario-heading h2 {
+      font-size: clamp(3.2rem,12vw,5.4rem);
+    }
+
+    .incensario-year {
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .incensario-year strong {
+      font-size: 2.6rem;
+    }
+
+    .incensario-photo {
+      height: 500px;
+    }
+
+    .incensario-gold-frame {
+      padding: 9px;
+    }
+
+    .incensario-story h3 {
+      font-size: clamp(2.2rem,8vw,3.2rem);
+    }
+
+    .incensario-story > p {
+      font-size: .9rem;
+    }
+
+    .incensario-details strong {
+      font-size: .76rem;
+    }
+
+    .incensario-thanks {
+      padding: 18px;
+    }
+
+    /* EXPOSICIÓN */
+
+    .exhibition-layout {
+      gap: 40px;
+    }
+
+    .exhibition-copy > p {
+      font-size: .9rem;
+    }
+
+    .exhibition-info {
+      padding: 18px;
+    }
+
+    .exhibition-info-item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .picture-large {
+      height: 250px;
+    }
+
+    .picture-small {
+      height: 145px;
+    }
+
+    .exhibition-photo-label span,
+    .exhibition-photo-label strong {
+      font-size: .56rem;
+    }
+
+    /* GALERÍA */
+
+    .gallery-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gallery-heading-side {
+      flex-direction: row;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .gallery-heading-side strong {
+      font-size: 3.6rem;
+    }
+
+    .gallery-description {
+      font-size: .89rem;
+    }
+
+    .gallery-instructions {
+      align-items: flex-start;
+      font-size: .74rem;
+    }
+
+    .artworks-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 20px 11px;
+    }
+
+    .artwork-visual {
+      aspect-ratio: 4 / 5;
+    }
+
+    .artwork-placeholder {
+      padding: 10px;
+    }
+
+    .artwork-placeholder-symbol {
+      font-size: 2.5rem;
+    }
+
+    .artwork-placeholder-text {
+      font-size: 1.1rem;
+    }
+
+    .artwork-placeholder small {
+      font-size: .46rem;
+    }
+
+    .artwork-overlay-number {
+      top: 7px;
+      right: 7px;
+      padding: 5px 7px;
+      font-size: .56rem;
+    }
+
+    .artwork-zoom {
+      display: none;
+    }
+
+    .artwork-info {
+      padding: 12px 0;
+      gap: 5px;
+    }
+
+    .artwork-info strong {
+      font-size: .84rem;
+    }
+
+    .artwork-info small {
+      font-size: .68rem;
+    }
+
+    .artwork-info-arrow {
+      font-size: 1rem;
+    }
+
+    .gallery-bottom-note {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    /* PROCESO */
+
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid > .process-card:last-child {
+      grid-column: auto;
+    }
+
+    .process-image {
+      height: 230px;
+    }
+
+    /* REFLEXIÓN */
+
+    .reflection-inner h2 {
+      font-size: clamp(2.1rem,8.5vw,3.5rem);
+    }
+
+    .reflection-description {
+      font-size: .89rem;
+    }
+
+    /* CIERRE */
+
+    .closing-monogram {
+      min-height: 230px;
+    }
+
+    .closing-monogram > span {
+      font-size: 6.5rem;
+    }
+
+  }
+
+  @media (max-width: 380px) {
+    .hero-copy h1 {
+      font-size: 2.48rem;
+    }
+
+    .hero-art-frame {
+      height: 380px;
+    }
+
+    .incensario-photo {
+      height: 430px;
+    }
+
+    .artworks-grid {
+      gap: 15px 8px;
+    }
+
+    .artwork-info strong {
+      font-size: .78rem;
+    }
+  }
+
+  /* ======================================== */
+  /*              ACCESIBILIDAD             */
+  /* ======================================== */
+
+  .art-page a:focus-visible,
+  .art-page button:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .art-page.reveal-enabled [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .art-button,
+    .artwork-visual,
+    .optional-photo,
+    .hero-art-frame {
+      transition: none;
+    }
+  }
+
+  /* VISOR INMERSIVO ADAPTADO A MÓVILES */
+  @media (max-width: 650px) {
+    .lightbox-top {
+      min-height: 54px;
+      padding: 7px 14px;
+    }
+
+    .lightbox-top-left {
+      gap: 9px;
+      font-size: .57rem;
+      letter-spacing: .09em;
+    }
+
+    .lightbox-top-hint {
+      display: none;
+    }
+
+    .lightbox-close {
+      width: 37px;
+      height: 37px;
+      flex-basis: 37px;
+    }
+
+    .lightbox-canvas {
+      grid-template-columns: 39px minmax(0,1fr) 39px;
+      padding: 8px 0;
+    }
+
+    .lightbox-nav {
+      width: 34px;
+      height: 54px;
+    }
+
+    .lightbox-nav > span {
+      font-size: 2.5rem;
+    }
+
+    .lightbox-bottom {
+      min-height: 110px;
+      max-height: 135px;
+      padding: 11px 17px 14px;
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .lightbox-caption-main h3 {
+      font-size: 1.3rem;
+    }
+
+    .lightbox-caption-side > p {
+      display: none;
+    }
+
+    .lightbox-metadata {
+      margin-top: 0;
+    }
+
+    .lightbox-help {
+      padding: 5px 10px 8px;
+      font-size: .57rem;
+    }
+  }
+
+  @media (max-height: 520px) and (orientation: landscape) {
+    .lightbox-top { min-height: 44px; padding-block: 3px; }
+    .lightbox-bottom { min-height: 72px; max-height: 90px; padding-block: 7px; }
+    .lightbox-caption-side > p { display: none; }
+    .lightbox-help { display: none; }
+  }
+
+</style>
+
+<script>
+  function initArtPage(): void {
+    const page =
+      document.querySelector<HTMLElement>(
+        "#art-page"
+      );
+
+    if (
+      !page ||
+      page.dataset.initialized === "true"
+    ) {
+      return;
+    }
+
+    page.dataset.initialized = "true";
+
+    // ==================================
+    //  IMÁGENES CON FONDO DE RESERVA
+    // ==================================
+
+    const optionalImages =
+      page.querySelectorAll<HTMLImageElement>(
+        "[data-optional-image]"
+      );
+
+    optionalImages.forEach((image) => {
+      const frame = image.closest<HTMLElement>(
+        ".photo-frame"
+      );
+
+      if (!frame) return;
+
+      const checkImage = () => {
+        if (image.naturalWidth > 0) {
+          frame.classList.add("has-photo");
+        }
+      };
+
+      image.addEventListener(
+        "load",
+        checkImage
+      );
+
+      image.addEventListener(
+        "error",
+        () => {
+          frame.classList.remove("has-photo");
+        }
+      );
+
+      if (image.complete) {
+        checkImage();
+      }
+    });
+
+    // ==================================
+    //       ANIMACIONES DE SCROLL
+    // ==================================
+
+    const revealElements =
+      page.querySelectorAll<HTMLElement>(
+        "[data-reveal]"
+      );
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      !prefersReducedMotion &&
+      "IntersectionObserver" in window
+    ) {
+      page.classList.add("reveal-enabled");
+
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              currentObserver.unobserve(
+                entry.target
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.03,
+          rootMargin: "0px 0px 70px 0px",
+        }
+      );
+
+      revealElements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
+
+    // ==================================
+    //       BARRA DE PROGRESO
+    // ==================================
+
+    const progress =
+      page.querySelector<HTMLElement>(
+        "#reading-progress"
+      );
+
+    const updateProgress = () => {
+      if (!progress) return;
+
+      const maxScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const percentage =
+        maxScroll > 0
+          ? Math.min(
+              100,
+              Math.max(
+                0,
+                (window.scrollY / maxScroll) * 100
+              )
+            )
+          : 0;
+
+      progress.style.width = `${percentage}%`;
+    };
+
+    window.addEventListener(
+      "scroll",
+      updateProgress,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateProgress
+    );
+
+    updateProgress();
+
+    // ==================================
+    //        VISOR DE GALERÍA
+    // ==================================
+
+    const artworkCards =
+      Array.from(
+        page.querySelectorAll<HTMLButtonElement>(
+          "[data-artwork]"
+        )
+      );
+
+    const lightbox =
+      page.querySelector<HTMLElement>(
+        "#art-lightbox"
+      );
+
+    const closeButton =
+      page.querySelector<HTMLButtonElement>(
+        "#lightbox-close"
+      );
+
+    const prevButton =
+      page.querySelector<HTMLButtonElement>(
+        "#lightbox-prev"
+      );
+
+    const nextButton =
+      page.querySelector<HTMLButtonElement>(
+        "#lightbox-next"
+      );
+
+    const lightboxImage =
+      page.querySelector<HTMLImageElement>(
+        "#lightbox-image"
+      );
+
+    const lightboxEmpty =
+      page.querySelector<HTMLElement>(
+        "#lightbox-empty"
+      );
+
+    const emptyTitle =
+      page.querySelector<HTMLElement>(
+        "#lightbox-empty-title"
+      );
+
+    const titleElement =
+      page.querySelector<HTMLElement>(
+        "#lightbox-title"
+      );
+
+    const mediumElement =
+      page.querySelector<HTMLElement>(
+        "#lightbox-medium"
+      );
+
+    const yearElement =
+      page.querySelector<HTMLElement>(
+        "#lightbox-year"
+      );
+
+    const descriptionElement =
+      page.querySelector<HTMLElement>(
+        "#lightbox-description"
+      );
+
+    const countElement =
+      page.querySelector<HTMLElement>(
+        "#lightbox-count"
+      );
+
+    let selectedIndex = 0;
+    let previousFocus: HTMLElement | null = null;
+    let previousOverflow = "";
+
+    function updateLightbox(index: number): void {
+      if (!artworkCards.length || !lightboxImage || !lightboxEmpty) return;
+
+      selectedIndex =
+        (index + artworkCards.length) % artworkCards.length;
+
+      const artwork = artworkCards[selectedIndex];
+      const title = artwork.dataset.title || "Obra";
+      const type = artwork.dataset.type || "Pintura";
+      const year = artwork.dataset.year || "Sin fecha";
+      const description = artwork.dataset.description || "";
+      const imageSource = artwork.dataset.image || "";
+
+      if (titleElement) titleElement.textContent = title;
+      if (mediumElement) mediumElement.textContent = type;
+      if (yearElement) yearElement.textContent = year;
+      if (descriptionElement) descriptionElement.textContent = description;
+      if (emptyTitle) emptyTitle.textContent = title;
+
+      if (countElement) {
+        const current = String(selectedIndex + 1).padStart(2, "0");
+        const total = String(artworkCards.length).padStart(2, "0");
+        countElement.textContent = `${current} / ${total}`;
+      }
+
+      // Cada imagen se carga directamente en el visor, sin depender
+      // de si la miniatura lazy-loaded había terminado de cargarse.
+      lightboxImage.hidden = true;
+      lightboxEmpty.hidden = true;
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = title;
+
+      if (!imageSource) {
+        lightboxEmpty.hidden = false;
+        return;
+      }
+
+      const selectedSource = imageSource;
+      lightboxImage.onload = () => {
+        if (lightboxImage.getAttribute("src") !== selectedSource) return;
+        lightboxImage.hidden = false;
+        lightboxEmpty.hidden = true;
+      };
+
+      lightboxImage.onerror = () => {
+        if (lightboxImage.getAttribute("src") !== selectedSource) return;
+        lightboxImage.hidden = true;
+        lightboxEmpty.hidden = false;
+      };
+
+      lightboxImage.src = selectedSource;
+      if (lightboxImage.complete) {
+        if (lightboxImage.naturalWidth > 0) {
+          lightboxImage.hidden = false;
+          lightboxEmpty.hidden = true;
+        } else {
+          lightboxEmpty.hidden = false;
+        }
+      }
+    }
+
+    function openLightbox(index: number): void {
+      if (!lightbox) return;
+
+      previousFocus =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+
+      previousOverflow =
+        document.body.style.overflow;
+
+      updateLightbox(index);
+
+      lightbox.hidden = false;
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow = "hidden";
+
+      closeButton?.focus();
+    }
+
+    function closeLightbox(): void {
+      if (!lightbox || lightbox.hidden) {
+        return;
+      }
+
+      lightbox.hidden = true;
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        previousOverflow;
+
+      previousFocus?.focus();
+    }
+
+    // La pintura solo se amplía al hacer clic (o tocar en móvil).
+    artworkCards.forEach((card, index) => {
+      card.addEventListener("click", () => {
+        if (lightbox?.hidden) {
+          openLightbox(index);
+        }
+      });
+    });
+
+    closeButton?.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+    prevButton?.addEventListener(
+      "click",
+      () => updateLightbox(selectedIndex - 1)
+    );
+
+    nextButton?.addEventListener(
+      "click",
+      () => updateLightbox(selectedIndex + 1)
+    );
+
+    lightbox?.addEventListener(
+      "click",
+      (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (!lightbox || lightbox.hidden) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          updateLightbox(selectedIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          updateLightbox(selectedIndex + 1);
+        }
+
+        if (event.key === "Tab") {
+          const focusableElements =
+            Array.from(
+              lightbox.querySelectorAll<HTMLElement>(
+                'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+              )
+            );
+
+          if (!focusableElements.length) {
+            return;
+          }
+
+          const first = focusableElements[0];
+
+          const last =
+            focusableElements[
+              focusableElements.length - 1
+            ];
+
+          if (
+            event.shiftKey &&
+            document.activeElement === first
+          ) {
+            event.preventDefault();
+            last.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    );
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initArtPage
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initArtPage
+  );
+
+  initArtPage();
+
+  
+</script>
