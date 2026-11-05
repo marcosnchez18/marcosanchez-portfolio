@@ -1,272 +1,781 @@
 
 ---
-const links = [
-  { label: "Inicio", href: "/" },
-  { label: "Sobre mí", href: "/sobre-mi" },
-  { label: "Proyectos", href: "/proyectos" },
-  { label: "Arte", href: "/arte" },
-  { label: "Contacto", href: "/contacto" },
+const currentPath =
+  Astro.url.pathname.replace(/\/+$/, "") || "/";
+
+const navigation = [
+  {
+    name: "Inicio",
+    href: "/",
+    routes: ["/"],
+  },
+  {
+    name: "Sobre mí",
+    href: "/sobre-mi",
+    routes: ["/sobre-mi"],
+  },
+  {
+    name: "Desarrollo",
+    href: "/desarrollo",
+    routes: ["/desarrollo", "/desarrollo"],
+  },
+  {
+    name: "Otras experiencias",
+    href: "/otras-experiencias",
+    routes: ["/otras-experiencias"],
+  },
+  {
+    name: "Arte",
+    href: "/arte",
+    routes: ["/arte"],
+  },
+  {
+    name: "Contacto",
+    href: "/contacto",
+    routes: ["/contacto"],
+  },
 ];
 
-const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+function isActive(routes: string[]): boolean {
+  return routes.some((route) => {
+    if (route === "/") {
+      return currentPath === "/";
+    }
+
+    return (
+      currentPath === route ||
+      currentPath.startsWith(`${route}/`)
+    );
+  });
+}
+
+const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
 ---
 
-<header class="site-header">
-  <nav class="navigation" aria-label="Navegación principal">
+<header class="site-header" id="site-header">
+  <div class="header-container">
+    <a
+      href="/"
+      class="header-brand"
+      aria-label="Marco Sánchez - Inicio"
+    >
+      <span class="brand-symbol" aria-hidden="true">
+        MS<span>.</span>
+      </span>
 
-    <!-- Logo de Marco Sánchez -->
-    <a class="brand" href="/" aria-label="Marco Sánchez - Inicio">
-      <img
-        src="/images/logo-header.png"
-        alt="Marco Sánchez"
-        width="420"
-        height="100"
-        class="brand-logo"
-        fetchpriority="high"
-      />
+      <span class="brand-information">
+        <strong>Marco Sánchez</strong>
+        <small>DESARROLLADOR WEB</small>
+      </span>
     </a>
 
-    <!-- Menú móvil -->
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Abrir menú"
-      aria-expanded="false"
-      aria-controls="navigation-links"
+    <nav
+      class="main-navigation"
+      id="main-navigation"
+      aria-label="Navegación principal"
     >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <div class="navigation-links">
+        {navigation.map((item) => {
+          const active = isActive(item.routes);
 
-    <!-- Navegación -->
-    <div class="navigation-links" id="navigation-links">
-      {links.map((link) => {
-        const active = pathname === link.href;
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "nav-link",
+                { "is-active": active },
+              ]}
+              aria-current={active ? "page" : undefined}
+            >
+              <span
+                class="nav-active-dot"
+                aria-hidden="true"
+              ></span>
 
-        return (
-          <a
-            class:list={["navigation-link", { active }]}
-            href={link.href}
-            aria-current={active ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+              <span class="nav-link-text">
+                {item.name}
+              </span>
+
+              <span
+                class="nav-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </a>
+          );
+        })}
+      </div>
+
+      <a
+        href={cvUrl}
+        class="mobile-cv"
+        download="Marco-Sanchez-CV.pdf"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3v12" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 17v3h14v-3" />
+        </svg>
+
+        Descargar mi CV
+
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <div class="mobile-navigation-footer">
+        <span class="mobile-status-dot"></span>
+        MI ESPACIO PERSONAL
+
+        <span class="mobile-footer-symbol">
+          &lt;/&gt;
+        </span>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <a
+        href={cvUrl}
+        class="header-cv"
+        download="Marco-Sanchez-CV.pdf"
+        aria-label="Descargar currículum de Marco Sánchez"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3v12" />
+          <path d="m7 10 5 5 5-5" />
+          <path d="M5 17v3h14v-3" />
+        </svg>
+
+        <span>Mi CV</span>
+      </a>
+
+      <button
+        type="button"
+        class="menu-toggle"
+        id="nav-toggle"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
     </div>
+  </div>
 
-  </nav>
+  <div
+    class="header-bottom-line"
+    aria-hidden="true"
+  ></div>
 </header>
 
 <style>
+  .site-header,
+  .site-header * {
+    box-sizing: border-box;
+  }
+
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 999;
     width: 100%;
-    background: rgba(16, 14, 13, 0.96);
-    border-bottom: 1px solid rgba(212, 168, 96, 0.12);
+    height: 84px;
+    border-bottom: 1px solid #30343d;
+    background: rgba(16,18,22,.97);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+    font-family: Inter,Arial,Helvetica,sans-serif;
   }
 
-  .navigation {
-    width: min(calc(100% - 80px), 1450px);
-    min-height: 95px;
-    margin-inline: auto;
+  .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 25px;
+    width: min(calc(100% - 64px),1360px);
+    height: 100%;
+    margin-inline: auto;
   }
 
-  /* LOGO */
+  .header-bottom-line {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: min(350px,38%);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(215,166,92,.38),
+      transparent
+    );
+    pointer-events: none;
+  }
 
-  .brand {
+  /* IDENTIDAD */
+
+  .header-brand {
     display: inline-flex;
     align-items: center;
+    gap: 12px;
     flex-shrink: 0;
     text-decoration: none;
   }
 
-  .brand-logo {
-    display: block;
-    width: clamp(230px, 27vw, 390px);
-    height: auto;
-    object-fit: contain;
-    transition: opacity 250ms ease;
+  .brand-symbol {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(215,166,92,.45);
+    border-radius: 12px;
+    background: linear-gradient(145deg,#252a31,#191d23);
+    color: #f1f3f6;
+    font-size: 1.18rem;
+    font-weight: 850;
+    letter-spacing: -.08em;
+    transition:
+      transform .22s ease,
+      border-color .22s ease;
   }
 
-  .brand:hover .brand-logo {
-    opacity: 0.82;
+  .brand-symbol span {
+    color: #d7a65c;
+  }
+
+  .header-brand:hover .brand-symbol {
+    transform: translateY(-2px);
+    border-color: #d7a65c;
+  }
+
+  .brand-information {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .brand-information strong {
+    color: #eef0f3;
+    font-size: .94rem;
+    font-weight: 750;
+    letter-spacing: -.025em;
+    white-space: nowrap;
+  }
+
+  .brand-information small {
+    color: #d7a65c;
+    font-size: .55rem;
+    font-weight: 750;
+    letter-spacing: .16em;
+    white-space: nowrap;
   }
 
   /* NAVEGACIÓN */
 
+  .main-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
   .navigation-links {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 3vw, 48px);
+    gap: clamp(11px,1.65vw,26px);
   }
 
-  .navigation-link {
+  .nav-link {
     position: relative;
-    padding: 12px 0;
-    color: #ded5cc;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.05rem;
-    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 84px;
+    color: #aeb5bf;
+    font-size: .79rem;
+    font-weight: 600;
     white-space: nowrap;
     text-decoration: none;
-    transition: color 250ms ease;
+    transition: color .22s ease;
   }
 
-  .navigation-link::after {
+  .nav-link:hover {
+    color: #f0f1f3;
+  }
+
+  .nav-link::after {
     content: "";
     position: absolute;
-    bottom: 3px;
-    left: 0;
+    bottom: 0;
+    left: 50%;
     width: 0;
-    height: 1px;
+    height: 2px;
     background: #d7a65c;
-    transition: width 300ms ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 16px rgba(215,166,92,.35);
+    transition: width .23s ease;
   }
 
-  .navigation-link:hover,
-  .navigation-link:focus-visible,
-  .navigation-link.active {
-    color: #e4b36c;
+  .nav-link:hover::after {
+    width: 65%;
   }
 
-  .navigation-link:hover::after,
-  .navigation-link:focus-visible::after,
-  .navigation-link.active::after {
+  .nav-link.is-active {
+    color: #e0b173;
+    font-weight: 750;
+  }
+
+  .nav-link.is-active::after {
     width: 100%;
   }
 
-  /* MENÚ HAMBURGUESA */
+  .nav-active-dot {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d7a65c;
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  .nav-link.is-active .nav-active-dot {
+    opacity: 1;
+  }
+
+  .nav-arrow {
+    display: none;
+  }
+
+  /* BOTÓN CV */
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 12px;
+  }
+
+  .header-cv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 43px;
+    padding: 10px 17px;
+    border: 1px solid #d7a65c;
+    border-radius: 10px;
+    background: #d7a65c;
+    color: #15171b;
+    font-size: .81rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition:
+      transform .22s ease,
+      background .22s ease;
+  }
+
+  .header-cv svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .header-cv:hover {
+    transform: translateY(-2px);
+    background: #edbe79;
+  }
+
+  /* MENÚ MÓVIL */
 
   .menu-toggle {
     display: none;
+    align-items: center;
+    justify-content: center;
     width: 44px;
     height: 44px;
-    padding: 10px;
-    border: 1px solid rgba(212, 168, 96, 0.3);
-    border-radius: 6px;
-    background: transparent;
+    padding: 0;
+    border: 1px solid #424751;
+    border-radius: 10px;
+    background: #20242b;
     cursor: pointer;
   }
 
-  .menu-toggle span {
-    display: block;
-    width: 21px;
-    height: 2px;
-    margin: 5px auto;
-    background: #d7a65c;
+  .menu-toggle:hover {
+    border-color: #d7a65c;
   }
 
-  /* TABLETS Y MÓVILES */
+  .menu-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 22px;
+    height: 22px;
+  }
 
-  @media (max-width: 1050px) {
-    .navigation {
-      width: calc(100% - 40px);
-      min-height: 78px;
-      flex-wrap: wrap;
-      gap: 0;
+  .menu-lines span {
+    width: 21px;
+    height: 2px;
+    border-radius: 999px;
+    background: #d7a65c;
+    transition:
+      transform .22s ease,
+      opacity .22s ease;
+  }
+
+  .menu-toggle[aria-expanded="true"]
+  .menu-lines span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"]
+  .menu-lines span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"]
+  .menu-lines span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-cv,
+  .mobile-navigation-footer {
+    display: none;
+  }
+
+  .header-brand:focus-visible,
+  .nav-link:focus-visible,
+  .header-cv:focus-visible,
+  .mobile-cv:focus-visible,
+  .menu-toggle:focus-visible {
+    outline: 2px solid #edbe79;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 1200px) {
+    .header-container {
+      width: calc(100% - 48px);
     }
 
-    .brand-logo {
-      width: clamp(200px, 35vw, 300px);
-    }
-
-    .menu-toggle {
-      display: block;
-    }
-
-    .navigation-links {
+    .main-navigation {
+      position: absolute;
+      top: 100%;
+      left: 0;
       display: none;
-      flex-basis: 100%;
       flex-direction: column;
       align-items: stretch;
-      gap: 0;
-      padding: 12px 0 24px;
+      width: 100%;
+      max-height: calc(100dvh - 84px);
+      padding: 18px 24px 24px;
+      overflow-y: auto;
+      border-bottom: 1px solid #41434a;
+      background: rgba(23,26,32,.99);
+      box-shadow: 0 30px 55px rgba(0,0,0,.45);
     }
 
-    .navigation-links.is-open {
+    .main-navigation.is-open {
       display: flex;
     }
 
-    .navigation-link {
-      padding: 15px 12px;
-      font-size: 1.05rem;
-      border-bottom: 1px solid rgba(212, 168, 96, 0.1);
+    .navigation-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5px;
     }
 
-    .navigation-link::after {
+    .nav-link {
+      justify-content: flex-start;
+      gap: 15px;
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 17px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: .92rem;
+    }
+
+    .nav-link:hover {
+      border-color: #383d46;
+      background: #262b33;
+    }
+
+    .nav-link::after {
       display: none;
     }
 
-    .navigation-link.active {
-      border-left: 2px solid #d7a65c;
-      padding-left: 16px;
+    .nav-link.is-active {
+      border-color: rgba(215,166,92,.3);
+      background: rgba(215,166,92,.08);
+    }
+
+    .nav-active-dot {
+      position: static;
+      width: 7px;
+      height: 7px;
+      flex-shrink: 0;
+      opacity: .35;
+      transform: none;
+      background: #59616e;
+    }
+
+    .nav-link.is-active .nav-active-dot {
+      opacity: 1;
+      background: #d7a65c;
+    }
+
+    .nav-link-text {
+      flex: 1;
+    }
+
+    .nav-arrow {
+      display: block;
+      color: #737d8b;
+      font-size: 1rem;
+    }
+
+    .nav-link.is-active .nav-arrow {
+      color: #d7a65c;
+    }
+
+    .header-cv {
+      display: none;
+    }
+
+    .mobile-cv {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 52px;
+      margin-top: 19px;
+      padding: 14px 18px;
+      border: 1px solid #d7a65c;
+      border-radius: 10px;
+      background: #d7a65c;
+      color: #15171b;
+      font-size: .9rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .mobile-cv svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .mobile-cv > span {
+      margin-left: auto;
+    }
+
+    .mobile-navigation-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 23px;
+      padding: 17px 4px 0;
+      border-top: 1px solid #343942;
+      color: #949daa;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
+
+    .mobile-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d7a65c;
+    }
+
+    .mobile-footer-symbol {
+      margin-left: auto;
+      color: #d7a65c;
+      font-family: Consolas,monospace;
+      font-size: .85rem;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
     }
   }
 
-  @media (max-width: 480px) {
-    .navigation {
-      width: calc(100% - 28px);
-      min-height: 72px;
+  @media (max-width: 600px) {
+    .site-header {
+      height: 70px;
     }
 
-    .brand-logo {
-      width: min(220px, 65vw);
+    .header-container {
+      width: calc(100% - 32px);
+      gap: 15px;
+    }
+
+    .brand-symbol {
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      font-size: 1.08rem;
+    }
+
+    .brand-information strong {
+      font-size: .87rem;
+    }
+
+    .brand-information small {
+      font-size: .51rem;
+      letter-spacing: .12em;
+    }
+
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+    }
+
+    .main-navigation {
+      max-height: calc(100dvh - 70px);
+      padding: 13px 16px 23px;
+    }
+
+    .nav-link {
+      min-height: 49px;
+      padding: 12px 14px;
+      font-size: .88rem;
+    }
+
+    .mobile-cv {
+      margin-top: 15px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .brand-logo,
-    .navigation-link,
-    .navigation-link::after {
+    .brand-symbol,
+    .nav-link,
+    .nav-link::after,
+    .header-cv,
+    .menu-lines span {
       transition: none;
     }
   }
 </style>
 
 <script>
-  const initializeMenu = () => {
-    const menuButton =
-      document.querySelector<HTMLButtonElement>(".menu-toggle");
+  function initHeader(): void {
+    const header = document.querySelector<HTMLElement>(
+      "#site-header"
+    );
 
-    const navigationLinks =
-      document.querySelector<HTMLDivElement>(".navigation-links");
+    const navigation = document.querySelector<HTMLElement>(
+      "#main-navigation"
+    );
 
-    if (!menuButton || !navigationLinks) return;
+    const toggle = document.querySelector<HTMLButtonElement>(
+      "#nav-toggle"
+    );
 
-    const closeMenu = () => {
-      navigationLinks.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Abrir menú");
-    };
+    if (
+      !header ||
+      !navigation ||
+      !toggle ||
+      header.dataset.initialized === "true"
+    ) {
+      return;
+    }
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = navigationLinks.classList.toggle("is-open");
+    header.dataset.initialized = "true";
 
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute(
+    function closeMenu(): void {
+      navigation?.classList.remove("is-open");
+
+      toggle?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      toggle?.setAttribute(
         "aria-label",
-        isOpen ? "Cerrar menú" : "Abrir menú"
+        "Abrir menú de navegación"
+      );
+    }
+
+    toggle.addEventListener("click", () => {
+      const open =
+        navigation.classList.toggle("is-open");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+      toggle.setAttribute(
+        "aria-label",
+        open
+          ? "Cerrar menú de navegación"
+          : "Abrir menú de navegación"
       );
     });
 
-    navigationLinks.querySelectorAll("a").forEach((link) => {
+    navigation.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeMenu();
-    });
-  };
+    document.addEventListener("click", (event) => {
+      const target = event.target;
 
-  initializeMenu();
+      if (
+        target instanceof Node &&
+        !header.contains(target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1200) {
+        closeMenu();
+      }
+    });
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initHeader
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initHeader
+  );
+
+  initHeader();
 </script>

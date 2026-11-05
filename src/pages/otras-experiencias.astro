@@ -1,0 +1,2522 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Chatbot from "../components/Chatbot.astro";
+
+const experiences = [
+  {
+    number: "01",
+    id: "teleperformance",
+    category: "EXPERIENCIA ACTUAL · SECTOR ENERGÉTICO",
+    title: "Agente teleoperador comercial",
+    company: "Teleperformance Spain",
+    secondary: "Proyecto Repsol Luz y Gas",
+    dates: "5 de febrero de 2025 — Actualidad",
+    location: "Jerez de la Frontera, Cádiz",
+    active: true,
+    image: "/images/tp.png",
+    imageAlt: "Mi acreditación de Teleperformance",
+    imagePosition: "center",
+    logos: [
+      {
+        src: "/images/logotp.png",
+        alt: "Teleperformance",
+      },
+      {
+        src: "/images/logor.png",
+        alt: "Repsol",
+      },
+    ],
+    description: [
+      "Actualmente trabajo en Teleperformance Spain, dentro del proyecto de Repsol Luz y Gas Comercializadora. Mi actividad profesional se desarrolla en el sector energético y combina la atención al cliente, el asesoramiento personalizado y la actividad comercial.",
+      "Cuento con experiencia tanto en campañas frías como en campañas calientes, lo que me ha permitido aprender a adaptar la conversación a diferentes tipos de clientes, situaciones y necesidades.",
+      "Una parte fundamental de mi trabajo consiste en analizar las facturas de luz y gas. Estudio los consumos, los precios, la potencia contratada y las condiciones de suministro para valorar si existe una alternativa que pueda resultar beneficiosa para el cliente.",
+      "Entiendo la venta como un proceso de comunicación y confianza. Mi objetivo es encontrar soluciones que generen valor para ambas partes: una propuesta adecuada para el cliente y una relación comercial satisfactoria para la compañía.",
+    ],
+    responsibilities: [
+      {
+        number: "01",
+        title: "Campaña fría y caliente",
+        text:
+          "Prospección comercial y atención de oportunidades con interés previo, adaptando la comunicación y el asesoramiento a cada situación.",
+      },
+      {
+        number: "02",
+        title: "Estudio de facturas",
+        text:
+          "Análisis de consumos, precios, potencias y condiciones para estudiar posibles alternativas de ahorro y optimización.",
+      },
+      {
+        number: "03",
+        title: "Atención al cliente",
+        text:
+          "Resolución de consultas y explicación clara de conceptos relacionados con suministros, tarifas y contratación.",
+      },
+      {
+        number: "04",
+        title: "Negociación y resultados",
+        text:
+          "Escucha activa, gestión de objeciones, comunicación persuasiva y orientación a objetivos comerciales.",
+      },
+    ],
+    tags: [
+      "Sector energético",
+      "Venta consultiva",
+      "Campaña fría",
+      "Campaña caliente",
+      "Atención al cliente",
+      "Análisis de facturas",
+      "Negociación",
+    ],
+  },
+  {
+    number: "02",
+    id: "rentel",
+    category: "EXPERIENCIA PROFESIONAL · DESARROLLO WEB",
+    title: "Desarrollador web Full Stack",
+    company: "Rentel Comunicaciones S. L.",
+    secondary: "Prácticas profesionales",
+    dates: "14 de octubre — 20 de diciembre de 2024",
+    location: "Sanlúcar de Barrameda, Cádiz",
+    active: false,
+    image: "/images/rentel.png",
+    imageAlt: "Fotografía relacionada con mi experiencia en Rentel",
+    imagePosition: "center",
+    logos: [
+      {
+        src: "/images/rentellogo.png",
+        alt: "Rentel Comunicaciones",
+      },
+    ],
+    description: [
+      "Mi experiencia en Rentel Comunicaciones fue una oportunidad para trasladar los conocimientos adquiridos durante el Grado Superior a un entorno profesional de desarrollo de aplicaciones web.",
+      "Mi formación y las tareas de esta etapa estuvieron orientadas al desarrollo Full Stack, abarcando conocimientos de frontend, backend, bases de datos y herramientas utilizadas en el ciclo de desarrollo.",
+      "Esta experiencia me ayudó a comprender la importancia de mantener un código organizado, legible y escalable. Una aplicación no debe limitarse a funcionar en el presente: también tiene que facilitar el mantenimiento, las futuras ampliaciones y el trabajo de otros desarrolladores.",
+    ],
+    responsibilities: [
+      {
+        number: "01",
+        title: "Desarrollo frontend",
+        text:
+          "Trabajo con interfaces web, componentes, estilos y adaptación de páginas a diferentes dispositivos.",
+      },
+      {
+        number: "02",
+        title: "Desarrollo backend",
+        text:
+          "Trabajo con lógica de aplicación, rutas, controladores, validaciones y tratamiento de información.",
+      },
+      {
+        number: "03",
+        title: "Bases de datos",
+        text:
+          "Conocimientos aplicados de SQL, consultas y relación entre el servidor y el almacenamiento de datos.",
+      },
+      {
+        number: "04",
+        title: "Buenas prácticas",
+        text:
+          "Organización del código, depuración, mantenimiento y uso de herramientas de control de versiones.",
+      },
+    ],
+    tags: [
+      "Full Stack",
+      "Frontend",
+      "Backend",
+      "PHP",
+      "Laravel",
+      "SQL",
+      "Git",
+    ],
+  },
+];
+
+const civilRoles = [
+  {
+    number: "01",
+    label: "TEMPORADA 2024",
+    title: "Socorrista acuático en playa",
+    dates: "1 de julio — 15 de septiembre de 2024",
+    description:
+      "Desempeñé funciones de socorrismo acuático en playa, con especial atención a la prevención de riesgos, la vigilancia de las zonas de baño y la capacidad de intervención ante posibles emergencias. Fue una responsabilidad que exigía concentración, preparación, autocontrol y compromiso con la seguridad de las personas.",
+    tags: ["Socorrismo acuático", "Prevención", "Seguridad"],
+  },
+  {
+    number: "02",
+    label: "TEMPORADA 2023",
+    title: "Vigilante de playa en torre",
+    dates: "1 de julio — 15 de septiembre de 2023",
+    description:
+      "Realicé labores de vigilancia desde torre, observando las condiciones de la playa, las zonas de baño y las posibles situaciones de riesgo. Esta experiencia reforzó mi capacidad de observación y la importancia de mantener una atención constante y coordinada.",
+    tags: ["Vigilancia", "Observación", "Coordinación"],
+  },
+  {
+    number: "03",
+    label: "VOLUNTARIADO",
+    title: "Voluntario de Protección Civil",
+    dates: "15 de junio de 2023 — 7 de octubre de 2024",
+    description:
+      "Colaboré como voluntario de Protección Civil en distintos servicios, participando en un entorno donde la responsabilidad, la colaboración y el compromiso con las personas resultan esenciales. Aprendí a trabajar en equipo, a seguir procedimientos y a mantener la serenidad ante situaciones exigentes.",
+    tags: ["Voluntariado", "Trabajo en equipo", "Compromiso"],
+  },
+];
+
+const abilities = [
+  {
+    number: "01",
+    title: "Comunicación",
+    description:
+      "Escuchar con atención, entender necesidades y transmitir información de forma clara, precisa y adaptada a cada persona.",
+  },
+  {
+    number: "02",
+    title: "Capacidad de análisis",
+    description:
+      "Interpretar información, detectar oportunidades de mejora y valorar alternativas antes de tomar una decisión.",
+  },
+  {
+    number: "03",
+    title: "Responsabilidad",
+    description:
+      "Asumir compromisos con seriedad, comprender las consecuencias de las decisiones y actuar con profesionalidad.",
+  },
+  {
+    number: "04",
+    title: "Adaptabilidad",
+    description:
+      "Desenvolverme en entornos diferentes, aprender procedimientos y afrontar nuevos retos con una actitud resolutiva.",
+  },
+];
+
+const whatsapp =
+  "https://wa.me/34622541527?text=" +
+  encodeURIComponent(
+    "Hola Marco, he visitado tu apartado de experiencias y me gustaría contactar contigo."
+  );
+---
+
+<MainLayout
+  title="Otras experiencias | Marco Sánchez"
+  description="Conoce mi experiencia profesional en Teleperformance para Repsol Luz y Gas, desarrollo Full Stack en Rentel y Protección Civil como socorrista, vigilante y voluntario."
+>
+  <div
+    class="reading-progress"
+    id="experience-progress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ====================================== -->
+  <!--              PRESENTACIÓN            -->
+  <!-- ====================================== -->
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="live-dot"></span>
+          MÁS ALLÁ DEL DESARROLLO
+        </div>
+
+        <p class="eyebrow">MI TRAYECTORIA PROFESIONAL</p>
+
+        <h1 id="page-title">
+          Experiencias que
+          <span>construyen mi perfil.</span>
+        </h1>
+
+        <p class="hero-lead">
+          Mi recorrido profesional no se limita a la programación.
+          También he adquirido experiencia en el sector energético,
+          la atención al cliente, el socorrismo y Protección Civil.
+        </p>
+
+        <p class="hero-description">
+          Cada etapa me ha enseñado algo diferente:
+          comunicar con claridad, analizar situaciones,
+          trabajar en equipo, asumir responsabilidades
+          y encontrar soluciones a problemas reales.
+        </p>
+
+        <div class="hero-tags">
+          <span class="highlight-tag">Sector energético</span>
+          <span>Atención al cliente</span>
+          <span>Desarrollo web</span>
+          <span>Socorrismo</span>
+          <span>Voluntariado</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#teleperformance" class="button button-primary">
+            Explorar mi experiencia
+            <span aria-hidden="true">↘</span>
+          </a>
+
+          <a href="#proteccion-civil" class="button button-outline">
+            Protección Civil
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-header">
+          <span>TRAYECTORIA / MS</span>
+
+          <span class="panel-active">
+            <span></span>
+            EN ACTIVO
+          </span>
+        </div>
+
+        <div class="panel-center">
+          <div class="orbit" aria-hidden="true">
+            <div class="orbit-outer"></div>
+            <div class="orbit-inner"></div>
+            <div class="orbit-logo">
+              MS<span>.</span>
+            </div>
+          </div>
+
+          <h2>Una trayectoria diversa.</h2>
+
+          <p>
+            Experiencias diferentes que comparten
+            responsabilidad, aprendizaje y compromiso.
+          </p>
+        </div>
+
+        <div class="panel-stats">
+          <div>
+            <strong>03</strong>
+            <span>ETAPAS PROFESIONALES</span>
+          </div>
+
+          <div>
+            <strong>05</strong>
+            <span>FUNCIONES DIFERENTES</span>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <span>APRENDER · ADAPTARSE · EVOLUCIONAR</span>
+          <span aria-hidden="true">↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================== -->
+  <!--          NAVEGACIÓN INTERIOR          -->
+  <!-- ====================================== -->
+
+  <nav class="chapter-nav" aria-label="Secciones de experiencias">
+    <div class="container chapter-nav-inner">
+      <span class="chapter-prefix">EXPERIENCIAS /</span>
+
+      <a href="#teleperformance">Teleperformance</a>
+      <a href="#rentel">Rentel</a>
+      <a href="#proteccion-civil">Protección Civil</a>
+      <a href="#aprendizajes">Aprendizajes</a>
+    </div>
+  </nav>
+
+  <!-- ====================================== -->
+  <!--                 INTRO                 -->
+  <!-- ====================================== -->
+
+  <section class="intro-section" id="recorrido">
+    <div class="container">
+      <div class="section-label" data-reveal>
+        <span></span>
+        01 / RECORRIDO PROFESIONAL
+      </div>
+
+      <div class="section-heading" data-reveal>
+        <h2>
+          Cada etapa deja
+          <span>una enseñanza.</span>
+        </h2>
+
+        <p>
+          Mi experiencia profesional me ha permitido
+          conocer diferentes formas de trabajar,
+          comprender necesidades reales y desarrollar
+          capacidades que van más allá de una titulación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================== -->
+  <!--         TELEPERFORMANCE Y RENTEL      -->
+  <!-- ====================================== -->
+
+  <section class="experiences-section">
+    <div class="container experiences-list">
+      {experiences.map((experience, index) => (
+        <article
+          id={experience.id}
+          class:list={[
+            "experience-card",
+            { "experience-card-reverse": index === 1 },
+          ]}
+        >
+          <!-- INFORMACIÓN -->
+
+          <div class="experience-copy" data-reveal>
+            <div class="experience-card-header">
+              <span class="experience-index">
+                EXPERIENCIA / {experience.number}
+              </span>
+
+              <span
+                class:list={[
+                  "experience-status",
+                  { "status-current": experience.active },
+                ]}
+              >
+                <span class="status-dot"></span>
+                {experience.active ? "ACTUALMENTE" : "2024"}
+              </span>
+            </div>
+
+            <!-- LOGOS CONTROLADOS -->
+
+            <div class="company-identities">
+              <div
+                class="company-logos"
+                aria-label="Empresas relacionadas con la experiencia"
+              >
+                {experience.logos.map((logo) => (
+                  <div class="company-logo">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      loading="lazy"
+                      width="100"
+                      height="60"
+                      style="display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- TÍTULOS -->
+
+            <div class="experience-title-group">
+              <p class="experience-category">
+                {experience.category}
+              </p>
+
+              <h3>
+                {experience.title}<span>.</span>
+              </h3>
+
+              <p class="experience-company-name">
+                {experience.company}
+                <span> / {experience.secondary}</span>
+              </p>
+            </div>
+
+            <!-- FECHAS Y LOCALIZACIÓN -->
+
+            <div class="experience-facts">
+              <div class="fact-card">
+                <span>PERIODO</span>
+                <strong>{experience.dates}</strong>
+              </div>
+
+              <div class="fact-card">
+                <span>UBICACIÓN</span>
+                <strong>{experience.location}</strong>
+              </div>
+            </div>
+
+            <!-- DESCRIPCIÓN -->
+
+            <div class="experience-paragraphs">
+              {experience.description.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+
+            {experience.active && (
+              <div class="anniversary">
+                <span class="anniversary-symbol" aria-hidden="true">✦</span>
+
+                <div>
+                  <strong>Próximo hito: febrero de 2027</strong>
+                  <p>
+                    El 5 de febrero de 2027 cumpliré dos años
+                    en Teleperformance, trabajando en el
+                    proyecto Repsol Luz y Gas.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <!-- RESPONSABILIDADES -->
+
+            <div class="responsibilities-heading">
+              <span>RESPONSABILIDADES Y COMPETENCIAS</span>
+              <span aria-hidden="true">↗</span>
+            </div>
+
+            <div class="responsibilities-grid">
+              {experience.responsibilities.map((item) => (
+                <div class="responsibility-card">
+                  <span class="responsibility-number">
+                    {item.number}
+                  </span>
+
+                  <h4>{item.title}</h4>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="skills-tags">
+              {experience.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+
+            {experience.id === "rentel" && (
+              <a
+                href="/proyectos#experiencia"
+                class="technical-link"
+              >
+                Ver mi experiencia técnica en Desarrollo
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
+
+          <!-- FOTOGRAFÍA -->
+
+          <div class="experience-visual" data-reveal>
+            <figure class="experience-photo">
+              <img
+                src={experience.image}
+                alt={experience.imageAlt}
+                loading="lazy"
+                style={`object-position:${experience.imagePosition};`}
+              />
+
+              <figcaption class="image-caption">
+                <span>
+                  MARCO SÁNCHEZ / {experience.number}
+                </span>
+
+                <strong>{experience.company}</strong>
+              </figcaption>
+            </figure>
+
+            <div class="visual-footer">
+              <span></span>
+              <p>{experience.category}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ====================================== -->
+  <!--              PROTECCIÓN CIVIL         -->
+  <!-- ====================================== -->
+
+  <section
+    class="civil-section"
+    id="proteccion-civil"
+    aria-labelledby="civil-title"
+  >
+    <div class="container">
+      <div class="section-label" data-reveal>
+        <span></span>
+        02 / SEGURIDAD Y SERVICIO A LAS PERSONAS
+      </div>
+
+      <div class="section-heading" data-reveal>
+        <h2 id="civil-title">
+          Protección Civil.
+          <span>Compromiso en primera persona.</span>
+        </h2>
+
+        <p>
+          Entre 2023 y 2024 desempeñé tres funciones
+          diferentes relacionadas con la vigilancia,
+          el socorrismo y el voluntariado. Una etapa
+          que me enseñó el valor de la prevención,
+          la coordinación y la responsabilidad.
+        </p>
+      </div>
+
+      <div class="civil-layout">
+        <!-- IMAGEN PROTECCIÓN CIVIL -->
+
+        <div class="civil-visual" data-reveal>
+          <figure class="civil-photo">
+            <img
+              src="/images/uniforme.png"
+              alt="Mi fotografía con el uniforme de Protección Civil"
+              loading="lazy"
+            />
+
+            <figcaption class="civil-photo-caption">
+              <span>PROTECCIÓN CIVIL</span>
+              <strong>Sanlúcar de Barrameda</strong>
+            </figcaption>
+          </figure>
+
+          <div class="civil-logo">
+            <img
+              src="/images/pro.png"
+              alt="Logotipo Protección Civil"
+              loading="lazy"
+              width="90"
+              height="90"
+              style="display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;"
+            />
+          </div>
+        </div>
+
+        <!-- FUNCIONES -->
+
+        <div class="civil-info" data-reveal>
+          <div class="civil-introduction">
+            <span>EXPERIENCIA / 03</span>
+
+            <h3>
+              Tres funciones.
+              <em>Un mismo compromiso.</em>
+            </h3>
+
+            <p>
+              Durante esta etapa adquirí experiencia
+              como <strong>socorrista acuático en playa</strong>,
+              <strong>vigilante de playa en torre</strong>
+              y <strong>voluntario de Protección Civil</strong>.
+              Cada función implicaba responsabilidades
+              diferentes, todas relacionadas con
+              la seguridad y la atención a las personas.
+            </p>
+          </div>
+
+          <div class="civil-roles">
+            {civilRoles.map((role) => (
+              <article class="civil-role">
+                <span class="civil-role-number">
+                  {role.number}
+                </span>
+
+                <div class="civil-role-content">
+                  <span class="civil-role-label">
+                    {role.label}
+                  </span>
+
+                  <h4>{role.title}</h4>
+
+                  <div class="civil-role-period">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M7 3v4M17 3v4M3 10h18" />
+                    </svg>
+
+                    <span>{role.dates}</span>
+                  </div>
+
+                  <p>{role.description}</p>
+
+                  <div class="civil-role-tags">
+                    {role.tags.map((tag) => (
+                      <span>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="civil-conclusion" data-reveal>
+        <span class="conclusion-symbol" aria-hidden="true">
+          ✦
+        </span>
+
+        <p>
+          Esta experiencia me enseñó que ser responsable
+          no consiste únicamente en cumplir con una tarea,
+          sino en comprender la importancia de nuestras
+          decisiones, colaborar con los demás y mantener
+          la serenidad cuando una situación requiere
+          actuar con rapidez.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================== -->
+  <!--          APRENDIZAJES GENERALES        -->
+  <!-- ====================================== -->
+
+  <section
+    class="abilities-section"
+    id="aprendizajes"
+    aria-labelledby="abilities-title"
+  >
+    <div class="container">
+      <div class="section-label" data-reveal>
+        <span></span>
+        03 / COMPETENCIAS TRANSVERSALES
+      </div>
+
+      <div class="section-heading" data-reveal>
+        <h2 id="abilities-title">
+          Mucho más
+          <span>que experiencia laboral.</span>
+        </h2>
+
+        <p>
+          Estas etapas me han permitido desarrollar
+          competencias útiles tanto en el trato
+          con las personas como en mi futuro
+          profesional dentro del desarrollo web.
+        </p>
+      </div>
+
+      <div class="abilities-grid">
+        {abilities.map((ability) => (
+          <article class="ability-card" data-reveal>
+            <div class="ability-header">
+              <span>{ability.number} / 04</span>
+              <span aria-hidden="true">↗</span>
+            </div>
+
+            <h3>{ability.title}</h3>
+            <p>{ability.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================== -->
+  <!--                 CIERRE                -->
+  <!-- ====================================== -->
+
+  <section class="closing-section">
+    <div class="container closing-content" data-reveal>
+      <div class="section-label centered">
+        <span></span>
+        SIGUIENTE CAPÍTULO
+        <span></span>
+      </div>
+
+      <h2>
+        Diferentes experiencias.
+        <span>Una misma mentalidad.</span>
+      </h2>
+
+      <p>
+        Todo lo aprendido en estos sectores
+        me acompaña también como desarrollador:
+        escuchar antes de actuar, analizar antes
+        de decidir y buscar soluciones que
+        realmente aporten valor.
+      </p>
+
+      <div class="closing-actions">
+        <a href="/proyectos" class="button button-primary">
+          Descubrir mi perfil técnico
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a href="/contacto" class="button button-outline">
+          Contactar conmigo
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          href={whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button button-outline"
+        >
+          WhatsApp
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT DEL MISMO ESTILO QUE EL RESTO -->
+
+  <Chatbot />
+</MainLayout>
+
+<style>
+  /* ====================================== */
+  /*             ESTILOS GENERALES         */
+  /* ====================================== */
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #101216;
+  }
+
+  .hero,
+  .hero *,
+  .chapter-nav,
+  .chapter-nav *,
+  .intro-section,
+  .intro-section *,
+  .experiences-section,
+  .experiences-section *,
+  .civil-section,
+  .civil-section *,
+  .abilities-section,
+  .abilities-section *,
+  .closing-section,
+  .closing-section * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: min(calc(100% - 96px), 1360px);
+    margin-inline: auto;
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    z-index: 1001;
+    width: 0%;
+    height: 2px;
+    background: #d7a65c;
+    box-shadow: 0 0 15px rgba(215,166,92,.5);
+    pointer-events: none;
+  }
+
+  :global(html.experience-animations) [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity .7s ease,
+      transform .7s ease;
+  }
+
+  :global(html.experience-animations) [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ====================================== */
+  /*                 HERO                 */
+  /* ====================================== */
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 115px 0;
+    background: #101216;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size: 62px 62px;
+    mask-image: linear-gradient(90deg,transparent,#000 70%);
+    -webkit-mask-image: linear-gradient(90deg,transparent,#000 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    z-index: -1;
+    right: -150px;
+    top: -150px;
+    width: 850px;
+    height: 850px;
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.105),
+      transparent 68%
+    );
+    pointer-events: none;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+    align-items: center;
+    gap: clamp(35px,6vw,95px);
+  }
+
+  .hero-content {
+    min-width: 0;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    border: 1px solid rgba(215,166,92,.36);
+    border-radius: 999px;
+    background: rgba(215,166,92,.06);
+    color: #d7a65c;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d7a65c;
+    box-shadow: 0 0 0 4px rgba(215,166,92,.12);
+  }
+
+  .eyebrow {
+    margin: 36px 0 17px;
+    color: #bca889;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .19em;
+  }
+
+  .hero h1 {
+    margin: 0 0 26px;
+    color: #f0f1f3;
+    font-size: clamp(3rem,5vw,5.9rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -.065em;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: #d7a65c;
+  }
+
+  .hero-lead,
+  .hero-description {
+    max-width: 640px;
+    margin: 0 0 16px;
+    color: #acb5c0;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .hero-lead {
+    color: #e0e4ea;
+    font-weight: 500;
+  }
+
+  .hero-tags,
+  .skills-tags,
+  .civil-role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hero-tags {
+    margin-top: 25px;
+  }
+
+  .hero-tags span,
+  .skills-tags span,
+  .civil-role-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #3c424c;
+    border-radius: 999px;
+    background: #1f232a;
+    color: #c9d0d9;
+    font-size: .74rem;
+    line-height: 1.4;
+  }
+
+  .hero-tags .highlight-tag {
+    border-color: rgba(215,166,92,.4);
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+  }
+
+  .hero-actions,
+  .closing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    min-height: 52px;
+    padding: 13px 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: .88rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      transform .2s ease,
+      background .2s ease,
+      border-color .2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button-primary {
+    border-color: #d7a65c;
+    background: #d7a65c;
+    color: #15171b;
+  }
+
+  .button-primary:hover {
+    background: #edbe79;
+  }
+
+  .button-outline {
+    border-color: #434954;
+    background: #20242b;
+    color: #e7e9ed;
+  }
+
+  .button-outline:hover {
+    border-color: #d7a65c;
+  }
+
+  /* PANEL HERO */
+
+  .hero-panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 505px;
+    padding: 27px;
+    border: 1px solid rgba(215,166,92,.35);
+    border-radius: 17px;
+    background:
+      radial-gradient(
+        circle at 50% 40%,
+        rgba(215,166,92,.095),
+        transparent 65%
+      ),
+      #1c2027;
+    box-shadow: 0 28px 80px rgba(0,0,0,.28);
+  }
+
+  .panel-header,
+  .panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .panel-header > span:first-child,
+  .panel-footer > span:first-child {
+    color: #a4acb8;
+    font-family: Consolas,monospace;
+    font-size: .64rem;
+    letter-spacing: .11em;
+  }
+
+  .panel-active {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #d7a65c;
+    font-size: .65rem;
+    font-weight: 750;
+  }
+
+  .panel-active > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d7a65c;
+  }
+
+  .panel-center {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .orbit {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 23px;
+  }
+
+  .orbit-outer,
+  .orbit-inner {
+    position: absolute;
+    border: 1px solid rgba(215,166,92,.22);
+    border-radius: 50%;
+  }
+
+  .orbit-outer {
+    inset: 0;
+  }
+
+  .orbit-inner {
+    inset: 23px;
+    border-color: rgba(215,166,92,.4);
+  }
+
+  .orbit-logo {
+    display: grid;
+    place-items: center;
+    width: 90px;
+    height: 90px;
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 19px;
+    background: #292b2e;
+    color: #f0f1f3;
+    font-size: 1.7rem;
+    font-weight: 800;
+  }
+
+  .orbit-logo span {
+    color: #d7a65c;
+  }
+
+  .panel-center h2 {
+    margin: 0 0 10px;
+    color: #f0f1f3;
+    font-size: 1.5rem;
+  }
+
+  .panel-center p {
+    max-width: 310px;
+    margin: 0;
+    color: #aeb6c1;
+    font-size: .84rem;
+    line-height: 1.75;
+  }
+
+  .panel-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .panel-stats > div {
+    padding: 15px;
+    border: 1px solid #3b414b;
+    border-radius: 10px;
+    background: #232830;
+  }
+
+  .panel-stats strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #d7a65c;
+    font-size: 2rem;
+  }
+
+  .panel-stats span {
+    color: #adb6c0;
+    font-size: .59rem;
+    line-height: 1.5;
+    letter-spacing: .08em;
+  }
+
+  .panel-footer {
+    padding-top: 17px;
+    border-top: 1px solid #3b414a;
+  }
+
+  .panel-footer > span:last-child {
+    color: #d7a65c;
+    font-size: 1.3rem;
+  }
+
+  /* NAVEGACIÓN INTERIOR */
+
+  .chapter-nav {
+    position: sticky;
+    top: 84px;
+    z-index: 40;
+    border-block: 1px solid #303640;
+    background: rgba(24,28,35,.97);
+    backdrop-filter: blur(16px);
+  }
+
+  .chapter-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+    min-height: 62px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .chapter-nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chapter-prefix {
+    flex-shrink: 0;
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .71rem;
+  }
+
+  .chapter-nav a {
+    flex-shrink: 0;
+    color: #b9c1cb;
+    font-size: .8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .chapter-nav a:hover {
+    color: #e0b173;
+  }
+
+  /* CABECERAS DE SECCIÓN */
+
+  .intro-section,
+  .experience-card,
+  .civil-section,
+  .abilities-section {
+    scroll-margin-top: 160px;
+  }
+
+  .intro-section {
+    padding: 95px 0 32px;
+    background: #101216;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 23px;
+    color: #d7a65c;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .16em;
+  }
+
+  .section-label > span {
+    display: block;
+    width: 29px;
+    height: 1px;
+    background: #d7a65c;
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+    align-items: end;
+    gap: 42px;
+  }
+
+  .section-heading h2,
+  .closing-section h2 {
+    margin: 0;
+    color: #f0f1f3;
+    font-size: clamp(2.6rem,4.4vw,4.7rem);
+    font-weight: 760;
+    line-height: 1.14;
+    letter-spacing: -.057em;
+  }
+
+  .section-heading h2 span,
+  .closing-section h2 span {
+    display: block;
+    color: #d7a65c;
+  }
+
+  .section-heading > p {
+    max-width: 490px;
+    margin: 0 0 5px;
+    color: #afb7c1;
+    font-size: .96rem;
+    line-height: 1.85;
+  }
+
+  /* ====================================== */
+  /*              EXPERIENCIAS             */
+  /* ====================================== */
+
+  .experiences-section {
+    padding: 30px 0 115px;
+    background: #101216;
+  }
+
+  .experiences-list {
+    display: grid;
+    gap: 45px;
+  }
+
+  .experience-card {
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.15fr)
+      minmax(0,.85fr);
+    align-items: stretch;
+    gap: 30px;
+    min-width: 0;
+    padding: 30px;
+    border: 1px solid #353b44;
+    border-radius: 18px;
+    background: #191d24;
+  }
+
+  .experience-card-reverse {
+    grid-template-columns:
+      minmax(0,.85fr)
+      minmax(0,1.15fr);
+  }
+
+  .experience-card-reverse .experience-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .experience-card-reverse .experience-visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .experience-copy,
+  .experience-visual {
+    min-width: 0;
+  }
+
+  .experience-copy {
+    padding: 2px;
+  }
+
+  .experience-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 33px;
+    margin-bottom: 25px;
+  }
+
+  .experience-index {
+    color: #a3adba;
+    font-family: Consolas,monospace;
+    font-size: .7rem;
+    letter-spacing: .1em;
+  }
+
+  .experience-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border: 1px solid #444951;
+    border-radius: 999px;
+    color: #c7cdd6;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  .experience-status.status-current {
+    border-color: rgba(215,166,92,.45);
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a5adba;
+  }
+
+  .status-current .status-dot {
+    background: #d7a65c;
+  }
+
+  /* ====================================== */
+  /*        LOGOS — TAMAÑO CORREGIDO        */
+  /* ====================================== */
+
+  .company-identities {
+    display: block;
+    width: 100%;
+    margin: 0 0 30px;
+  }
+
+  .company-logos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 112px;
+    width: 112px;
+    height: 80px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 112px;
+    max-height: 80px;
+    padding: 12px;
+    overflow: hidden;
+    border: 1px solid #464b55;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 5px 14px rgba(0,0,0,.15);
+  }
+
+  .company-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 1;
+  }
+
+  /* TÍTULOS SIN SUPERPOSICIÓN */
+
+  .experience-title-group {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    clear: both;
+  }
+
+  .experience-category {
+    margin: 0 0 15px;
+    color: #d7a65c;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+  }
+
+  .experience-title-group h3 {
+    margin: 0 0 13px;
+    color: #f1f2f4;
+    font-size: clamp(1.75rem,2.55vw,3.1rem);
+    font-weight: 760;
+    letter-spacing: -.05em;
+    line-height: 1.16;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .experience-title-group h3 span {
+    color: #d7a65c;
+  }
+
+  .experience-company-name {
+    margin: 0 0 24px;
+    color: #e0b173;
+    font-size: .95rem;
+    font-weight: 650;
+    line-height: 1.7;
+  }
+
+  .experience-company-name > span {
+    color: #adb6c1;
+    font-weight: 450;
+  }
+
+  /* INFORMACIÓN BÁSICA */
+
+  .experience-facts {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .fact-card {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #3a414b;
+    border-radius: 10px;
+    background: #232730;
+  }
+
+  .fact-card > span {
+    display: block;
+    margin-bottom: 9px;
+    color: #d7a65c;
+    font-size: .62rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+  }
+
+  .fact-card strong {
+    display: block;
+    color: #e5e8ed;
+    font-size: .8rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* TEXTO DE EXPERIENCIA */
+
+  .experience-paragraphs p {
+    margin: 0 0 16px;
+    color: #b1bac5;
+    font-size: .91rem;
+    line-height: 1.85;
+  }
+
+  .anniversary {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 24px;
+    padding: 17px;
+    border: 1px solid rgba(215,166,92,.32);
+    border-radius: 11px;
+    background: rgba(215,166,92,.065);
+  }
+
+  .anniversary-symbol {
+    color: #d7a65c;
+    font-size: 1.35rem;
+  }
+
+  .anniversary strong {
+    display: block;
+    color: #e6d1ae;
+    font-size: .88rem;
+  }
+
+  .anniversary p {
+    margin: 8px 0 0;
+    color: #b3bdc7;
+    font-size: .82rem;
+    line-height: 1.7;
+  }
+
+  /* RESPONSABILIDADES */
+
+  .responsibilities-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 33px 0 17px;
+    padding-top: 18px;
+    border-top: 1px solid #3b414b;
+    color: #d7a65c;
+    font-size: .66rem;
+    font-weight: 750;
+    letter-spacing: .1em;
+  }
+
+  .responsibilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 11px;
+  }
+
+  .responsibility-card {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid #39414b;
+    border-radius: 11px;
+    background: #232730;
+    transition: border-color .2s ease;
+  }
+
+  .responsibility-card:hover {
+    border-color: rgba(215,166,92,.55);
+  }
+
+  .responsibility-number {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .7rem;
+  }
+
+  .responsibility-card h4 {
+    margin: 11px 0 9px;
+    color: #e9ebef;
+    font-size: .94rem;
+    font-weight: 650;
+    line-height: 1.4;
+  }
+
+  .responsibility-card p {
+    margin: 0;
+    color: #aab5c1;
+    font-size: .79rem;
+    line-height: 1.75;
+  }
+
+  .skills-tags {
+    margin-top: 22px;
+  }
+
+  .technical-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #d7a65c;
+    color: #e0b173;
+    font-size: .85rem;
+    font-weight: 650;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  .technical-link:hover {
+    color: #edbe79;
+  }
+
+  /* FOTOGRAFÍAS */
+
+  .experience-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .experience-photo {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    max-height: 760px;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid #444b55;
+    border-radius: 15px;
+    background: #252b33;
+  }
+
+  .experience-photo > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+
+  .experience-photo:hover > img {
+    transform: scale(1.035);
+  }
+
+  .experience-photo::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(
+      transparent,
+      rgba(8,11,17,.9)
+    );
+    pointer-events: none;
+  }
+
+  .image-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+  }
+
+  .image-caption > span {
+    color: #e0b173;
+    font-family: Consolas,monospace;
+    font-size: .66rem;
+    letter-spacing: .11em;
+  }
+
+  .image-caption strong {
+    color: #f2f3f5;
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .visual-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .visual-footer > span {
+    flex-shrink: 0;
+    width: 30px;
+    height: 1px;
+    background: #d7a65c;
+  }
+
+  .visual-footer p {
+    margin: 0;
+    color: #959eab;
+    font-size: .62rem;
+    letter-spacing: .11em;
+    text-align: right;
+  }
+
+  /* ====================================== */
+  /*            PROTECCIÓN CIVIL           */
+  /* ====================================== */
+
+  .civil-section {
+    padding: 120px 0;
+    border-block: 1px solid #343a43;
+    background: #171b21;
+  }
+
+  .civil-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0,.82fr)
+      minmax(0,1.18fr);
+    align-items: start;
+    gap: 35px;
+    margin-top: 50px;
+  }
+
+  .civil-visual {
+    position: sticky;
+    top: 172px;
+    min-width: 0;
+  }
+
+  .civil-photo {
+    position: relative;
+    height: 620px;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid #454b54;
+    border-radius: 16px;
+    background: #252b33;
+  }
+
+  .civil-photo > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+
+  .civil-photo:hover > img {
+    transform: scale(1.035);
+  }
+
+  .civil-photo::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(
+      transparent,
+      rgba(9,12,18,.88)
+    );
+  }
+
+  .civil-photo-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 27px;
+  }
+
+  .civil-photo-caption span {
+    display: block;
+    margin-bottom: 9px;
+    color: #e0b173;
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+
+  .civil-photo-caption strong {
+    color: #f0f1f3;
+    font-size: 1.15rem;
+  }
+
+  .civil-logo {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    padding: 12px;
+    overflow: hidden;
+    border: 1px solid #444b54;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+
+  .civil-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .civil-info {
+    min-width: 0;
+  }
+
+  .civil-introduction {
+    padding: 28px;
+    border: 1px solid rgba(215,166,92,.33);
+    border-radius: 14px;
+    background: #22262e;
+  }
+
+  .civil-introduction > span {
+    color: #d7a65c;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .civil-introduction h3 {
+    margin: 18px 0;
+    color: #f0f1f3;
+    font-size: clamp(1.9rem,2.8vw,3rem);
+    line-height: 1.16;
+    letter-spacing: -.05em;
+  }
+
+  .civil-introduction h3 em {
+    display: block;
+    color: #d7a65c;
+    font-style: normal;
+  }
+
+  .civil-introduction p {
+    margin: 0;
+    color: #b5bec9;
+    font-size: .9rem;
+    line-height: 1.85;
+  }
+
+  .civil-introduction p strong {
+    color: #e5e8ed;
+  }
+
+  .civil-roles {
+    display: grid;
+    gap: 14px;
+    margin-top: 17px;
+  }
+
+  .civil-role {
+    display: grid;
+    grid-template-columns: 37px minmax(0,1fr);
+    gap: 16px;
+    min-width: 0;
+    padding: 25px;
+    border: 1px solid #3b424c;
+    border-radius: 13px;
+    background: #21252d;
+    transition: border-color .2s ease;
+  }
+
+  .civil-role:hover {
+    border-color: rgba(215,166,92,.55);
+  }
+
+  .civil-role-number {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: 1.13rem;
+  }
+
+  .civil-role-content {
+    min-width: 0;
+  }
+
+  .civil-role-label {
+    color: #d7a65c;
+    font-size: .64rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+  }
+
+  .civil-role h4 {
+    margin: 11px 0 14px;
+    color: #f0f1f3;
+    font-size: clamp(1.1rem,1.7vw,1.45rem);
+    line-height: 1.4;
+  }
+
+  .civil-role-period {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    max-width: 100%;
+    padding: 9px 11px;
+    border: 1px solid #434a54;
+    border-radius: 8px;
+    background: #2c3039;
+    color: #e2c59a;
+    font-size: .77rem;
+    line-height: 1.5;
+  }
+
+  .civil-role-period svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .civil-role-content > p {
+    margin: 17px 0 0;
+    color: #b1bac5;
+    font-size: .85rem;
+    line-height: 1.8;
+  }
+
+  .civil-role-tags {
+    margin-top: 17px;
+  }
+
+  .civil-role-tags span {
+    border-radius: 7px;
+    font-size: .68rem;
+  }
+
+  .civil-conclusion {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 23px;
+    border: 1px solid rgba(215,166,92,.27);
+    border-radius: 12px;
+    background: rgba(215,166,92,.055);
+  }
+
+  .conclusion-symbol {
+    color: #d7a65c;
+    font-size: 1.3rem;
+  }
+
+  .civil-conclusion p {
+    margin: 0;
+    color: #bdc5cf;
+    font-size: .89rem;
+    line-height: 1.85;
+  }
+
+  /* ====================================== */
+  /*          COMPETENCIAS PERSONALES      */
+  /* ====================================== */
+
+  .abilities-section {
+    padding: 120px 0;
+    background: #101216;
+  }
+
+  .abilities-grid {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .ability-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    padding: 25px;
+    border: 1px solid #373e48;
+    border-radius: 13px;
+    background: #1c2027;
+    transition: border-color .2s ease;
+  }
+
+  .ability-card:hover {
+    border-color: rgba(215,166,92,.6);
+  }
+
+  .ability-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: auto;
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .72rem;
+  }
+
+  .ability-header > span:last-child {
+    font-size: 1.2rem;
+  }
+
+  .ability-card h3 {
+    margin: 30px 0 12px;
+    color: #f0f1f3;
+    font-size: 1.22rem;
+  }
+
+  .ability-card p {
+    margin: 0;
+    color: #adb6c1;
+    font-size: .84rem;
+    line-height: 1.8;
+  }
+
+  /* ====================================== */
+  /*                CIERRE                 */
+  /* ====================================== */
+
+  .closing-section {
+    padding: 115px 0 130px;
+    border-top: 1px solid #343a43;
+    background:
+      radial-gradient(
+        ellipse at 50% 115%,
+        rgba(215,166,92,.08),
+        transparent 65%
+      ),
+      #171b21;
+    text-align: center;
+  }
+
+  .closing-content {
+    max-width: 950px;
+  }
+
+  .section-label.centered {
+    justify-content: center;
+  }
+
+  .closing-section h2 {
+    margin-bottom: 25px;
+  }
+
+  .closing-content > p {
+    max-width: 690px;
+    margin: 0 auto;
+    color: #b0b9c3;
+    font-size: .97rem;
+    line-height: 1.87;
+  }
+
+  .closing-actions {
+    justify-content: center;
+  }
+
+  /* ====================================== */
+  /*               TABLET                 */
+  /* ====================================== */
+
+  @media (max-width: 1150px) {
+    .container {
+      width: min(calc(100% - 56px),1000px);
+    }
+
+    .hero-layout {
+      gap: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem,5.3vw,5rem);
+    }
+
+    .abilities-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .experience-card,
+    .experience-card-reverse {
+      grid-template-columns: minmax(0,1fr);
+      gap: 30px;
+    }
+
+    .experience-card-reverse .experience-copy,
+    .experience-card-reverse .experience-visual {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .experience-photo {
+      width: min(100%,650px);
+      min-height: 390px;
+      max-height: 560px;
+      aspect-ratio: 4 / 3;
+      margin-inline: auto;
+    }
+
+    .civil-layout {
+      gap: 28px;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .hero-layout,
+    .section-heading,
+    .civil-layout {
+      grid-template-columns: minmax(0,1fr);
+    }
+
+    .hero {
+      padding: 85px 0;
+    }
+
+    .hero-panel {
+      width: min(100%,600px);
+      margin-inline: auto;
+    }
+
+    .section-heading {
+      gap: 20px;
+    }
+
+    .civil-visual {
+      position: relative;
+      top: auto;
+      width: min(100%,600px);
+      margin-inline: auto;
+    }
+
+    .civil-photo {
+      height: 520px;
+    }
+
+    .chapter-nav {
+      top: 76px;
+    }
+  }
+
+  /* ====================================== */
+  /*                MÓVIL                 */
+  /* ====================================== */
+
+  @media (max-width: 600px) {
+    .container {
+      width: calc(100% - 36px);
+    }
+
+    .reading-progress {
+      top: 70px;
+    }
+
+    .hero {
+      padding: 60px 0 75px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.55rem,10vw,4rem);
+    }
+
+    .hero-lead,
+    .hero-description {
+      font-size: .93rem;
+    }
+
+    .hero-actions,
+    .closing-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .hero-panel {
+      min-height: 445px;
+      padding: 20px;
+    }
+
+    .orbit {
+      width: 150px;
+      height: 150px;
+    }
+
+    .chapter-nav {
+      top: 70px;
+    }
+
+    .chapter-nav-inner {
+      min-height: 56px;
+      gap: 18px;
+    }
+
+    .chapter-prefix,
+    .chapter-nav a {
+      font-size: .71rem;
+    }
+
+    .intro-section {
+      padding: 73px 0 22px;
+    }
+
+    .section-heading h2,
+    .closing-section h2 {
+      font-size: clamp(2.25rem,9vw,3.5rem);
+    }
+
+    .section-heading > p {
+      font-size: .92rem;
+    }
+
+    .experiences-section {
+      padding-bottom: 76px;
+    }
+
+    .experiences-list {
+      gap: 25px;
+    }
+
+    .experience-card {
+      gap: 25px;
+      padding: 19px;
+      border-radius: 14px;
+    }
+
+    .experience-card-header {
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    /* LOGOS EN MÓVIL */
+
+    .company-identities {
+      margin-bottom: 25px;
+    }
+
+    .company-logos {
+      gap: 10px;
+    }
+
+    .company-logo {
+      flex-basis: 94px;
+      width: 94px;
+      height: 66px;
+      max-width: 94px;
+      max-height: 66px;
+      padding: 9px;
+    }
+
+    .experience-title-group h3 {
+      font-size: clamp(1.65rem,7vw,2.25rem);
+    }
+
+    .experience-company-name {
+      font-size: .89rem;
+    }
+
+    .experience-facts,
+    .responsibilities-grid {
+      grid-template-columns: minmax(0,1fr);
+    }
+
+    .experience-paragraphs p {
+      font-size: .88rem;
+    }
+
+    .experience-photo {
+      min-height: 350px;
+      max-height: 480px;
+      aspect-ratio: 4 / 5;
+      border-radius: 11px;
+    }
+
+    .image-caption {
+      padding: 18px;
+    }
+
+    .visual-footer p {
+      font-size: .58rem;
+    }
+
+    .civil-section,
+    .abilities-section,
+    .closing-section {
+      padding: 75px 0;
+    }
+
+    .civil-layout {
+      margin-top: 33px;
+    }
+
+    .civil-photo {
+      height: 420px;
+    }
+
+    .civil-logo {
+      top: 12px;
+      right: 12px;
+      width: 75px;
+      height: 75px;
+      padding: 9px;
+    }
+
+    .civil-introduction {
+      padding: 21px;
+    }
+
+    .civil-introduction h3 {
+      font-size: 2rem;
+    }
+
+    .civil-role {
+      grid-template-columns: 27px minmax(0,1fr);
+      gap: 11px;
+      padding: 19px;
+    }
+
+    .civil-role-period {
+      font-size: .7rem;
+    }
+
+    .abilities-grid {
+      grid-template-columns: minmax(0,1fr);
+      gap: 13px;
+      margin-top: 35px;
+    }
+
+    .ability-card {
+      min-height: 205px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .hero h1 {
+      font-size: 2.35rem;
+    }
+
+    .company-logo {
+      flex-basis: 86px;
+      width: 86px;
+      max-width: 86px;
+      height: 61px;
+      max-height: 61px;
+    }
+
+    .experience-title-group h3 {
+      font-size: 1.65rem;
+    }
+  }
+
+  /* ACCESIBILIDAD */
+
+  .button:focus-visible,
+  .chapter-nav a:focus-visible,
+  .technical-link:focus-visible {
+    outline: 2px solid #edbe79;
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    :global(html.experience-animations) [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .button,
+    .responsibility-card,
+    .experience-photo img,
+    .civil-photo img,
+    .ability-card,
+    .civil-role {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initExperiencePage(): void {
+    const page = document.querySelector<HTMLElement>(
+      ".hero"
+    );
+
+    if (
+      !page ||
+      page.dataset.initialized === "true"
+    ) {
+      return;
+    }
+
+    page.dataset.initialized = "true";
+
+    // ANIMACIONES AL BAJAR POR LA PÁGINA
+
+    const elements =
+      document.querySelectorAll<HTMLElement>(
+        "[data-reveal]"
+      );
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      !reducedMotion &&
+      "IntersectionObserver" in window
+    ) {
+      document.documentElement.classList.add(
+        "experience-animations"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              currentObserver.unobserve(
+                entry.target
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.03,
+          rootMargin: "0px 0px 70px 0px",
+        }
+      );
+
+      elements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
+
+    // BARRA DE PROGRESO SUPERIOR
+
+    const progressBar =
+      document.querySelector<HTMLElement>(
+        "#experience-progress"
+      );
+
+    function updateProgress(): void {
+      if (!progressBar) {
+        return;
+      }
+
+      const maximum =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const percentage =
+        maximum > 0
+          ? Math.max(
+              0,
+              Math.min(
+                100,
+                (window.scrollY / maximum) * 100
+              )
+            )
+          : 0;
+
+      progressBar.style.width =
+        `${percentage}%`;
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateProgress,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateProgress
+    );
+
+    updateProgress();
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initExperiencePage
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initExperiencePage
+  );
+
+  initExperiencePage();
+</script>

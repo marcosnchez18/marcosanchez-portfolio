@@ -2,294 +2,489 @@
 ---
 const year = new Date().getFullYear();
 
-const instagramUrl = "https://www.instagram.com/marcosnchez18/";
-const tiktokUrl = "https://www.tiktok.com/@marcosnchez18";
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/marcosnchez18",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/marcosanchezES",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/marcosnchez18/",
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@marcosnchez18",
+  },
+];
+
+const navigation = [
+  { name: "Inicio", href: "/" },
+  { name: "Sobre mí", href: "/sobre-mi" },
+  { name: "Desarrollo", href: "/proyectos" },
+  { name: "Otras experiencias", href: "/otras-experiencias" },
+  { name: "Arte", href: "/arte" },
+  { name: "Contacto", href: "/contacto" },
+];
 ---
 
 <footer class="site-footer">
   <div class="footer-container">
-
-    <!-- LOGO + SEPARADOR + REDES -->
     <div class="footer-main">
-
-      <a
-        href="/"
-        class="footer-logo"
-        aria-label="Marco Sánchez - Inicio"
-      >
-        <img
-          src="/images/logo-header.png"
-          alt="Marco Sánchez"
-          width="420"
-          height="100"
-          loading="lazy"
-        />
-      </a>
-
-      <!-- BARRA VERTICAL DORADA -->
-      <span class="footer-separator" aria-hidden="true"></span>
-
-      <!-- REDES SOCIALES -->
-      <nav class="footer-socials" aria-label="Redes sociales">
-
-        <!-- INSTAGRAM -->
+      <div class="footer-identity">
         <a
-          href={instagramUrl}
-          class="social-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram de Marco Sánchez"
-          title="Instagram"
+          href="/"
+          class="footer-brand"
+          aria-label="Marco Sánchez - Inicio"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle
-              cx="17.5"
-              cy="6.5"
-              r="1"
-              fill="currentColor"
-              stroke="none"
-            />
-          </svg>
+          <span class="footer-logo" aria-hidden="true">
+            MS<span>.</span>
+          </span>
+
+          <span class="footer-brand-text">
+            <strong>Marco Sánchez</strong>
+            <small>DESARROLLADOR WEB</small>
+          </span>
         </a>
 
-        <!-- TIKTOK -->
-        <a
-          href={tiktokUrl}
-          class="social-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="TikTok de Marco Sánchez"
-          title="TikTok"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M16.8 2h-3.1v13.3a3.25 3.25 0 1 1-2.8-3.22V8.93a6.37 6.37 0 1 0 5.9 6.35V8.57a9.08 9.08 0 0 0 5.2 1.65V7.09A5.97 5.97 0 0 1 16.8 2Z"
-            />
-          </svg>
+        <p>
+          Un espacio personal donde comparto mi
+          formación, mis proyectos y las experiencias
+          que forman parte de mi recorrido.
+        </p>
+
+        <div class="footer-location">
+          <span class="location-dot"></span>
+          Sanlúcar de Barrameda · Cádiz · España
+        </div>
+      </div>
+
+      <div class="footer-links-column">
+        <h2>EXPLORAR</h2>
+
+        <nav aria-label="Navegación del pie de página">
+          {navigation.map((item) => (
+            <a href={item.href}>
+              {item.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="footer-links-column">
+        <h2>ENCUÉNTRAME</h2>
+
+        <div class="social-links">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>{link.name}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h2>¿HABLAMOS?</h2>
+
+        <p>
+          Si tienes una propuesta, una idea o
+          simplemente quieres contactar conmigo,
+          estaré encantado de escucharte.
+        </p>
+
+        <a href="/contacto" class="footer-contact-button">
+          Contactar conmigo
+          <span aria-hidden="true">↗</span>
         </a>
 
-      </nav>
+        
+      </div>
     </div>
 
-    <!-- COPYRIGHT -->
+    <div class="footer-divider"></div>
+
     <div class="footer-bottom">
-      <p>
-        © {year} · Diseñado y desarrollado por Marco Sánchez.
-        Todos los derechos reservados.
-      </p>
-    </div>
+      <span>© {year} Desarrollado por Marco Sánchez.</span>
 
+      <span class="footer-motto">
+        Desarrollando y aprendiendo cada día.
+      </span>
+
+      <a href="#top" class="back-to-top">
+        Volver arriba
+        <span aria-hidden="true">↑</span>
+      </a>
+    </div>
   </div>
 </footer>
 
 <style>
-  /* FOOTER GENERAL */
+  .site-footer,
+  .site-footer * {
+    box-sizing: border-box;
+  }
 
   .site-footer {
-    background: #100d0b;
-    border-top: 1px solid rgba(215, 166, 92, 0.18);
-    padding: 30px 24px 20px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #303640;
+    background: #101216;
+    font-family: Inter,Arial,Helvetica,sans-serif;
+  }
+
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    top: -240px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.065),
+      transparent 66%
+    );
+    pointer-events: none;
   }
 
   .footer-container {
-    width: min(100%, 1350px);
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 96px),1360px);
     margin-inline: auto;
   }
 
-  /* LOGO Y REDES JUNTOS */
-
   .footer-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns:
+      minmax(0,1.4fr)
+      minmax(0,.7fr)
+      minmax(0,.7fr)
+      minmax(0,1fr);
+    gap: clamp(28px,4vw,65px);
+    padding: 82px 0 75px;
   }
 
-  /* LOGO */
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
 
   .footer-logo {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    text-decoration: none;
+    display: grid;
+    place-items: center;
+    width: 49px;
+    height: 49px;
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 12px;
+    background: linear-gradient(
+      145deg,
+      #252a31,
+      #191d23
+    );
+    color: #f1f3f6;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -.07em;
   }
 
-  .footer-logo img {
-    display: block;
-    width: 220px;
-    max-width: 100%;
-    height: auto;
-    transition: opacity 250ms ease;
+  .footer-logo span {
+    color: #d7a65c;
   }
 
-  .footer-logo:hover img {
-    opacity: 0.8;
+  .footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
-  /* BARRA VERTICAL */
-
-  .footer-separator {
-    width: 1px;
-    height: 34px;
-    flex-shrink: 0;
-    background: rgba(215, 166, 92, 0.55);
+  .footer-brand-text strong {
+    color: #f0f1f3;
+    font-size: 1rem;
+    letter-spacing: -.025em;
   }
 
-  /* REDES SOCIALES */
+  .footer-brand-text small {
+    color: #d7a65c;
+    font-size: .54rem;
+    font-weight: 750;
+    letter-spacing: .15em;
+  }
 
-  .footer-socials {
+  .footer-identity > p {
+    max-width: 340px;
+    margin: 24px 0 20px;
+    color: #aeb6c0;
+    font-size: .87rem;
+    line-height: 1.9;
+  }
+
+  .footer-location {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
+    color: #9ca5b1;
+    font-size: .75rem;
   }
 
-  .social-link {
+  .location-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #d7a65c;
+  }
+
+  .footer-links-column h2,
+  .footer-contact h2 {
+    margin: 8px 0 27px;
+    color: #d7a65c;
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .15em;
+  }
+
+  .footer-links-column nav,
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-links-column nav a {
+    color: #b0b8c4;
+    font-size: .86rem;
+    text-decoration: none;
+    transition:
+      color .2s ease,
+      transform .2s ease;
+  }
+
+  .footer-links-column nav a:hover {
+    color: #e0b173;
+    transform: translateX(3px);
+  }
+
+  .social-links {
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .social-links a {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #b0b8c4;
+    font-size: .86rem;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .social-links a:hover {
+    color: #e0b173;
+  }
+
+  .social-links a span:last-child {
+    color: #d7a65c;
+  }
+
+  .footer-contact p {
+    margin: 0 0 22px;
+    color: #adb5c0;
+    font-size: .85rem;
+    line-height: 1.85;
+  }
+
+  .footer-contact-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    color: #d7a65c;
-    background: transparent;
-
-    border: 1px solid rgba(215, 166, 92, 0.25);
-    border-radius: 10px;
-
+    gap: 15px;
+    min-height: 45px;
+    padding: 11px 15px;
+    border: 1px solid #d7a65c;
+    border-radius: 9px;
+    background: #d7a65c;
+    color: #15171b;
+    font-size: .82rem;
+    font-weight: 750;
     text-decoration: none;
-
     transition:
-      color 250ms ease,
-      background 250ms ease,
-      border-color 250ms ease,
-      transform 250ms ease;
+      background .2s ease,
+      transform .2s ease;
   }
 
-  .social-link svg {
-    width: 21px;
-    height: 21px;
-  }
-
-  .social-link:hover {
-    color: #f0c58c;
-    background: rgba(224, 177, 115, 0.08);
-    border-color: #d7a65c;
+  .footer-contact-button:hover {
+    background: #edbe79;
     transform: translateY(-2px);
   }
 
-  .social-link:focus-visible,
-  .footer-logo:focus-visible {
-    outline: 2px solid #f0c58c;
-    outline-offset: 4px;
+  .footer-cv-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: fit-content;
+    margin-top: 19px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(215,166,92,.6);
+    color: #e0b173;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
   }
 
-  /* COPYRIGHT */
+  .footer-divider {
+    height: 1px;
+    background: #31363e;
+  }
 
   .footer-bottom {
-    margin-top: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 27px 0;
   }
 
-  .footer-bottom p {
-    margin: 0;
-    color: #a99a8c;
-    font-size: 0.78rem;
+  .footer-bottom > span,
+  .back-to-top {
+    color: #929ba8;
+    font-size: .75rem;
     line-height: 1.6;
   }
 
-  /* MÓVILES */
+  .footer-motto {
+    color: #bda27e !important;
+  }
 
-  @media (max-width: 600px) {
-    .site-footer {
-      padding: 26px 14px 20px;
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .back-to-top:hover {
+    color: #e0b173;
+  }
+
+  .back-to-top span {
+    color: #d7a65c;
+    font-size: 1.1rem;
+  }
+
+  .site-footer a:focus-visible {
+    outline: 2px solid #edbe79;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 1150px) {
+    .footer-container {
+      width: min(calc(100% - 56px),1000px);
     }
 
     .footer-main {
-      gap: 12px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 50px 65px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .footer-container {
+      width: calc(100% - 36px);
     }
 
-    .footer-logo img {
-      width: clamp(125px, 38vw, 175px);
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 42px 22px;
+      padding: 65px 0 50px;
     }
 
-    .footer-separator {
-      height: 28px;
+    .footer-identity,
+    .footer-contact {
+      grid-column: 1 / -1;
     }
 
-    .footer-socials {
-      gap: 6px;
+    .footer-identity > p {
+      max-width: 100%;
     }
 
-    .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-    }
-
-    .social-link svg {
-      width: 19px;
-      height: 19px;
+    .footer-links-column h2,
+    .footer-contact h2 {
+      margin-bottom: 22px;
     }
 
     .footer-bottom {
-      margin-top: 18px;
-    }
-
-    .footer-bottom p {
-      max-width: 320px;
-      margin-inline: auto;
-      font-size: 0.72rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 25px 0;
     }
   }
-
-  /* PANTALLAS MUY PEQUEÑAS */
-
-  @media (max-width: 350px) {
-    .footer-main {
-      gap: 8px;
-    }
-
-    .footer-logo img {
-      width: 120px;
-    }
-
-    .social-link {
-      width: 34px;
-      height: 34px;
-    }
-  }
-
-  /* ACCESIBILIDAD */
 
   @media (prefers-reduced-motion: reduce) {
-    .social-link,
-    .footer-logo img {
+    .footer-links-column nav a,
+    .social-links a,
+    .footer-contact-button {
       transition: none;
-    }
-
-    .social-link:hover {
-      transform: none;
     }
   }
 </style>
+
+<script>
+  // Permite que "Volver arriba" funcione
+  // aunque no exista un elemento con id="top".
+
+  function initFooter(): void {
+    const footer = document.querySelector<HTMLElement>(
+      ".site-footer"
+    );
+
+    if (!footer || footer.dataset.initialized === "true") {
+      return;
+    }
+
+    footer.dataset.initialized = "true";
+
+    const topLink = footer.querySelector<HTMLAnchorElement>(
+      ".back-to-top"
+    );
+
+    topLink?.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      window.scrollTo({
+        top: 0,
+        behavior: reduceMotion ? "instant" : "smooth",
+      });
+    });
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    initFooter
+  );
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initFooter
+  );
+
+  initFooter();
+</script>

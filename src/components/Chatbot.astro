@@ -1,0 +1,899 @@
+
+---
+const whatsapp =
+  "https://wa.me/34622541527?text=" +
+  encodeURIComponent(
+    "Hola Marco, he visitado tu web y me gustaría contactar contigo."
+  );
+---
+
+<div class="chat-widget" id="marco-experience-chat">
+  <section
+    class="chat-panel"
+    id="experience-chat-panel"
+    aria-label="Asistente virtual de Marco"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="chat-header">
+      <div class="chat-avatar" aria-hidden="true">MS.</div>
+
+      <div class="chat-heading">
+        <strong>Asistente de Marco</strong>
+
+        <span>
+          <span class="online-dot"></span>
+          Asistente virtual · Disponible
+        </span>
+      </div>
+
+      <button
+        class="chat-close"
+        id="experience-chat-close"
+        type="button"
+        aria-label="Cerrar chat"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      class="chat-messages"
+      id="experience-chat-messages"
+      role="log"
+      aria-live="polite"
+      aria-relevant="additions"
+    >
+      <div class="chat-bubble bot-bubble">
+        ¡Hola! 👋 Soy el asistente virtual de Marco.
+        Puedo contarte su experiencia en Teleperformance,
+        Repsol, Rentel y Protección Civil.
+        ¿Qué te gustaría saber?
+      </div>
+    </div>
+
+    <div class="chat-quick-label">
+      PREGUNTAS FRECUENTES
+    </div>
+
+    <div
+      class="chat-suggestions"
+      id="experience-chat-suggestions"
+    >
+      <button
+        type="button"
+        data-question="¿Dónde trabaja Marco actualmente?"
+      >
+        Trabajo actual
+      </button>
+
+      <button
+        type="button"
+        data-question="¿Qué hace Marco para Repsol?"
+      >
+        Repsol
+      </button>
+
+      <button
+        type="button"
+        data-question="¿Fue socorrista?"
+      >
+        Socorrista
+      </button>
+
+      <button
+        type="button"
+        data-question="¿Qué hizo en Protección Civil?"
+      >
+        Protección Civil
+      </button>
+
+      <button
+        type="button"
+        data-question="¿Qué hizo en Rentel?"
+      >
+        Rentel
+      </button>
+
+      <button
+        type="button"
+        data-question="¿Cómo contacto con Marco?"
+      >
+        Contacto
+      </button>
+    </div>
+
+    <form class="chat-form" id="experience-chat-form">
+      <label
+        for="experience-chat-input"
+        class="visually-hidden"
+      >
+        Escribe tu pregunta
+      </label>
+
+      <input
+        id="experience-chat-input"
+        name="message"
+        type="text"
+        placeholder="Escribe tu pregunta..."
+        maxlength="280"
+        autocomplete="off"
+        required
+      />
+
+      <button type="submit" aria-label="Enviar mensaje">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m22 2-7 20-4-9-9-4Z" />
+          <path d="M22 2 11 13" />
+        </svg>
+      </button>
+    </form>
+
+    <p class="chat-disclaimer">
+      Respuestas automáticas · Sin IA generativa
+    </p>
+  </section>
+
+  <button
+    type="button"
+    class="chat-toggle"
+    id="experience-chat-toggle"
+    aria-label="Abrir asistente virtual"
+    aria-controls="experience-chat-panel"
+    aria-expanded="false"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3H13a8.48 8.48 0 0 1 8 8v.5Z" />
+    </svg>
+
+    <span>¿Hablamos?</span>
+  </button>
+</div>
+
+<style>
+  .chat-widget,
+  .chat-widget * {
+    box-sizing: border-box;
+  }
+
+  .chat-widget {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+
+  .chat-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 53px;
+    padding: 13px 20px;
+    border: 1px solid #e3b976;
+    border-radius: 999px;
+    background: #d7a65c;
+    color: #111318;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 10px 32px rgba(0,0,0,.35);
+    transition:
+      background .2s ease,
+      transform .2s ease;
+  }
+
+  .chat-toggle:hover {
+    background: #edbe79;
+    transform: translateY(-2px);
+  }
+
+  .chat-toggle svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .chat-panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 14px);
+    display: flex;
+    flex-direction: column;
+    width: min(385px,calc(100vw - 28px));
+    height: min(540px,calc(100dvh - 115px));
+    overflow: hidden;
+    border: 1px solid #3a3f47;
+    border-radius: 17px;
+    background: #171a20;
+    color: #e8eaee;
+    box-shadow: 0 25px 75px rgba(0,0,0,.55);
+  }
+
+  .chat-panel[hidden] {
+    display: none;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    padding: 15px;
+    border-bottom: 1px solid #353941;
+    background: #20242b;
+  }
+
+  .chat-avatar {
+    display: grid;
+    place-items: center;
+    width: 41px;
+    height: 41px;
+    flex-shrink: 0;
+    border: 1px solid rgba(215,166,92,.6);
+    border-radius: 12px;
+    background: rgba(215,166,92,.08);
+    color: #d7a65c;
+    font-size: .91rem;
+    font-weight: 800;
+  }
+
+  .chat-heading {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .chat-heading strong {
+    color: #f0f1f3;
+    font-size: 13px;
+  }
+
+  .chat-heading > span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #a8aeb8;
+    font-size: 10px;
+  }
+
+  .online-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab99c;
+  }
+
+  .chat-close {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #aeb4be;
+    cursor: pointer;
+  }
+
+  .chat-close:hover {
+    background: #30353d;
+  }
+
+  .chat-close svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .chat-messages {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  :global(#marco-experience-chat .chat-bubble) {
+    width: fit-content;
+    max-width: 91%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  :global(#marco-experience-chat .bot-bubble) {
+    align-self: flex-start;
+    border: 1px solid #383d47;
+    border-top-left-radius: 4px;
+    background: #292e37;
+    color: #e8eaee;
+  }
+
+  :global(#marco-experience-chat .user-bubble) {
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    background: #d7a65c;
+    color: #13151a;
+  }
+
+  :global(#marco-experience-chat .chat-page-link),
+  :global(#marco-experience-chat .chat-whatsapp) {
+    display: inline-flex;
+    align-self: flex-start;
+    max-width: 100%;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  :global(#marco-experience-chat .chat-page-link) {
+    border: 1px solid rgba(215,166,92,.4);
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+  }
+
+  :global(#marco-experience-chat .chat-whatsapp) {
+    border: 1px solid #d7a65c;
+    background: #d7a65c;
+    color: #141619;
+  }
+
+  .chat-quick-label {
+    padding: 10px 15px 7px;
+    border-top: 1px solid #30343c;
+    background: #1c2027;
+    color: #868d99;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 4px 14px 12px;
+    background: #1c2027;
+  }
+
+  .chat-suggestions button {
+    min-height: 30px;
+    padding: 7px 10px;
+    border: 1px solid #414650;
+    border-radius: 999px;
+    background: #252a32;
+    color: #d8ba8c;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .chat-suggestions button:hover {
+    border-color: #d7a65c;
+    color: #f0c58c;
+  }
+
+  .chat-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border-top: 1px solid #353941;
+    background: #20242b;
+  }
+
+  .chat-form input {
+    flex: 1;
+    min-width: 0;
+    min-height: 39px;
+    padding: 10px 12px;
+    border: 1px solid #414650;
+    border-radius: 9px;
+    outline: 0;
+    background: #171a20;
+    color: #f0f1f3;
+    font-family: inherit;
+    font-size: 12px;
+  }
+
+  .chat-form input:focus {
+    border-color: #d7a65c;
+  }
+
+  .chat-form input::placeholder {
+    color: #858c98;
+  }
+
+  .chat-form button {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 9px;
+    background: #d7a65c;
+    color: #15171b;
+    cursor: pointer;
+  }
+
+  .chat-form button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .chat-disclaimer {
+    margin: 0;
+    padding: 0 12px 12px;
+    background: #20242b;
+    color: #858c98;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .chat-widget button:focus-visible,
+  :global(#marco-experience-chat a:focus-visible) {
+    outline: 2px solid #edbe79;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .chat-widget {
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .chat-panel {
+      width: calc(100vw - 24px);
+      height: min(530px,calc(100dvh - 100px));
+    }
+
+    .chat-toggle {
+      min-height: 48px;
+      padding: 12px 16px;
+      font-size: 12px;
+    }
+
+    .chat-suggestions button {
+      font-size: 9.5px;
+    }
+  }
+</style>
+
+<script>
+  type BotReply = {
+    message: string;
+    link?: {
+      url: string;
+      label: string;
+    };
+  };
+
+  const contactUrl =
+    "https://wa.me/34622541527?text=" +
+    encodeURIComponent(
+      "Hola Marco, he visto tu web y me gustaría contactar contigo."
+    );
+
+  function normalizeQuestion(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+  function getAnswer(question: string): BotReply {
+    const q = normalizeQuestion(question);
+
+    const includesAny = (terms: string[]) =>
+      terms.some((term) => q.includes(term));
+
+    if (includesAny([
+      "socorrista",
+      "socorrismo",
+      "salvamento",
+    ])) {
+      return {
+        message:
+          "Sí. Marco trabajó como socorrista acuático " +
+          "en playa en Sanlúcar de Barrameda, dentro " +
+          "de Protección Civil, desde el 1 de julio " +
+          "hasta el 15 de septiembre de 2024.",
+        link: {
+          url: "/otras-experiencias#proteccion-civil",
+          label: "Ver experiencia en Protección Civil ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "proteccion civil",
+      "voluntario",
+      "vigilante",
+      "torre",
+      "playa",
+    ])) {
+      return {
+        message:
+          "En Protección Civil desempeñó tres funciones: " +
+          "vigilante de playa en torre en verano de 2023, " +
+          "socorrista acuático en verano de 2024 " +
+          "y voluntario en servicios desde junio de 2023 " +
+          "hasta octubre de 2024.",
+        link: {
+          url: "/otras-experiencias#proteccion-civil",
+          label: "Consultar las tres funciones ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "repsol",
+      "teleperformance",
+      "trabaja",
+      "trabajo actual",
+      "energia",
+      "energetico",
+      "comercial",
+      "factura",
+    ])) {
+      return {
+        message:
+          "Marco trabaja desde el 5 de febrero de 2025 " +
+          "en Teleperformance Spain, en Jerez de la Frontera, " +
+          "dentro del proyecto Repsol Luz y Gas. Tiene experiencia " +
+          "en campañas frías y calientes, atención al cliente, " +
+          "asesoramiento comercial y análisis de facturas.",
+        link: {
+          url: "/otras-experiencias#teleperformance",
+          label: "Ver experiencia comercial ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "rentel",
+      "programacion",
+      "desarrollo",
+      "full stack",
+      "practicas",
+    ])) {
+      return {
+        message:
+          "Marco realizó prácticas como desarrollador " +
+          "web Full Stack en Rentel Comunicaciones S. L., " +
+          "del 14 de octubre al 20 de diciembre de 2024. " +
+          "Puedes conocer su perfil técnico en Desarrollo.",
+        link: {
+          url: "/proyectos#experiencia",
+          label: "Ver experiencia técnica ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "contacto",
+      "contactar",
+      "whatsapp",
+      "telefono",
+      "hablar",
+    ])) {
+      return {
+        message:
+          "Puedes hablar con Marco directamente por " +
+          "WhatsApp o consultar su página de Contacto.",
+        link: {
+          url: contactUrl,
+          label: "Contactar por WhatsApp ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "curriculum",
+      "curriculo",
+      "cv",
+    ])) {
+      return {
+        message:
+          "Puedes descargar el currículum de Marco " +
+          "para consultar su formación y trayectoria.",
+        link: {
+          url: "/cv/Marco-Sanchez-CV.pdf",
+          label: "Ver currículum ↗",
+        },
+      };
+    }
+
+    if (includesAny([
+      "hola",
+      "buenas",
+      "hey",
+    ])) {
+      return {
+        message:
+          "¡Hola! 👋 Puedo ayudarte con sus experiencias " +
+          "en Teleperformance, Repsol, Rentel, " +
+          "socorrismo y Protección Civil.",
+      };
+    }
+
+    return {
+      message:
+        "Puedo responder preguntas sobre la trayectoria " +
+        "profesional de Marco, sus fechas y funciones. " +
+        "Para una consulta más específica, puedes " +
+        "contactar con él directamente.",
+      link: {
+        url: contactUrl,
+        label: "Hablar con Marco ↗",
+      },
+    };
+  }
+
+  function initExperienceChat(): void {
+    const widget = document.querySelector<HTMLElement>(
+      "#marco-experience-chat"
+    );
+
+    if (
+      !widget ||
+      widget.dataset.initialized === "true"
+    ) {
+      return;
+    }
+
+    const toggle =
+      widget.querySelector<HTMLButtonElement>(
+        "#experience-chat-toggle"
+      );
+
+    const close =
+      widget.querySelector<HTMLButtonElement>(
+        "#experience-chat-close"
+      );
+
+    const panel =
+      widget.querySelector<HTMLElement>(
+        "#experience-chat-panel"
+      );
+
+    const messages =
+      widget.querySelector<HTMLElement>(
+        "#experience-chat-messages"
+      );
+
+    const form =
+      widget.querySelector<HTMLFormElement>(
+        "#experience-chat-form"
+      );
+
+    const input =
+      widget.querySelector<HTMLInputElement>(
+        "#experience-chat-input"
+      );
+
+    const suggestions =
+      widget.querySelector<HTMLElement>(
+        "#experience-chat-suggestions"
+      );
+
+    if (
+      !toggle ||
+      !close ||
+      !panel ||
+      !messages ||
+      !form ||
+      !input ||
+      !suggestions
+    ) {
+      return;
+    }
+
+    widget.dataset.initialized = "true";
+
+    const ui = {
+      toggle,
+      close,
+      panel,
+      messages,
+      form,
+      input,
+      suggestions,
+    };
+
+    function setOpen(open: boolean): void {
+      ui.panel.toggleAttribute("hidden", !open);
+
+      ui.panel.setAttribute(
+        "aria-hidden",
+        String(!open)
+      );
+
+      ui.toggle.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+      ui.toggle.setAttribute(
+        "aria-label",
+        open
+          ? "Cerrar asistente virtual"
+          : "Abrir asistente virtual"
+      );
+
+      if (open) {
+        ui.input.focus();
+      } else {
+        ui.toggle.focus();
+      }
+    }
+
+    function addMessage(
+      text: string,
+      sender: "user" | "bot"
+    ): void {
+      const bubble = document.createElement("div");
+
+      bubble.className =
+        sender === "user"
+          ? "chat-bubble user-bubble"
+          : "chat-bubble bot-bubble";
+
+      bubble.textContent = text;
+
+      ui.messages.appendChild(bubble);
+
+      ui.messages.scrollTop =
+        ui.messages.scrollHeight;
+    }
+
+    function addLink(url: string, label: string): void {
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.textContent = label;
+
+      link.className = url.includes("wa.me/")
+        ? "chat-whatsapp"
+        : "chat-page-link";
+
+      if (url.startsWith("https://")) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+
+      ui.messages.appendChild(link);
+    }
+
+    function sendQuestion(value: string): void {
+      const question = value.trim();
+
+      if (!question) {
+        return;
+      }
+
+      addMessage(question, "user");
+
+      const answer = getAnswer(question);
+
+      addMessage(answer.message, "bot");
+
+      if (answer.link) {
+        addLink(
+          answer.link.url,
+          answer.link.label
+        );
+      }
+
+      ui.messages.scrollTop =
+        ui.messages.scrollHeight;
+    }
+
+    ui.toggle.addEventListener("click", () => {
+      setOpen(ui.panel.hasAttribute("hidden"));
+    });
+
+    ui.close.addEventListener("click", () => {
+      setOpen(false);
+    });
+
+    ui.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      sendQuestion(ui.input.value);
+
+      ui.input.value = "";
+      ui.input.focus();
+    });
+
+    ui.suggestions.addEventListener(
+      "click",
+      (event) => {
+        const target = event.target;
+
+        if (!(target instanceof Element)) {
+          return;
+        }
+
+        const button =
+          target.closest<HTMLButtonElement>(
+            "button[data-question]"
+          );
+
+        if (button) {
+          sendQuestion(
+            button.dataset.question ?? ""
+          );
+        }
+      }
+    );
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        !ui.panel.hasAttribute("hidden")
+      ) {
+        setOpen(false);
+      }
+    });
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initExperienceChat
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initExperienceChat
+  );
+
+  initExperienceChat();
+</script>

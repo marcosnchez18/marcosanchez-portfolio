@@ -1,0 +1,5507 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const github = "https://github.com/marcosnchez18";
+const projectGithub = "https://github.com/marcosnchez18/tfg-barberia";
+const rentelWebsite = "https://rentel.es/";
+
+const whatsapp =
+  "https://wa.me/34622541527?text=" +
+  encodeURIComponent(
+    "Hola Marco, he visitado tu web y me gustaría hablar contigo sobre desarrollo web."
+  );
+
+const skillGroups = [
+  {
+    number: "01",
+    name: "Frontend",
+    description:
+      "Interfaces, componentes, estilos, interactividad y experiencias adaptadas a cada pantalla.",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Angular",
+      "Vue.js",
+      "Next.js",
+      "Astro",
+      "Tailwind CSS",
+      "Bootstrap",
+    ],
+  },
+  {
+    number: "02",
+    name: "Backend",
+    description:
+      "Lógica de negocio, rutas, controladores, autenticación, validaciones y procesamiento de datos.",
+    technologies: [
+      "PHP",
+      "Laravel",
+      "Python",
+      "Django",
+      "FastAPI",
+      "Java",
+      "C#",
+      ".NET",
+      "Node.js",
+    ],
+  },
+  {
+    number: "03",
+    name: "Datos y herramientas",
+    description:
+      "Persistencia de información, consultas, integración entre sistemas y herramientas de desarrollo.",
+    technologies: [
+      "PostgreSQL",
+      "MySQL",
+      "MariaDB",
+      "SQL Server",
+      "SQL",
+      "APIs REST",
+      "AJAX",
+      "Git",
+      "GitHub",
+      "Linux",
+    ],
+  },
+];
+
+const practiceTasks = [
+  {
+    number: "01",
+    title: "Desarrollo de interfaces",
+    description:
+      "Trabajo con vistas y componentes para presentar información de forma clara, responsive y coherente con las necesidades de una aplicación.",
+    tags: ["Frontend", "JavaScript", "CSS", "React / Angular"],
+  },
+  {
+    number: "02",
+    title: "Lógica y funcionalidades",
+    description:
+      "Participación en tareas de desarrollo backend con PHP y Laravel, trabajando con rutas, controladores, formularios y tratamiento de datos.",
+    tags: ["PHP", "Laravel", "Backend"],
+  },
+  {
+    number: "03",
+    title: "Bases de datos",
+    description:
+      "Trabajo con información estructurada, consultas SQL y conexión entre aplicaciones y bases de datos relacionales.",
+    tags: ["SQL", "MySQL", "PostgreSQL"],
+  },
+  {
+    number: "04",
+    title: "Integración y trabajo técnico",
+    description:
+      "Contacto con servicios y APIs REST, autenticación, control de versiones con Git y entornos de desarrollo basados en Linux.",
+    tags: ["APIs REST", "Git", "Linux"],
+  },
+];
+
+const problemSteps = [
+  {
+    number: "01",
+    title: "Entender el fallo",
+    text:
+      "Antes de modificar código, intento reproducir el problema, identificar qué debería ocurrir y localizar dónde empieza a fallar el flujo.",
+    tool: "Reproducción · Análisis",
+  },
+  {
+    number: "02",
+    title: "Seguir el recorrido",
+    text:
+      "Reviso la interfaz, las peticiones, las rutas, la lógica del servidor y los datos, según la capa de la aplicación que esté implicada.",
+    tool: "DevTools · Logs · SQL",
+  },
+  {
+    number: "03",
+    title: "Corregir con criterio",
+    text:
+      "Busco una solución comprensible y mantenible, evitando cambiar partes de la aplicación que no están relacionadas con el error.",
+    tool: "Depuración · Validaciones",
+  },
+  {
+    number: "04",
+    title: "Comprobar el resultado",
+    text:
+      "Verifico el caso inicial y otros escenarios relacionados, como campos vacíos, datos incorrectos o cambios de estado inesperados.",
+    tool: "Pruebas · Git",
+  },
+];
+
+const clientFeatures = [
+  {
+    icon: "01",
+    title: "Reserva de citas",
+    description:
+      "Selección de barbero, servicio, fecha y hora desde una interfaz pensada para el cliente.",
+  },
+  {
+    icon: "02",
+    title: "Pagos flexibles",
+    description:
+      "Posibilidad de elegir PayPal o pago en efectivo según la reserva.",
+  },
+  {
+    icon: "03",
+    title: "Gestión personal",
+    description:
+      "Modificación y cancelación de citas, consulta del historial y valoraciones.",
+  },
+  {
+    icon: "04",
+    title: "Notificaciones",
+    description:
+      "Confirmaciones mediante correo electrónico e integración con servicios de Google.",
+  },
+  {
+    icon: "05",
+    title: "Portal de empleo",
+    description:
+      "Consulta de vacantes y envío de candidaturas a la barbería.",
+  },
+  {
+    icon: "06",
+    title: "Fidelización",
+    description:
+      "Sistema de recompensas, descuentos y reglas asociadas al comportamiento del cliente.",
+  },
+];
+
+const adminFeatures = [
+  {
+    number: "01",
+    title: "Panel de administración",
+    text:
+      "Acceso para el personal de la barbería con un entorno de gestión propio.",
+  },
+  {
+    number: "02",
+    title: "Control de citas",
+    text:
+      "Consulta, edición y cancelación de reservas, con estados como pendiente, completada o ausencia.",
+  },
+  {
+    number: "03",
+    title: "Análisis económico",
+    text:
+      "Información de ganancias y estadísticas mensuales para conocer la evolución del negocio.",
+  },
+  {
+    number: "04",
+    title: "Comunicación interna",
+    text:
+      "Publicación de noticias y avisos para mejorar la organización.",
+  },
+  {
+    number: "05",
+    title: "Gestión de candidaturas",
+    text:
+      "Revisión de solicitudes recibidas desde el portal de empleo.",
+  },
+  {
+    number: "06",
+    title: "Gestión del negocio",
+    text:
+      "Administración de servicios y otros elementos operativos desde una plataforma centralizada.",
+  },
+];
+
+const architecture = [
+  {
+    number: "01",
+    name: "React",
+    role: "INTERFAZ",
+    text: "Componentes JSX y experiencia interactiva.",
+  },
+  {
+    number: "02",
+    name: "Inertia.js",
+    role: "CONEXIÓN",
+    text: "Comunicación entre las vistas y Laravel.",
+  },
+  {
+    number: "03",
+    name: "Laravel 10",
+    role: "SERVIDOR",
+    text: "Rutas, controladores y lógica de negocio.",
+  },
+  {
+    number: "04",
+    name: "PostgreSQL",
+    role: "DATOS",
+    text: "Persistencia y relaciones de la aplicación.",
+  },
+];
+---
+
+<MainLayout
+  title="Desarrollo web | Marco Sánchez"
+  description="Experiencia de Marco Sánchez en desarrollo frontend, backend y bases de datos. Prácticas en Rentel Comunicaciones y proyecto Barber's 18 desarrollado con Laravel, React e Inertia.js."
+>
+
+  <!-- BARRA DE PROGRESO DE LECTURA -->
+
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+  <!-- ======================================= -->
+  <!--              HERO                     -->
+  <!-- ======================================= -->
+
+  <section class="dev-hero" aria-labelledby="dev-title">
+
+    <div class="hero-grid-pattern" aria-hidden="true"></div>
+    <div class="hero-ambient-light" aria-hidden="true"></div>
+
+    <div class="container hero-layout">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow-badge">
+          <span class="status-pulse"></span>
+          MI PERFIL TÉCNICO
+        </div>
+
+        <p class="hero-kicker">
+          DESARROLLO WEB · FRONTEND · BACKEND
+        </p>
+
+        <h1 id="dev-title">
+          Del problema
+          <span>a la solución.</span>
+          <em>Del diseño al código.</em>
+        </h1>
+
+        <p class="hero-description">
+          Para mí, programar no es solo escribir instrucciones.
+          Es comprender una necesidad, plantear una solución
+          y construir algo que realmente funcione.
+        </p>
+
+        
+
+        <div class="hero-pills">
+          <span><i></i> Full Stack</span>
+          <span>Frontend</span>
+          <span>Backend</span>
+          <span>Bases de datos</span>
+          <span>Integraciones</span>
+        </div>
+
+        <div class="hero-actions">
+
+          <a href="#barbers18" class="button primary-button">
+            Descubrir Barber’s 18
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <a href="#experiencia" class="button secondary-button">
+            Mi experiencia
+            <span aria-hidden="true">↓</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- PANEL VISUAL DE DESARROLLO -->
+
+      <div class="hero-editor">
+
+        <div class="editor-window">
+
+          <div class="editor-top">
+            <div class="window-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="editor-tab">
+              <strong>TS</strong>
+              developer.ts
+            </div>
+
+            <span class="editor-status">● ACTIVE</span>
+          </div>
+
+          <div class="editor-content" aria-label="Ejemplo decorativo de código TypeScript">
+
+            <div class="code-line">
+              <span>01</span>
+              <code><b>interface</b> Developer <em>{'{'}</em></code>
+            </div>
+
+            <div class="code-line">
+              <span>02</span>
+              <code>  name: <i>string</i>;</code>
+            </div>
+
+            <div class="code-line">
+              <span>03</span>
+              <code>  focus: <i>string[]</i>;</code>
+            </div>
+
+            <div class="code-line">
+              <span>04</span>
+              <code>  learning: <i>boolean</i>;</code>
+            </div>
+
+            <div class="code-line">
+              <span>05</span>
+              <code><em>{'}'}</em></code>
+            </div>
+
+            <div class="code-line empty-line">
+              <span>06</span>
+              <code>&nbsp;</code>
+            </div>
+
+            <div class="code-line">
+              <span>07</span>
+              <code><b>const</b> marco: Developer = <em>{'{'}</em></code>
+            </div>
+
+            <div class="code-line">
+              <span>08</span>
+              <code>  name: <strong>"Marco Sánchez"</strong>,</code>
+            </div>
+
+            <div class="code-line">
+              <span>09</span>
+              <code>  focus: [</code>
+            </div>
+
+            <div class="code-line">
+              <span>10</span>
+              <code>    <strong>"Frontend"</strong>,</code>
+            </div>
+
+            <div class="code-line">
+              <span>11</span>
+              <code>    <strong>"Backend"</strong>,</code>
+            </div>
+
+            <div class="code-line">
+              <span>12</span>
+              <code>    <strong>"Databases"</strong></code>
+            </div>
+
+            <div class="code-line">
+              <span>13</span>
+              <code>  ],</code>
+            </div>
+
+            <div class="code-line">
+              <span>14</span>
+              <code>  learning: <u>true</u></code>
+            </div>
+
+            <div class="code-line">
+              <span>15</span>
+              <code><em>{'}'}</em>;</code>
+            </div>
+
+          </div>
+
+          <div class="editor-bottom">
+            <span><i></i> Sin errores de compilación</span>
+            <span>TypeScript · UTF-8</span>
+          </div>
+
+        </div>
+
+        <div class="floating-tag floating-tag-top">
+          <span class="floating-tag-icon">{"</>"}</span>
+
+          <div>
+            <strong>Desarrollo web</strong>
+            <small>De la idea al producto</small>
+          </div>
+        </div>
+
+        <div class="floating-tag floating-tag-bottom">
+          <span class="floating-tag-check">✓</span>
+
+          <div>
+            <strong>Aprendizaje continuo</strong>
+            <small>Construir · Probar · Mejorar</small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <a href="#experiencia" class="scroll-hint">
+      <span class="scroll-icon" aria-hidden="true">↓</span>
+      DESLIZA PARA EXPLORAR
+    </a>
+
+  </section>
+
+  <!-- ======================================= -->
+  <!--         NAVEGACIÓN DE SECCIONES        -->
+  <!-- ======================================= -->
+
+  <nav class="section-navigation" aria-label="Navegación de desarrollo">
+    <div class="container section-nav-inner">
+
+      <span class="section-nav-label">EXPLORAR /</span>
+
+      <a href="#experiencia">Experiencia</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#metodologia">Cómo trabajo</a>
+      <a href="#barbers18" class="section-nav-featured">
+        Barber’s 18 <span>↗</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- ======================================= -->
+  <!--            EXPERIENCIA                -->
+  <!-- ======================================= -->
+
+  <section
+    class="experience-section"
+    id="experiencia"
+    aria-labelledby="experience-title"
+  >
+    <div class="container">
+
+      <div class="section-eyebrow" data-reveal>
+        <span></span>
+        01 / EXPERIENCIA PROFESIONAL
+      </div>
+
+      <div class="section-intro" data-reveal>
+        <h2 id="experience-title">
+          Aprender código
+          <span>en un entorno real.</span>
+        </h2>
+
+        <p>
+          Las prácticas fueron mi primer contacto
+          con un entorno profesional de desarrollo web,
+          más allá de los ejercicios y proyectos de clase.
+        </p>
+      </div>
+
+      <!-- TARJETA PRINCIPAL RENTEL -->
+
+      <div class="experience-highlight" data-reveal>
+
+        <div class="experience-header">
+
+          <div class="company-icon" aria-hidden="true">
+            R<span>.</span>
+          </div>
+
+          <div class="company-heading">
+            <span>PRÁCTICAS DE FORMACIÓN</span>
+            <h3>Rentel Comunicaciones S. L.</h3>
+            <p>Sanlúcar de Barrameda · Cádiz</p>
+          </div>
+
+          <span class="experience-date">
+            OCT — DIC 2024
+          </span>
+
+        </div>
+
+        <div class="experience-body">
+
+          <div class="experience-main">
+
+            <div class="role-label">
+              <span class="role-dot"></span>
+              DESARROLLO WEB FULL STACK
+            </div>
+
+            <h4>
+              De la formación
+              <span>a la práctica profesional.</span>
+            </h4>
+
+            <p>
+              Realicé mi período de prácticas en: <br>
+              <strong>Rentel Comunicaciones S.L;</strong>,
+              una empresa de Sanlúcar de Barrameda
+              vinculada a las telecomunicaciones
+              y a la digitalización de negocios.
+            </p>
+
+            <p>
+              La compañía ofrece soluciones digitales
+              para empresas, incluyendo desarrollo de
+              aplicaciones, automatización de procesos
+              e integración de servicios.
+            </p>
+
+            <p>
+              Durante mis prácticas trabajé en tareas
+              relacionadas con el
+              <strong>desarrollo frontend y backend</strong>,
+              utilizando tecnologías como PHP y Laravel,
+              además de herramientas y conocimientos
+              relacionados con interfaces web, bases
+              de datos y comunicación entre sistemas.
+            </p>
+
+            <div class="experience-links">
+              <a
+                href={rentelWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-link"
+              >
+                Conocer Rentel
+                <span aria-hidden="true">↗</span>
+              </a>
+
+              <span class="experience-divider"></span>
+
+              <span>14 OCT — 20 DIC 2024</span>
+            </div>
+
+          </div>
+
+          <!-- RESUMEN LATERAL -->
+
+          <aside class="experience-side">
+            <div class="experience-side-top">
+              <span>EXPERIENCIA / 001</span>
+              <span class="gold-arrow">↗</span>
+            </div>
+
+            <div class="experience-side-center">
+              <span class="side-code">{"</>"}</span>
+              <h5>Full Stack</h5>
+              <p>
+                Comprender tanto lo que
+                ve el usuario como lo
+                que ocurre en el servidor.
+              </p>
+            </div>
+
+            <div class="experience-side-bottom">
+              <span>PHP</span>
+              <span>Laravel</span>
+              <span>SQL</span>
+              <span>Git</span>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+
+      <!-- TAREAS DE PRÁCTICAS -->
+
+      <div class="subsection-header" data-reveal>
+        <div>
+          <span class="small-label">
+            MIS ÁREAS DE TRABAJO
+          </span>
+
+          <h3>
+            Una aplicación tiene
+            <span>muchas capas.</span>
+          </h3>
+        </div>
+
+        <p>
+          Durante esta etapa pude acercarme a distintas
+          partes del desarrollo de aplicaciones web.
+        </p>
+      </div>
+
+      <div class="practice-grid">
+
+        {practiceTasks.map((task) => (
+          <article class="practice-card" data-reveal>
+
+            <div class="practice-card-top">
+              <span>{task.number} / 04</span>
+              <span class="practice-card-icon" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+            <h4>{task.title}</h4>
+
+            <p>{task.description}</p>
+
+            <div class="practice-tags">
+              {task.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+
+      <div class="experience-note" data-reveal>
+        <span class="note-icon">✦</span>
+
+        <p>
+          <strong>Lo que me aportaron las prácticas:</strong><br>
+
+          Esta experiencia me permitió comprender que el desarrollo de software va mucho más allá de implementar funcionalidades. Un buen código debe ser limpio, estructurado, mantenible y escalable, siguiendo buenas prácticas que faciliten su comprensión, modificación y evolución. Considero fundamental desarrollar soluciones que no solo respondan a las necesidades actuales, sino que también permitan incorporar nuevas funcionalidades y simplifiquen el trabajo de los futuros desarrolladores que deban mantener o ampliar el proyecto.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================= -->
+  <!--            TECNOLOGÍAS                -->
+  <!-- ======================================= -->
+
+  <section
+    class="skills-section"
+    id="tecnologias"
+    aria-labelledby="skills-title"
+  >
+    <div class="container">
+
+      <div class="section-eyebrow" data-reveal>
+        <span></span>
+        02 / CONOCIMIENTOS TÉCNICOS
+      </div>
+
+      <div class="section-intro" data-reveal>
+        <h2 id="skills-title">
+          Mis herramientas
+          <span>para construir.</span>
+        </h2>
+
+        <p>
+          Estas son tecnologías que he estudiado,
+          utilizado o explorado durante mi formación
+          y mis proyectos. No todas representan
+          experiencia laboral profesional.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+
+        {skillGroups.map((group) => (
+          <article class="skill-card" data-reveal>
+
+            <div class="skill-card-top">
+              <span>{group.number} / 03</span>
+              <span class="skill-symbol">
+                {group.number === "01"
+                  ? "</>"
+                  : group.number === "02"
+                    ? "{ }"
+                    : "DB"}
+              </span>
+            </div>
+
+            <h3>{group.name}</h3>
+
+            <p>{group.description}</p>
+
+            <div class="skill-tags">
+              {group.technologies.map((technology) => (
+                <span>{technology}</span>
+              ))}
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+
+      <!-- VISIÓN FULL STACK -->
+
+      <div class="fullstack-banner" data-reveal>
+
+        <div class="fullstack-code" aria-hidden="true">
+          {"<"}
+          <span>fullstack</span>
+          {"/>"}
+        </div>
+
+        <div class="fullstack-text">
+          <span>MI ENFOQUE</span>
+
+          <h3>
+            Entender el sistema completo.
+          </h3>
+
+          <p>
+            Una interfaz puede ser atractiva, pero necesita
+            una lógica sólida detrás. Y un backend bien
+            construido también necesita una experiencia
+            de usuario clara. Me interesa aprender
+            cómo se conectan ambas partes.
+          </p>
+        </div>
+
+        <span class="banner-arrow" aria-hidden="true">
+          ↗
+        </span>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================= -->
+  <!--         RESOLUCIÓN DE PROBLEMAS        -->
+  <!-- ======================================= -->
+
+  <section
+    class="method-section"
+    id="metodologia"
+    aria-labelledby="method-title"
+  >
+    <div class="container">
+
+      <div class="section-eyebrow" data-reveal>
+        <span></span>
+        03 / FORMA DE TRABAJAR
+      </div>
+
+      <div class="section-intro" data-reveal>
+        <h2 id="method-title">
+          Cuando algo falla,
+          <span>empieza el aprendizaje.</span>
+        </h2>
+
+        <p>
+          Resolver errores es parte del desarrollo.
+          Más importante que memorizar una solución
+          es aprender a investigar por qué se produce.
+        </p>
+      </div>
+
+      <div class="method-layout">
+
+        <div class="method-sticky" data-reveal>
+
+          <div class="method-terminal">
+
+            <div class="terminal-top">
+              <span class="terminal-dot"></span>
+              <span>debugging.log</span>
+              <span>●</span>
+            </div>
+
+            <div class="terminal-body">
+              <p><span>01</span> <b>const</b> issue = detect();</p>
+              <p><span>02</span> <b>const</b> cause = investigate(issue);</p>
+              <p><span>03</span> <b>const</b> fix = implement(cause);</p>
+              <p><span>04</span> <b>const</b> result = test(fix);</p>
+              <p><span>05</span> <strong>console.log("Solved ✓");</strong></p>
+            </div>
+
+            <div class="terminal-bottom">
+              <span class="terminal-success">● SISTEMA EN REVISIÓN</span>
+              <span>DEBUG / 04</span>
+            </div>
+
+          </div>
+
+          <p class="method-side-caption">
+            Un esquema de cómo abordo los problemas;
+            no es código de una aplicación real.
+          </p>
+
+        </div>
+
+        <div class="method-steps">
+
+          {problemSteps.map((step) => (
+            <article class="method-step" data-reveal>
+
+              <span class="method-number">{step.number}</span>
+
+              <h3>{step.title}</h3>
+
+              <p>{step.text}</p>
+
+              <div class="method-tools">
+                <span>{step.tool}</span>
+              </div>
+
+            </article>
+          ))}
+
+        </div>
+
+      </div>
+
+      <div class="method-conclusion" data-reveal>
+        <span class="conclusion-mark">“</span>
+
+        <p>
+          Un error no se resuelve solamente haciendo
+          que desaparezca. Hay que comprender
+          qué lo provocó para evitar repetirlo.
+        </p>
+        <span class="conclusion-mark">”</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================= -->
+  <!--       PROYECTO PRINCIPAL BARBER'S 18   -->
+  <!-- ======================================= -->
+
+  <section
+    class="project-section"
+    id="barbers18"
+    aria-labelledby="project-title"
+  >
+
+    <div class="project-bg-grid" aria-hidden="true"></div>
+
+    <div class="container">
+
+      <div class="section-eyebrow" data-reveal>
+        <span></span>
+        04 / PROYECTO DESTACADO
+      </div>
+
+      <div class="project-heading" data-reveal>
+
+        <div class="project-heading-left">
+
+          <div class="project-top-badges">
+            <span class="project-status">
+              PROYECTO REAL
+            </span>
+
+            <span class="project-academic">
+              TRABAJO FIN DE GRADO
+            </span>
+          </div>
+
+          <h2 id="project-title">
+            Barber’s <span>18.</span>
+          </h2>
+
+          <p class="project-headline">
+            Una barbería. Una plataforma.
+            Toda la gestión conectada.
+          </p>
+
+        </div>
+
+        <div class="project-score">
+          <span>CALIFICACIÓN TFG</span>
+
+          <strong>10<span>/10</span></strong>
+
+          <small>PROYECTO FINAL DE GRADO</small>
+        </div>
+
+      </div>
+
+      <div class="project-intro" data-reveal>
+
+        <p>
+          <strong>Barber’s 18</strong> es mi proyecto final
+          del Grado Superior de Desarrollo de Aplicaciones Web.
+          Una aplicación diseñada para gestionar digitalmente
+          el funcionamiento de una barbería desde dos perspectivas:
+          <strong>los clientes y los administradores.</strong>
+        </p>
+
+        <p>
+          El proyecto une diseño de interfaces,
+          lógica de negocio, autenticación, gestión
+          de reservas, pagos, persistencia de datos
+          e integraciones externas en una misma solución.
+        </p>
+
+      </div>
+
+      <!-- ETIQUETAS DEL PROYECTO -->
+
+      <div class="project-tech" data-reveal>
+        <span>Laravel 10</span>
+        <span>React / JSX</span>
+        <span>Inertia.js</span>
+        <span>PostgreSQL</span>
+        <span>Tailwind CSS</span>
+        <span>AJAX</span>
+        <span>PayPal</span>
+        <span>Google</span>
+      </div>
+
+      <!-- =================================== -->
+      <!--            ESPACIO VÍDEO            -->
+      <!-- =================================== -->
+
+      <div class="video-section" data-reveal>
+
+        <div class="video-section-heading">
+
+          <div>
+            <span class="small-label">
+              DEMOSTRACIÓN DEL PROYECTO
+            </span>
+
+            <h3>
+              Mira Barber’s 18
+              <span>en funcionamiento.</span>
+            </h3>
+          </div>
+
+          <p>
+            Un recorrido visual por las principales
+            pantallas y funcionalidades de la aplicación.
+          </p>
+
+        </div>
+
+        <div class="video-browser">
+
+          <div class="video-browser-header">
+
+            <div class="video-browser-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="video-browser-title">
+              barbers18 / demo
+            </span>
+
+            <span class="video-browser-badge">
+              LOCAL PROJECT
+            </span>
+
+          </div>
+
+          <div class="video-frame" id="barbers-video-frame">
+
+        
+
+            <video
+              id="barbers-video"
+              class="barbers-video"
+              controls
+              playsinline
+              preload="metadata"
+              aria-label="Demostración de la aplicación Barber's 18"
+            >
+              <source
+                src="/videos/video.mp4"
+                type="video/mp4"
+              />
+
+              Tu navegador no puede reproducir este vídeo.
+            </video>
+
+            <!-- DISEÑO DE ESPERA DEL VÍDEO -->
+
+            <div class="video-placeholder" id="video-placeholder">
+
+              <div class="video-placeholder-glow" aria-hidden="true"></div>
+
+              <div class="demo-window">
+
+                <div class="demo-top">
+                  <span class="demo-logo">B<span>18</span></span>
+                  <span>BARBER’S 18</span>
+                  <span>DEMO</span>
+                </div>
+
+                <div class="demo-center">
+                  <span class="demo-eyebrow">
+                    PRESENTACIÓN DEL PROYECTO
+                  </span>
+
+                  <span class="demo-play" aria-hidden="true">
+                    ▶
+                  </span>
+
+                  <strong>
+                    Barber’s <span>18</span>
+                  </strong>
+
+                  <small>
+                    Laravel · React · Inertia.js
+                  </small>
+                </div>
+
+                <div class="demo-bottom">
+                  <span>DEVELOPED BY MARCO SÁNCHEZ</span>
+                  <span>TFG / 2024</span>
+                </div>
+
+              </div>
+
+              <div class="video-overlay-caption">
+                <span class="video-status-dot"></span>
+                ESPACIO RESERVADO PARA TU VÍDEO
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="video-browser-footer">
+            <span>
+              <span class="video-footer-dot"></span>
+              VÍDEO DEMOSTRATIVO
+            </span>
+
+            <span>BARBER’S 18 · FULL STACK</span>
+          </div>
+
+        </div>
+
+       
+      </div>
+
+      <!-- =================================== -->
+      <!--          FUNCIONES CLIENTES         -->
+      <!-- =================================== -->
+
+      <div class="features-intro" data-reveal>
+
+        <div>
+          <span class="small-label">
+            EXPERIENCIA DE USUARIO
+          </span>
+
+          <h3>
+            Pensada para
+            <span>quien reserva.</span>
+          </h3>
+        </div>
+
+        <p>
+          El cliente puede gestionar buena parte
+          de su relación con la barbería sin
+          depender de llamadas o gestiones manuales.
+        </p>
+
+      </div>
+
+      <div class="feature-grid">
+
+        {clientFeatures.map((feature) => (
+          <article class="feature-card" data-reveal>
+
+            <div class="feature-card-header">
+              <span>{feature.icon}</span>
+              <span aria-hidden="true">↗</span>
+            </div>
+
+            <h4>{feature.title}</h4>
+            <p>{feature.description}</p>
+
+          </article>
+        ))}
+
+      </div>
+
+      <!-- =================================== -->
+      <!--       PANEL DE ADMINISTRACIÓN       -->
+      <!-- =================================== -->
+
+      <div class="admin-section">
+
+        <div class="features-intro" data-reveal>
+
+          <div>
+            <span class="small-label">
+              GESTIÓN DEL NEGOCIO
+            </span>
+
+            <h3>
+              Una herramienta
+              <span>para el administrador.</span>
+            </h3>
+          </div>
+
+          <p>
+            La aplicación no se limita a recibir citas:
+            también proporciona herramientas para
+            organizar tareas y consultar información
+            desde el lado de la barbería.
+          </p>
+
+        </div>
+
+        <div class="admin-layout">
+
+          <div class="admin-visual" data-reveal>
+
+            <div class="admin-screen">
+              <div class="admin-topbar">
+
+                <span>
+                  <span class="admin-logo-icon">B18</span>
+                  BARBER’S 18
+                </span>
+
+                <span>ADMIN PANEL</span>
+
+              </div>
+
+              <div class="admin-screen-content">
+
+                <span class="admin-mock-label">
+                  VISTA CONCEPTUAL
+                </span>
+
+                <h4>Panel de control</h4>
+
+                <div class="mock-stats">
+                  <div>
+                    <span>Citas</span>
+                    <strong>Calendario</strong>
+                  </div>
+
+                  <div>
+                    <span>Ingresos</span>
+                    <strong>Estadísticas</strong>
+                  </div>
+                </div>
+
+                <div class="mock-chart">
+                  <span style="height: 42%"></span>
+                  <span style="height: 66%"></span>
+                  <span style="height: 53%"></span>
+                  <span style="height: 78%"></span>
+                  <span style="height: 64%"></span>
+                  <span style="height: 90%"></span>
+                  <span style="height: 72%"></span>
+                </div>
+
+                <div class="mock-footer">
+                  <span>GESTIÓN DE NEGOCIO</span>
+                  <span>●</span>
+                </div>
+
+              </div>
+            </div>
+
+            <p class="mockup-caption">
+              Representación gráfica de las funciones
+              del panel, no captura de la aplicación.
+            </p>
+
+          </div>
+
+          <div class="admin-features">
+
+            {adminFeatures.map((feature) => (
+              <div class="admin-feature" data-reveal>
+
+                <span class="admin-feature-number">
+                  {feature.number}
+                </span>
+
+                <div>
+                  <h4>{feature.title}</h4>
+                  <p>{feature.text}</p>
+                </div>
+
+                <span class="admin-feature-arrow" aria-hidden="true">
+                  ↗
+                </span>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- =================================== -->
+      <!--            ARQUITECTURA             -->
+      <!-- =================================== -->
+
+      <div class="architecture-section">
+
+        <div class="features-intro" data-reveal>
+
+          <div>
+            <span class="small-label">
+              ASÍ ESTÁ CONSTRUIDO
+            </span>
+
+            <h3>
+              La arquitectura
+              <span>detrás del proyecto.</span>
+            </h3>
+          </div>
+
+          <p>
+            Una de las decisiones técnicas importantes
+            fue utilizar Inertia.js para conectar
+            React con Laravel de manera integrada.
+          </p>
+
+        </div>
+
+        <div class="architecture-flow">
+
+          {architecture.map((item, index) => (
+            <div class="architecture-item" data-reveal>
+
+              <span class="architecture-number">
+                {item.number} / 04
+              </span>
+
+              <span class="architecture-role">
+                {item.role}
+              </span>
+
+              <h4>{item.name}</h4>
+              <p>{item.text}</p>
+
+              {index < architecture.length - 1 && (
+                <span
+                  class="architecture-arrow"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              )}
+
+            </div>
+          ))}
+
+        </div>
+
+        <div class="architecture-note" data-reveal>
+          <span>✦</span>
+
+          <p>
+            <strong>¿Por qué Inertia.js?</strong><br>
+            Permite crear una experiencia con React
+            aprovechando el enrutamiento y los
+            controladores de Laravel, sin tener que
+            construir una API REST independiente
+            para comunicar ambas partes. Eso no
+            impide utilizar AJAX o integrar servicios
+            externos cuando una funcionalidad lo necesita.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- =================================== -->
+      <!--            ESTADO Y CÓDIGO           -->
+      <!-- =================================== -->
+
+      <div class="project-bottom" data-reveal>
+
+        <div class="project-availability">
+
+          <span class="availability-indicator"></span>
+
+          <div>
+            <strong>Disponible en GitHub</strong>
+
+            <p>
+              El proyecto no tiene actualmente una
+              demo pública alojada. Su código está
+              disponible para consulta y ejecución local.
+            </p>
+          </div>
+
+        </div>
+
+        <a
+          href={projectGithub}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-github-button"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M12 .297a12 12 0 0 0-3.793 23.386c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.082-.729.082-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 6.008 0c2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.91 1.235 3.221 0 4.61-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297"/>
+          </svg>
+
+          Explorar el repositorio
+          <span aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================= -->
+  <!--             CIERRE / CONTACTO          -->
+  <!-- ======================================= -->
+
+  <section class="closing-section">
+
+    <div class="container closing-inner" data-reveal>
+
+      <div class="section-eyebrow centered">
+        <span></span>
+        05 / SIGUIENTE CAPÍTULO
+        <span></span>
+      </div>
+
+      <h2>
+        Seguir aprendiendo.
+        <span>Seguir construyendo.</span>
+      </h2>
+
+      <p>
+        Mi objetivo es continuar creciendo como
+        desarrollador, afrontar retos técnicos reales
+        y formar parte de proyectos donde pueda
+        aprender, colaborar y aportar.
+      </p>
+
+      <div class="closing-buttons">
+
+        <a href="/contacto" class="button primary-button">
+          Hablemos
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          href="/cv/Marco-Sanchez-CV.pdf"
+          class="button secondary-button"
+          download="Marco-Sanchez-CV.pdf"
+        >
+          Descargar mi CV
+          <span aria-hidden="true">↓</span>
+        </a>
+
+        <a
+          href={github}
+          class="button secondary-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+          <span aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================= -->
+  <!--            CHATBOT                     -->
+  <!-- ======================================= -->
+
+  <div class="chat-widget" id="marco-chat">
+
+    <section
+      class="chat-panel"
+      id="chat-panel"
+      aria-label="Asistente virtual de Marco"
+      aria-hidden="true"
+      hidden
+    >
+
+      <div class="chat-header">
+
+        <div class="chat-avatar" aria-hidden="true">
+          MS
+        </div>
+
+        <div class="chat-heading">
+          <strong>Asistente de Marco</strong>
+
+          <span>
+            <span class="online-dot"></span>
+            Asistente virtual · Disponible
+          </span>
+        </div>
+
+        <button
+          type="button"
+          class="chat-close"
+          id="chat-close"
+          aria-label="Cerrar chat"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+      </div>
+
+      <div
+        class="chat-messages"
+        id="chat-messages"
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions"
+      >
+        <div class="chat-bubble bot-bubble">
+          ¡Hola! 👋 Soy el asistente virtual de Marco.
+          Puedes preguntarme por sus tecnologías,
+          experiencia como desarrollador, proyectos
+          y Barber’s 18. ¿En qué puedo ayudarte?
+        </div>
+      </div>
+
+      <div class="chat-quick-label">
+        PREGUNTAS FRECUENTES
+      </div>
+
+      <div class="chat-suggestions" id="chat-suggestions">
+
+        <button type="button" data-question="Háblame de Barber's 18">
+          Barber’s 18
+        </button>
+
+        <button type="button" data-question="¿Qué tecnologías conoce Marco?">
+          Tecnologías
+        </button>
+
+        <button type="button" data-question="¿Dónde hizo las prácticas Marco?">
+          Prácticas
+        </button>
+
+        <button type="button" data-question="¿Cómo resuelve errores de programación?">
+          Depuración
+        </button>
+
+        <button type="button" data-question="¿Dónde está el código en GitHub?">
+          GitHub
+        </button>
+
+        <button type="button" data-question="¿Haces webs por encargo?">
+          Crear mi web
+        </button>
+
+      </div>
+
+      <form class="chat-form" id="chat-form">
+        <label for="chat-input" class="sr-only">
+          Escribe tu pregunta
+        </label>
+
+        <input
+          id="chat-input"
+          type="text"
+          name="question"
+          placeholder="Escribe tu pregunta..."
+          maxlength="280"
+          autocomplete="off"
+          required
+        />
+
+        <button type="submit" aria-label="Enviar mensaje">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m22 2-7 20-4-9-9-4Z" />
+            <path d="M22 2 11 13" />
+          </svg>
+        </button>
+      </form>
+
+      <p class="chat-disclaimer">
+        Respuestas automáticas · Sin IA generativa
+      </p>
+
+    </section>
+
+    <button
+      type="button"
+      class="chat-toggle"
+      id="chat-toggle"
+      aria-label="Abrir asistente virtual"
+      aria-expanded="false"
+      aria-controls="chat-panel"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3H13a8.48 8.48 0 0 1 8 8v.5Z"/>
+      </svg>
+      <span>¿Hablamos?</span>
+    </button>
+
+  </div>
+
+</MainLayout>
+
+<style>
+  /* ====================================== */
+  /*             CONFIGURACIÓN             */
+  /* ====================================== */
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #101216;
+  }
+
+  .dev-hero,
+  .dev-hero *,
+  .section-navigation,
+  .section-navigation *,
+  .experience-section,
+  .experience-section *,
+  .skills-section,
+  .skills-section *,
+  .method-section,
+  .method-section *,
+  .project-section,
+  .project-section *,
+  .closing-section,
+  .closing-section *,
+  .chat-widget,
+  .chat-widget * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: min(calc(100% - 96px), 1360px);
+    margin-inline: auto;
+  }
+
+  .reading-progress {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    z-index: 1001;
+    background: #d7a65c;
+    box-shadow: 0 0 14px rgba(215,166,92,.5);
+    pointer-events: none;
+  }
+
+  /* ANIMACIONES DE SCROLL */
+
+  :global(.scroll-effects-ready) [data-reveal] {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+      opacity .75s ease,
+      transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+
+  :global(.scroll-effects-ready) [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ====================================== */
+  /*                 HERO                  */
+  /* ====================================== */
+
+  .dev-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: 790px;
+    padding: 110px 0 125px;
+    overflow: hidden;
+    background: #101216;
+  }
+
+  .hero-grid-pattern,
+  .project-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+      );
+    background-size: 64px 64px;
+    mask-image: linear-gradient(90deg,transparent,#000 60%);
+    -webkit-mask-image: linear-gradient(90deg,transparent,#000 60%);
+    pointer-events: none;
+  }
+
+  .hero-ambient-light {
+    position: absolute;
+    top: -130px;
+    right: -200px;
+    z-index: -1;
+    width: 850px;
+    height: 850px;
+    background: radial-gradient(
+      circle,
+      rgba(215,166,92,.12),
+      transparent 68%
+    );
+    pointer-events: none;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+    align-items: center;
+    gap: clamp(45px,6vw,100px);
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 16px;
+    border: 1px solid rgba(215,166,92,.34);
+    border-radius: 999px;
+    background: rgba(215,166,92,.065);
+    color: #d7a65c;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+
+  .status-pulse,
+  .role-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #d7a65c;
+    box-shadow: 0 0 0 4px rgba(215,166,92,.12);
+  }
+
+  .hero-kicker {
+    margin: 40px 0 19px;
+    color: #bca889;
+    font-size: .77rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+  }
+
+  .hero-copy h1 {
+    margin: 0 0 28px;
+    color: #f1f2f4;
+    font-family: Inter,Arial,Helvetica,sans-serif;
+    font-size: clamp(3.2rem,5.5vw,6.2rem);
+    font-weight: 780;
+    line-height: 1.07;
+    letter-spacing: -.069em;
+  }
+
+  .hero-copy h1 span,
+  .hero-copy h1 em {
+    display: block;
+    font-style: normal;
+  }
+
+  .hero-copy h1 span {
+    color: #d7a65c;
+  }
+
+  .hero-copy h1 em {
+    color: #e9ebef;
+    font-size: .68em;
+    letter-spacing: -.057em;
+  }
+
+  .hero-description {
+    max-width: 610px;
+    margin: 0 0 14px;
+    color: #b3bac4;
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .second-description {
+    color: #949ca8;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 27px;
+  }
+
+  .hero-pills span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid #383d46;
+    border-radius: 999px;
+    background: #1a1e25;
+    color: #c3c9d2;
+    font-size: .75rem;
+  }
+
+  .hero-pills span:first-child {
+    border-color: rgba(215,166,92,.42);
+    color: #e0b173;
+    background: rgba(215,166,92,.08);
+  }
+
+  .hero-pills i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d7a65c;
+  }
+
+  .hero-actions,
+  .closing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 35px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 54px;
+    padding: 14px 21px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition:
+      transform .2s ease,
+      border-color .2s ease,
+      background .2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-3px);
+  }
+
+  .primary-button {
+    background: #d7a65c;
+    border-color: #d7a65c;
+    color: #13161b;
+  }
+
+  .primary-button:hover {
+    background: #edbe79;
+  }
+
+  .secondary-button {
+    border-color: #424751;
+    background: #1d2128;
+    color: #e5e8ed;
+  }
+
+  .secondary-button:hover {
+    border-color: #d7a65c;
+    background: #262a31;
+  }
+
+  /* EDITOR HERO */
+
+  .hero-editor {
+    position: relative;
+    min-width: 0;
+    padding: 40px 5px;
+  }
+
+  .editor-window {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #414650;
+    border-radius: 17px;
+    background: #171b22;
+    box-shadow:
+      0 35px 90px rgba(0,0,0,.48),
+      0 0 0 7px rgba(255,255,255,.015);
+    transform: rotate(-2deg);
+    transition: transform .35s ease;
+  }
+
+  .editor-window:hover {
+    transform: rotate(0deg) translateY(-3px);
+  }
+
+  .editor-top {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    height: 53px;
+    padding: 0 16px;
+    border-bottom: 1px solid #323842;
+    background: #22262e;
+  }
+
+  .window-dots,
+  .video-browser-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .window-dots span,
+  .video-browser-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .window-dots span:nth-child(1),
+  .video-browser-dots span:nth-child(1) {
+    background: #ce7875;
+  }
+
+  .window-dots span:nth-child(2),
+  .video-browser-dots span:nth-child(2) {
+    background: #d9b878;
+  }
+
+  .window-dots span:nth-child(3),
+  .video-browser-dots span:nth-child(3) {
+    background: #80b497;
+  }
+
+  .editor-tab {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 9px;
+    padding: 0 15px;
+    border-top: 2px solid #d7a65c;
+    background: #171b22;
+    color: #dfe3e9;
+    font-family: Consolas,monospace;
+    font-size: .77rem;
+  }
+
+  .editor-tab strong {
+    color: #83bde8;
+  }
+
+  .editor-status {
+    margin-left: auto;
+    color: #9bc9a8;
+    font-family: Consolas,monospace;
+    font-size: .64rem;
+    white-space: nowrap;
+  }
+
+  .editor-content {
+    padding: 24px 9px 34px;
+    overflow: hidden;
+  }
+
+  .code-line {
+    display: grid;
+    grid-template-columns: 40px minmax(0,1fr);
+    gap: 8px;
+    font-family: Consolas,"Courier New",monospace;
+    font-size: clamp(.68rem,.95vw,.85rem);
+    line-height: 2.15;
+    white-space: pre;
+  }
+
+  .code-line > span {
+    color: #6f7d91;
+    text-align: center;
+    user-select: none;
+  }
+
+  .code-line code {
+    color: #cbd2df;
+    font-family: inherit;
+  }
+
+  .code-line b {
+    color: #bc9cec;
+    font-weight: 500;
+  }
+
+  .code-line i {
+    color: #82c4df;
+    font-style: normal;
+  }
+
+  .code-line em {
+    color: #dfb570;
+    font-style: normal;
+  }
+
+  .code-line strong {
+    color: #a3d8b1;
+    font-weight: 500;
+  }
+
+  .code-line u {
+    color: #e4ae79;
+    text-decoration: none;
+  }
+
+  .editor-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 16px;
+    border-top: 1px solid #343943;
+    background: #20252d;
+    color: #959eab;
+    font-family: Consolas,monospace;
+    font-size: .63rem;
+  }
+
+  .editor-bottom i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #82be97;
+  }
+
+  .floating-tag {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    border: 1px solid #464953;
+    border-radius: 11px;
+    background: #232730;
+    box-shadow: 0 14px 35px rgba(0,0,0,.35);
+  }
+
+  .floating-tag-top {
+    top: 0;
+    right: -12px;
+  }
+
+  .floating-tag-bottom {
+    left: -14px;
+    bottom: 0;
+  }
+
+  .floating-tag-icon,
+  .floating-tag-check {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: rgba(215,166,92,.1);
+    color: #d7a65c;
+    font-size: .85rem;
+    font-weight: 800;
+  }
+
+  .floating-tag-check {
+    color: #a0d5b0;
+  }
+
+  .floating-tag strong,
+  .floating-tag small {
+    display: block;
+  }
+
+  .floating-tag strong {
+    color: #ecedf1;
+    font-size: .77rem;
+  }
+
+  .floating-tag small {
+    margin-top: 5px;
+    color: #9da5b1;
+    font-size: .65rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(-50%);
+    color: #8c95a2;
+    font-size: .63rem;
+    letter-spacing: .17em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .scroll-icon {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 29px;
+    border: 1px solid #777065;
+    border-radius: 999px;
+    color: #d7a65c;
+    animation: arrow-bob 2s ease-in-out infinite;
+  }
+
+  @keyframes arrow-bob {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  /* ====================================== */
+  /*        NAVEGACIÓN DE SECCIONES        */
+  /* ====================================== */
+
+  .section-navigation {
+    position: sticky;
+    top: 84px;
+    z-index: 50;
+    border-block: 1px solid #30343e;
+    background: rgba(24,28,35,.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .section-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    min-height: 65px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .section-nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-nav-label {
+    flex-shrink: 0;
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .73rem;
+    letter-spacing: .1em;
+  }
+
+  .section-nav-inner a {
+    flex-shrink: 0;
+    color: #b4bbc6;
+    font-size: .8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .section-nav-inner a:hover,
+  .section-nav-inner a.section-nav-featured {
+    color: #e0b173;
+  }
+
+  .section-nav-featured span {
+    margin-left: 4px;
+  }
+
+  /* ====================================== */
+  /*           CABECERAS COMUNES           */
+  /* ====================================== */
+
+  .experience-section,
+  .skills-section,
+  .method-section,
+  .project-section {
+    scroll-margin-top: 155px;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 23px;
+    color: #d7a65c;
+    font-size: .69rem;
+    font-weight: 750;
+    letter-spacing: .18em;
+  }
+
+  .section-eyebrow > span {
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: #d7a65c;
+  }
+
+  .section-intro {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: end;
+    gap: 55px;
+    margin-bottom: 55px;
+  }
+
+  .section-intro h2,
+  .project-heading h2,
+  .closing-section h2 {
+    margin: 0;
+    color: #f0f1f3;
+    font-family: Inter,Arial,Helvetica,sans-serif;
+    font-size: clamp(2.65rem,4.4vw,4.9rem);
+    font-weight: 760;
+    line-height: 1.12;
+    letter-spacing: -.058em;
+  }
+
+  .section-intro h2 span,
+  .closing-section h2 span {
+    display: block;
+    color: #d7a65c;
+  }
+
+  .section-intro > p {
+    max-width: 470px;
+    margin: 0 0 6px;
+    color: #aeb6c2;
+    font-size: .98rem;
+    line-height: 1.85;
+  }
+
+  .small-label {
+    display: block;
+    margin-bottom: 15px;
+    color: #d7a65c;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .17em;
+  }
+
+  /* ====================================== */
+  /*             EXPERIENCIA               */
+  /* ====================================== */
+
+  .experience-section {
+    padding: 120px 0 125px;
+    background: #101216;
+  }
+
+  .experience-highlight {
+    overflow: hidden;
+    border: 1px solid rgba(215,166,92,.34);
+    border-radius: 17px;
+    background: #191d24;
+  }
+
+  .experience-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 26px 30px;
+    border-bottom: 1px solid #343944;
+    background: #20242c;
+  }
+
+  .company-icon {
+    display: grid;
+    place-items: center;
+    width: 59px;
+    height: 59px;
+    flex-shrink: 0;
+    border: 1px solid #7a664a;
+    border-radius: 12px;
+    background: #2b2c2b;
+    color: #f2f3f4;
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+
+  .company-icon span {
+    color: #d7a65c;
+  }
+
+  .company-heading {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .company-heading > span {
+    color: #d7a65c;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+
+  .company-heading h3 {
+    margin: 6px 0 5px;
+    color: #f0f1f3;
+    font-size: clamp(1.1rem,1.6vw,1.5rem);
+    font-weight: 700;
+  }
+
+  .company-heading p {
+    margin: 0;
+    color: #9fa8b4;
+    font-size: .8rem;
+  }
+
+  .experience-date {
+    flex-shrink: 0;
+    padding: 9px 12px;
+    border: 1px solid #454952;
+    border-radius: 8px;
+    color: #cbd0d8;
+    font-family: Consolas,monospace;
+    font-size: .76rem;
+  }
+
+  .experience-body {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 35px;
+    padding: 35px;
+  }
+
+  .role-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #d7a65c;
+    font-size: .71rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+
+  .experience-main h4 {
+    max-width: 650px;
+    margin: 24px 0;
+    color: #f0f1f3;
+    font-size: clamp(1.8rem,2.6vw,2.8rem);
+    font-weight: 700;
+    letter-spacing: -.05em;
+    line-height: 1.19;
+  }
+
+  .experience-main h4 span {
+    display: block;
+    color: #d7a65c;
+  }
+
+  .experience-main > p {
+    max-width: 690px;
+    margin: 0 0 16px;
+    color: #b0b8c4;
+    font-size: .95rem;
+    line-height: 1.85;
+  }
+
+  .experience-main > p strong {
+    color: #e4e8ed;
+    font-weight: 650;
+  }
+
+  .experience-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+    color: #979faa;
+    font-size: .73rem;
+  }
+
+  .inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #d7a65c;
+    color: #e0b173;
+    font-size: .88rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .experience-divider {
+    width: 1px;
+    height: 24px;
+    background: #3f444e;
+  }
+
+  .experience-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 330px;
+    padding: 22px;
+    border: 1px solid #44434a;
+    border-radius: 12px;
+    background:
+      radial-gradient(
+        ellipse at 50% 35%,
+        rgba(215,166,92,.11),
+        transparent 68%
+      ),
+      #23252c;
+  }
+
+  .experience-side-top,
+  .experience-side-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .experience-side-top > span:first-child {
+    color: #8f99a6;
+    font-family: Consolas,monospace;
+    font-size: .65rem;
+    letter-spacing: .1em;
+  }
+
+  .gold-arrow {
+    color: #d7a65c;
+    font-size: 1.35rem;
+  }
+
+  .experience-side-center {
+    text-align: center;
+  }
+
+  .side-code {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .experience-side-center h5 {
+    margin: 0 0 9px;
+    color: #edf0f3;
+    font-size: 1.55rem;
+  }
+
+  .experience-side-center p {
+    max-width: 260px;
+    margin: 0 auto;
+    color: #a9b1bd;
+    font-size: .83rem;
+    line-height: 1.7;
+  }
+
+  .experience-side-bottom {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .experience-side-bottom span {
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #353a43;
+    color: #d0d4dd;
+    font-size: .69rem;
+  }
+
+  .subsection-header,
+  .features-intro,
+  .video-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 35px;
+    margin: 75px 0 32px;
+  }
+
+  .subsection-header h3,
+  .features-intro h3,
+  .video-section-heading h3 {
+    margin: 0;
+    color: #f1f2f4;
+    font-size: clamp(2rem,3vw,3.1rem);
+    font-weight: 720;
+    letter-spacing: -.045em;
+    line-height: 1.16;
+  }
+
+  .subsection-header h3 span,
+  .features-intro h3 span,
+  .video-section-heading h3 span {
+    display: block;
+    color: #d7a65c;
+  }
+
+  .subsection-header > p,
+  .features-intro > p,
+  .video-section-heading > p {
+    max-width: 390px;
+    margin: 0;
+    color: #a9b2be;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 15px;
+  }
+
+  .practice-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 305px;
+    padding: 24px;
+    border: 1px solid #323842;
+    border-radius: 13px;
+    background: #1a1e25;
+    transition:
+      border-color .25s ease,
+      background .25s ease;
+  }
+
+  .practice-card:hover {
+    border-color: rgba(215,166,92,.55);
+    background: #20242b;
+  }
+
+  .practice-card-top,
+  .feature-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 47px;
+    color: #909baa;
+    font-family: Consolas,monospace;
+    font-size: .73rem;
+  }
+
+  .practice-card-icon,
+  .feature-card-header > span:last-child {
+    color: #d7a65c;
+    font-size: 1.2rem;
+  }
+
+  .practice-card h4 {
+    margin: 0 0 13px;
+    color: #f0f1f3;
+    font-size: 1.19rem;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+
+  .practice-card p {
+    margin: 0;
+    color: #aab3bf;
+    font-size: .84rem;
+    line-height: 1.75;
+  }
+
+  .practice-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 22px;
+  }
+
+  .practice-tags span {
+    padding: 6px 8px;
+    border-radius: 5px;
+    background: #2d323b;
+    color: #cad0d9;
+    font-size: .65rem;
+  }
+
+  .experience-note,
+  .architecture-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 32px;
+    padding: 19px 23px;
+    border: 1px solid rgba(215,166,92,.27);
+    border-radius: 12px;
+    background: rgba(215,166,92,.055);
+  }
+
+  .note-icon,
+  .architecture-note > span {
+    color: #d7a65c;
+    font-size: 1.2rem;
+  }
+
+  .experience-note p,
+  .architecture-note p {
+    margin: 0;
+    color: #bdc3ce;
+    font-size: .88rem;
+    line-height: 1.8;
+  }
+
+  .experience-note strong,
+  .architecture-note strong {
+    color: #e7e8ea;
+  }
+
+  /* ====================================== */
+  /*              TECNOLOGÍAS              */
+  /* ====================================== */
+
+  .skills-section {
+    padding: 120px 0 130px;
+    border-block: 1px solid #303640;
+    background: #171b22;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 18px;
+  }
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    padding: 30px;
+    border: 1px solid #373c46;
+    border-radius: 16px;
+    background: #20242c;
+    transition:
+      border-color .25s ease,
+      background .25s ease;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(215,166,92,.56);
+    background: #242932;
+  }
+
+  .skill-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 42px;
+  }
+
+  .skill-card-top > span:first-child {
+    color: #8e98a6;
+    font-family: Consolas,monospace;
+    font-size: .75rem;
+  }
+
+  .skill-symbol {
+    display: grid;
+    place-items: center;
+    min-width: 53px;
+    height: 53px;
+    padding-inline: 9px;
+    border: 1px solid rgba(215,166,92,.35);
+    border-radius: 10px;
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+    font-family: Consolas,monospace;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .skill-card h3 {
+    margin: 0 0 16px;
+    color: #edf0f3;
+    font-size: 1.5rem;
+    letter-spacing: -.035em;
+  }
+
+  .skill-card > p {
+    margin: 0;
+    color: #abb3bf;
+    font-size: .88rem;
+    line-height: 1.8;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 28px;
+  }
+
+  .skill-tags span {
+    padding: 8px 10px;
+    border: 1px solid #3d444e;
+    border-radius: 7px;
+    background: #2b3039;
+    color: #d4d8e0;
+    font-size: .73rem;
+  }
+
+  .fullstack-banner {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-top: 30px;
+    padding: 34px;
+    border: 1px solid rgba(215,166,92,.31);
+    border-radius: 15px;
+    background:
+      radial-gradient(
+        ellipse at 0% 50%,
+        rgba(215,166,92,.09),
+        transparent 65%
+      ),
+      #20242b;
+  }
+
+  .fullstack-code {
+    flex-shrink: 0;
+    color: #838b98;
+    font-family: Consolas,monospace;
+    font-size: clamp(2.6rem,4.5vw,5rem);
+    font-weight: 700;
+    letter-spacing: -.1em;
+  }
+
+  .fullstack-code span {
+    color: #d7a65c;
+  }
+
+  .fullstack-text {
+    flex: 1;
+  }
+
+  .fullstack-text > span {
+    color: #d7a65c;
+    font-size: .64rem;
+    font-weight: 750;
+    letter-spacing: .15em;
+  }
+
+  .fullstack-text h3 {
+    margin: 8px 0 12px;
+    color: #f0f1f3;
+    font-size: 1.55rem;
+  }
+
+  .fullstack-text p {
+    max-width: 670px;
+    margin: 0;
+    color: #aeb6c1;
+    font-size: .88rem;
+    line-height: 1.8;
+  }
+
+  .banner-arrow {
+    align-self: flex-start;
+    color: #d7a65c;
+    font-size: 1.5rem;
+  }
+
+  /* ====================================== */
+  /*            METODOLOGÍA                */
+  /* ====================================== */
+
+  .method-section {
+    padding: 125px 0;
+    background: #101216;
+  }
+
+  .method-layout {
+    display: grid;
+    grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr);
+    align-items: start;
+    gap: clamp(35px,5vw,80px);
+  }
+
+  .method-sticky {
+    position: sticky;
+    top: 180px;
+  }
+
+  .method-terminal {
+    overflow: hidden;
+    border: 1px solid #3b414c;
+    border-radius: 15px;
+    background: #171c24;
+    box-shadow: 0 22px 60px rgba(0,0,0,.25);
+  }
+
+  .terminal-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 20px;
+    border-bottom: 1px solid #353b45;
+    background: #222731;
+    color: #b3bbc6;
+    font-family: Consolas,monospace;
+    font-size: .76rem;
+  }
+
+  .terminal-top > span:last-child {
+    margin-left: auto;
+    color: #d7a65c;
+  }
+
+  .terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d7a65c;
+  }
+
+  .terminal-body {
+    padding: 30px 20px;
+    overflow-x: auto;
+  }
+
+  .terminal-body p {
+    margin: 0;
+    color: #c4cbd5;
+    font-family: Consolas,"Courier New",monospace;
+    font-size: clamp(.69rem,1vw,.85rem);
+    line-height: 2.3;
+    white-space: pre;
+  }
+
+  .terminal-body p > span {
+    display: inline-block;
+    width: 29px;
+    margin-right: 14px;
+    color: #707e91;
+  }
+
+  .terminal-body b {
+    color: #c5a2e5;
+    font-weight: 500;
+  }
+
+  .terminal-body strong {
+    color: #a5d8b1;
+    font-weight: 500;
+  }
+
+  .terminal-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 18px;
+    border-top: 1px solid #373e48;
+    background: #20252d;
+    color: #949da9;
+    font-family: Consolas,monospace;
+    font-size: .65rem;
+  }
+
+  .terminal-success {
+    color: #b1d6b9;
+  }
+
+  .method-side-caption {
+    margin: 14px 0 0;
+    color: #838c99;
+    font-size: .72rem;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .method-steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  .method-step {
+    padding: 25px;
+    border: 1px solid #343a44;
+    border-radius: 13px;
+    background: #1b1f27;
+    transition: border-color .25s ease;
+  }
+
+  .method-step:hover {
+    border-color: rgba(215,166,92,.5);
+  }
+
+  .method-number {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .83rem;
+  }
+
+  .method-step h3 {
+    margin: 13px 0 11px;
+    color: #f0f1f3;
+    font-size: 1.32rem;
+    font-weight: 650;
+  }
+
+  .method-step p {
+    margin: 0;
+    color: #adb6c1;
+    font-size: .88rem;
+    line-height: 1.8;
+  }
+
+  .method-tools {
+    margin-top: 20px;
+  }
+
+  .method-tools span {
+    color: #d0b38e;
+    font-family: Consolas,monospace;
+    font-size: .72rem;
+  }
+
+  .method-conclusion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    max-width: 850px;
+    margin: 65px auto 0;
+  }
+
+  .conclusion-mark {
+    color: #d7a65c;
+    font-family: Georgia,serif;
+    font-size: 5rem;
+    line-height: .8;
+  }
+
+  .method-conclusion p {
+    margin: 0;
+    color: #cfd3da;
+    font-size: clamp(1.2rem,1.8vw,1.65rem);
+    line-height: 1.55;
+  }
+
+  /* ====================================== */
+  /*             PROYECTO PRINCIPAL         */
+  /* ====================================== */
+
+  .project-section {
+    position: relative;
+    isolation: isolate;
+    padding: 120px 0 135px;
+    overflow: hidden;
+    border-block: 1px solid #383b41;
+    background: #171b21;
+  }
+
+  .project-bg-grid {
+    opacity: .45;
+    mask-image: linear-gradient(180deg,#000,transparent 45%);
+    -webkit-mask-image: linear-gradient(180deg,#000,transparent 45%);
+  }
+
+  .project-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .project-top-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 28px;
+  }
+
+  .project-status,
+  .project-academic {
+    padding: 9px 12px;
+    border-radius: 999px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  .project-status {
+    border: 1px solid rgba(215,166,92,.4);
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+  }
+
+  .project-academic {
+    border: 1px solid #3d444e;
+    background: #262b33;
+    color: #b9c1cc;
+  }
+
+  .project-heading h2 {
+    font-size: clamp(4rem,8vw,9rem);
+    line-height: 1;
+  }
+
+  .project-heading h2 span {
+    color: #d7a65c;
+  }
+
+  .project-headline {
+    margin: 20px 0 0;
+    color: #d4d9e0;
+    font-size: clamp(1rem,1.5vw,1.3rem);
+    line-height: 1.6;
+  }
+
+  .project-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 235px;
+    min-height: 215px;
+    padding: 22px;
+    border: 1px solid rgba(215,166,92,.45);
+    border-radius: 16px;
+    background:
+      radial-gradient(
+        circle,
+        rgba(215,166,92,.1),
+        transparent 75%
+      ),
+      #23262d;
+  }
+
+  .project-score > span,
+  .project-score small {
+    color: #bda987;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+  }
+
+  .project-score strong {
+    display: block;
+    margin: 9px 0;
+    color: #d7a65c;
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -.08em;
+    line-height: 1;
+  }
+
+  .project-score strong span {
+    color: #818995;
+    font-size: .4em;
+    letter-spacing: -.03em;
+  }
+
+  .project-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 48px;
+  }
+
+  .project-intro p {
+    margin: 0;
+    color: #afb7c2;
+    font-size: .98rem;
+    line-height: 1.9;
+  }
+
+  .project-intro strong {
+    color: #e7e9ed;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 31px;
+  }
+
+  .project-tech span {
+    padding: 9px 13px;
+    border: 1px solid #434750;
+    border-radius: 8px;
+    background: #252a32;
+    color: #d7dbe2;
+    font-size: .76rem;
+  }
+
+  /* VÍDEO */
+
+  .video-section {
+    margin-top: 100px;
+  }
+
+  .video-section-heading {
+    margin: 0 0 32px;
+  }
+
+  .video-browser {
+    overflow: hidden;
+    border: 1px solid rgba(215,166,92,.44);
+    border-radius: 17px;
+    background: #101216;
+    box-shadow: 0 32px 85px rgba(0,0,0,.3);
+  }
+
+  .video-browser-header,
+  .video-browser-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 52px;
+    padding: 0 20px;
+    background: #22262e;
+  }
+
+  .video-browser-header {
+    border-bottom: 1px solid #343944;
+  }
+
+  .video-browser-footer {
+    min-height: 44px;
+    border-top: 1px solid #343944;
+  }
+
+  .video-browser-title,
+  .video-browser-badge,
+  .video-browser-footer span {
+    color: #a8b1bd;
+    font-family: Consolas,monospace;
+    font-size: .68rem;
+  }
+
+  .video-browser-badge {
+    color: #d7a65c;
+  }
+
+  .video-browser-footer > span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .video-footer-dot,
+  .video-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d7a65c;
+  }
+
+  .video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #101216;
+  }
+
+  .barbers-video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: #101216;
+    object-fit: contain;
+  }
+
+  .video-frame.is-ready .barbers-video {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .video-frame.is-ready .video-placeholder {
+    display: none;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    padding: clamp(15px,4vw,45px);
+    overflow: hidden;
+    background: #14181f;
+  }
+
+  .video-placeholder-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+      ellipse at 50% 55%,
+      rgba(215,166,92,.17),
+      transparent 60%
+    );
+  }
+
+  .demo-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: min(100%,880px);
+    height: min(100%,430px);
+    min-height: 0;
+    padding: clamp(14px,2.5vw,27px);
+    border: 1px solid rgba(215,166,92,.25);
+    border-radius: 13px;
+    background:
+      linear-gradient(
+        140deg,
+        rgba(215,166,92,.08),
+        transparent 55%
+      ),
+      #1c2129;
+    box-shadow: 0 25px 75px rgba(0,0,0,.3);
+  }
+
+  .demo-top,
+  .demo-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #9ca6b3;
+    font-family: Consolas,monospace;
+    font-size: .68rem;
+    letter-spacing: .1em;
+  }
+
+  .demo-logo {
+    color: #f2f2f3;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -.05em;
+  }
+
+  .demo-logo span {
+    color: #d7a65c;
+  }
+
+  .demo-center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .demo-eyebrow {
+    color: #c1ad8c;
+    font-size: .69rem;
+    letter-spacing: .16em;
+  }
+
+  .demo-play {
+    display: grid;
+    place-items: center;
+    width: clamp(54px,6vw,80px);
+    height: clamp(54px,6vw,80px);
+    margin-block: 8px;
+    border: 1px solid rgba(215,166,92,.65);
+    border-radius: 50%;
+    background: rgba(215,166,92,.13);
+    color: #d7a65c;
+    font-size: 1.5rem;
+  }
+
+  .demo-center strong {
+    color: #f0f1f3;
+    font-size: clamp(1.65rem,4vw,3.8rem);
+    font-weight: 800;
+    letter-spacing: -.065em;
+    line-height: 1;
+  }
+
+  .demo-center strong span {
+    color: #d7a65c;
+  }
+
+  .demo-center small {
+    color: #aeb7c4;
+    font-size: .78rem;
+  }
+
+  .video-overlay-caption {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d4bf9c;
+    font-size: .63rem;
+    letter-spacing: .1em;
+  }
+
+  .video-help {
+    margin: 15px 0 0;
+    color: #949daa;
+    font-size: .78rem;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .video-help code {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+  }
+
+  /* FUNCIONALIDADES CLIENTE */
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 16px;
+  }
+
+  .feature-card {
+    min-height: 225px;
+    padding: 26px;
+    border: 1px solid #393f49;
+    border-radius: 13px;
+    background: #20252d;
+    transition:
+      border-color .2s ease,
+      background .2s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(215,166,92,.58);
+    background: #262b34;
+  }
+
+  .feature-card-header {
+    margin-bottom: 31px;
+  }
+
+  .feature-card h4 {
+    margin: 0 0 11px;
+    color: #f0f1f3;
+    font-size: 1.17rem;
+    font-weight: 650;
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: #adb5c0;
+    font-size: .85rem;
+    line-height: 1.75;
+  }
+
+  /* ADMINISTRACIÓN */
+
+  .admin-section {
+    margin-top: 110px;
+  }
+
+  .admin-layout {
+    display: grid;
+    grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr);
+    align-items: center;
+    gap: 32px;
+  }
+
+  .admin-visual {
+    padding: 22px;
+    border: 1px solid #404550;
+    border-radius: 14px;
+    background: #1c2129;
+  }
+
+  .admin-screen {
+    overflow: hidden;
+    border: 1px solid #353b45;
+    border-radius: 11px;
+    background: #141920;
+  }
+
+  .admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px;
+    border-bottom: 1px solid #343b44;
+    color: #d9dce2;
+    font-family: Consolas,monospace;
+    font-size: .65rem;
+  }
+
+  .admin-topbar > span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .admin-logo-icon {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(215,166,92,.4);
+    border-radius: 6px;
+    color: #d7a65c;
+    font-size: .58rem;
+    font-weight: 800;
+  }
+
+  .admin-topbar > span:last-child {
+    color: #8f99a5;
+  }
+
+  .admin-screen-content {
+    padding: 26px;
+  }
+
+  .admin-mock-label {
+    color: #d7a65c;
+    font-size: .63rem;
+    letter-spacing: .12em;
+  }
+
+  .admin-screen-content h4 {
+    margin: 9px 0 23px;
+    color: #f0f1f3;
+    font-size: 1.45rem;
+  }
+
+  .mock-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .mock-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 15px;
+    border: 1px solid #363d48;
+    border-radius: 9px;
+    background: #222832;
+  }
+
+  .mock-stats span {
+    color: #929cab;
+    font-size: .72rem;
+  }
+
+  .mock-stats strong {
+    color: #e0b173;
+    font-size: .89rem;
+  }
+
+  .mock-chart {
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    gap: 12px;
+    height: 155px;
+    margin-top: 18px;
+    padding: 18px 12px 0;
+    border: 1px solid #353b46;
+    border-radius: 9px;
+    background: #1b222b;
+  }
+
+  .mock-chart span {
+    flex: 1;
+    max-width: 43px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(
+      180deg,
+      #d7a65c,
+      #695439
+    );
+  }
+
+  .mock-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    color: #838f9d;
+    font-family: Consolas,monospace;
+    font-size: .63rem;
+  }
+
+  .mock-footer span:last-child {
+    color: #8fc8a0;
+  }
+
+  .mockup-caption {
+    margin: 15px 0 0;
+    color: #87919e;
+    font-size: .72rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .admin-features {
+    border-top: 1px solid #3c414b;
+  }
+
+  .admin-feature {
+    display: grid;
+    grid-template-columns: 34px minmax(0,1fr) 20px;
+    align-items: start;
+    gap: 17px;
+    padding: 20px 0;
+    border-bottom: 1px solid #3c414b;
+  }
+
+  .admin-feature-number {
+    color: #d7a65c;
+    font-family: Consolas,monospace;
+    font-size: .72rem;
+  }
+
+  .admin-feature h4 {
+    margin: 0 0 7px;
+    color: #ebedf1;
+    font-size: 1.04rem;
+  }
+
+  .admin-feature p {
+    margin: 0;
+    color: #aab3be;
+    font-size: .83rem;
+    line-height: 1.7;
+  }
+
+  .admin-feature-arrow {
+    color: #d7a65c;
+    font-size: 1.2rem;
+  }
+
+  /* ARQUITECTURA */
+
+  .architecture-section {
+    margin-top: 110px;
+  }
+
+  .architecture-flow {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 14px;
+  }
+
+  .architecture-item {
+    position: relative;
+    min-height: 255px;
+    padding: 24px;
+    border: 1px solid #3e444e;
+    border-radius: 13px;
+    background: #20252d;
+  }
+
+  .architecture-number {
+    display: block;
+    color: #8994a2;
+    font-family: Consolas,monospace;
+    font-size: .7rem;
+  }
+
+  .architecture-role {
+    display: block;
+    margin: 34px 0 9px;
+    color: #d7a65c;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .architecture-item h4 {
+    margin: 0 0 12px;
+    color: #f0f1f3;
+    font-size: 1.36rem;
+  }
+
+  .architecture-item p {
+    margin: 0;
+    color: #aab3be;
+    font-size: .83rem;
+    line-height: 1.7;
+  }
+
+  .architecture-arrow {
+    position: absolute;
+    top: 45%;
+    right: -20px;
+    z-index: 4;
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border: 1px solid #d7a65c;
+    border-radius: 50%;
+    background: #252931;
+    color: #d7a65c;
+    font-size: 1rem;
+  }
+
+  .architecture-note {
+    margin-top: 20px;
+  }
+
+  /* ESTADO DEL PROYECTO */
+
+  .project-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 75px;
+    padding: 29px;
+    border: 1px solid rgba(215,166,92,.32);
+    border-radius: 14px;
+    background: #22262d;
+  }
+
+  .project-availability {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .availability-indicator {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: #d7a65c;
+    box-shadow: 0 0 0 5px rgba(215,166,92,.11);
+  }
+
+  .project-availability strong {
+    color: #f0f1f3;
+    font-size: 1rem;
+  }
+
+  .project-availability p {
+    max-width: 580px;
+    margin: 7px 0 0;
+    color: #a9b2be;
+    font-size: .83rem;
+    line-height: 1.7;
+  }
+
+  .project-github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    min-height: 54px;
+    padding: 13px 19px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #d7a65c;
+    color: #121419;
+    font-size: .85rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition: background .2s ease;
+  }
+
+  .project-github-button:hover {
+    background: #edbe79;
+  }
+
+  .project-github-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  /* ====================================== */
+  /*               CIERRE                  */
+  /* ====================================== */
+
+  .closing-section {
+    padding: 125px 0 140px;
+    background:
+      radial-gradient(
+        ellipse at 50% 110%,
+        rgba(215,166,92,.085),
+        transparent 55%
+      ),
+      #101216;
+    text-align: center;
+  }
+
+  .closing-inner {
+    max-width: 900px;
+  }
+
+  .section-eyebrow.centered {
+    justify-content: center;
+  }
+
+  .closing-section h2 {
+    margin-bottom: 24px;
+  }
+
+  .closing-section p {
+    max-width: 660px;
+    margin: 0 auto;
+    color: #aeb6c1;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .closing-buttons {
+    justify-content: center;
+    margin-top: 35px;
+  }
+
+  /* ====================================== */
+  /*               CHATBOT                 */
+  /* ====================================== */
+
+  .chat-widget {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    font-family: Inter,Arial,Helvetica,sans-serif;
+  }
+
+  .chat-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 53px;
+    padding: 13px 20px;
+    border: 1px solid #e3b976;
+    border-radius: 999px;
+    background: #d7a65c;
+    color: #111318;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 10px 32px rgba(0,0,0,.35);
+    transition: background .2s ease,transform .2s ease;
+  }
+
+  .chat-toggle:hover {
+    background: #edbe79;
+    transform: translateY(-3px);
+  }
+
+  .chat-toggle svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .chat-panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 14px);
+    display: flex;
+    flex-direction: column;
+    width: min(385px,calc(100vw - 28px));
+    height: min(540px,calc(100dvh - 115px));
+    overflow: hidden;
+    border: 1px solid #3a3f47;
+    border-radius: 17px;
+    background: #171a20;
+    color: #e8eaee;
+    box-shadow: 0 25px 75px rgba(0,0,0,.55);
+  }
+
+  .chat-panel[hidden] {
+    display: none;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    padding: 15px;
+    border-bottom: 1px solid #353941;
+    background: #20242b;
+  }
+
+  .chat-avatar {
+    display: grid;
+    place-items: center;
+    width: 41px;
+    height: 41px;
+    flex-shrink: 0;
+    border: 1px solid rgba(215,166,92,.6);
+    border-radius: 12px;
+    background: rgba(215,166,92,.08);
+    color: #d7a65c;
+    font-size: .9rem;
+    font-weight: 800;
+  }
+
+  .chat-heading {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .chat-heading strong {
+    color: #f0f1f3;
+    font-size: 13px;
+  }
+
+  .chat-heading > span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #a8aeb8;
+    font-size: 10px;
+  }
+
+  .online-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab99c;
+  }
+
+  .chat-close {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #aeb4be;
+    cursor: pointer;
+  }
+
+  .chat-close:hover {
+    background: #30353d;
+  }
+
+  .chat-close svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .chat-messages {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+  }
+
+  :global(#marco-chat .chat-bubble) {
+    width: fit-content;
+    max-width: 91%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  :global(#marco-chat .bot-bubble) {
+    align-self: flex-start;
+    border: 1px solid #383d47;
+    border-top-left-radius: 4px;
+    background: #292e37;
+    color: #e8eaee;
+  }
+
+  :global(#marco-chat .user-bubble) {
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    background: #d7a65c;
+    color: #13151a;
+  }
+
+  :global(#marco-chat .chat-page-link),
+  :global(#marco-chat .chat-whatsapp) {
+    display: inline-flex;
+    align-self: flex-start;
+    max-width: 100%;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  :global(#marco-chat .chat-page-link) {
+    border: 1px solid rgba(215,166,92,.4);
+    background: rgba(215,166,92,.08);
+    color: #e0b173;
+  }
+
+  :global(#marco-chat .chat-whatsapp) {
+    border: 1px solid #d7a65c;
+    background: #d7a65c;
+    color: #141619;
+  }
+
+  .chat-quick-label {
+    padding: 10px 15px 7px;
+    border-top: 1px solid #30343c;
+    background: #1c2027;
+    color: #868d99;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .13em;
+  }
+
+  .chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 4px 14px 12px;
+    background: #1c2027;
+  }
+
+  .chat-suggestions button {
+    min-height: 30px;
+    padding: 7px 10px;
+    border: 1px solid #414650;
+    border-radius: 999px;
+    background: #252a32;
+    color: #d8ba8c;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .chat-suggestions button:hover {
+    border-color: #d7a65c;
+    color: #f0c58c;
+  }
+
+  .chat-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border-top: 1px solid #353941;
+    background: #20242b;
+  }
+
+  .chat-form input {
+    flex: 1;
+    min-width: 0;
+    min-height: 39px;
+    padding: 10px 12px;
+    border: 1px solid #414650;
+    border-radius: 9px;
+    outline: 0;
+    background: #171a20;
+    color: #f0f1f3;
+    font-family: inherit;
+    font-size: 12px;
+  }
+
+  .chat-form input:focus {
+    border-color: #d7a65c;
+  }
+
+  .chat-form input::placeholder {
+    color: #858c98;
+  }
+
+  .chat-form button {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 9px;
+    background: #d7a65c;
+    color: #15171b;
+    cursor: pointer;
+  }
+
+  .chat-form button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .chat-disclaimer {
+    margin: 0;
+    padding: 0 12px 12px;
+    background: #20242b;
+    color: #858c98;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ACCESIBILIDAD */
+
+  .button:focus-visible,
+  .section-navigation a:focus-visible,
+  .inline-link:focus-visible,
+  .project-github-button:focus-visible,
+  .chat-widget button:focus-visible,
+  .chat-widget a:focus-visible {
+    outline: 2px solid #edbe79;
+    outline-offset: 3px;
+  }
+
+  /* ====================================== */
+  /*                TABLETS                */
+  /* ====================================== */
+
+  @media (max-width: 1180px) {
+    .container {
+      width: min(calc(100% - 58px),1100px);
+    }
+
+    .hero-layout {
+      gap: 38px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem,5.6vw,5.2rem);
+    }
+
+    .code-line {
+      font-size: .67rem;
+    }
+
+    .practice-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .practice-card {
+      min-height: 265px;
+    }
+
+    .skills-grid {
+      gap: 13px;
+    }
+
+    .skill-card {
+      padding: 22px;
+    }
+
+    .architecture-item {
+      padding: 19px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .dev-hero {
+      min-height: auto;
+      padding: 90px 0 110px;
+    }
+
+    .hero-layout {
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+
+    .hero-copy {
+      max-width: 750px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3.5rem,7.7vw,5.5rem);
+    }
+
+    .hero-editor {
+      width: min(100%,650px);
+      margin-inline: auto;
+    }
+
+    .code-line {
+      font-size: .83rem;
+    }
+
+    .section-navigation {
+      top: 76px;
+    }
+
+    .section-nav-inner {
+      gap: 22px;
+    }
+
+    .section-intro {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .experience-body {
+      grid-template-columns: 1fr;
+    }
+
+    .experience-side {
+      min-height: 270px;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .skill-card:last-child {
+      grid-column: 1 / -1;
+      min-height: 290px;
+    }
+
+    .method-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .method-sticky {
+      position: relative;
+      top: auto;
+    }
+
+    .project-intro {
+      gap: 25px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .admin-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .admin-visual {
+      width: min(100%,650px);
+      margin-inline: auto;
+    }
+
+    .architecture-flow {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .architecture-item:nth-child(2) .architecture-arrow {
+      display: none;
+    }
+
+    .architecture-item {
+      min-height: 220px;
+    }
+
+    .project-bottom {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .project-github-button {
+      width: 100%;
+    }
+  }
+
+  /* ====================================== */
+  /*                 MÓVILES               */
+  /* ====================================== */
+
+  @media (max-width: 600px) {
+    .container {
+      width: calc(100% - 36px);
+    }
+
+    .reading-progress {
+      top: 70px;
+    }
+
+    .dev-hero {
+      padding: 55px 0 75px;
+    }
+
+    .eyebrow-badge {
+      padding: 9px 12px;
+      font-size: .61rem;
+    }
+
+    .hero-kicker {
+      margin-top: 33px;
+      font-size: .66rem;
+      letter-spacing: .12em;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.7rem,10.4vw,4.2rem);
+    }
+
+    .hero-description {
+      font-size: .94rem;
+      line-height: 1.8;
+    }
+
+    .hero-pills {
+      gap: 7px;
+    }
+
+    .hero-pills span {
+      font-size: .69rem;
+      padding: 7px 10px;
+    }
+
+    .hero-actions,
+    .closing-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .hero-editor {
+      padding: 22px 2px 28px;
+    }
+
+    .editor-window,
+    .editor-window:hover {
+      transform: none;
+    }
+
+    .editor-top {
+      height: 46px;
+      padding: 0 11px;
+      gap: 10px;
+    }
+
+    .editor-tab {
+      padding: 0 9px;
+      font-size: .66rem;
+    }
+
+    .editor-status {
+      display: none;
+    }
+
+    .editor-content {
+      padding: 20px 4px 23px;
+    }
+
+    .code-line {
+      grid-template-columns: 28px minmax(0,1fr);
+      gap: 3px;
+      font-size: clamp(.51rem,2.35vw,.74rem);
+    }
+
+    .code-line > span {
+      font-size: .9em;
+    }
+
+    .editor-bottom {
+      font-size: .53rem;
+      padding: 10px;
+    }
+
+    .floating-tag {
+      gap: 8px;
+      padding: 9px 10px;
+    }
+
+    .floating-tag-top {
+      top: 0;
+      right: 0;
+    }
+
+    .floating-tag-bottom {
+      left: 0;
+      bottom: 0;
+    }
+
+    .floating-tag-icon,
+    .floating-tag-check {
+      width: 29px;
+      height: 29px;
+      font-size: .72rem;
+    }
+
+    .floating-tag strong {
+      font-size: .64rem;
+    }
+
+    .floating-tag small {
+      font-size: .56rem;
+    }
+
+    .scroll-hint {
+      display: none;
+    }
+
+    .section-navigation {
+      top: 70px;
+    }
+
+    .section-nav-inner {
+      gap: 19px;
+      min-height: 57px;
+    }
+
+    .section-nav-inner a,
+    .section-nav-label {
+      font-size: .72rem;
+    }
+
+    .experience-section,
+    .skills-section,
+    .method-section,
+    .project-section {
+      scroll-margin-top: 138px;
+    }
+
+    .experience-section,
+    .skills-section,
+    .method-section,
+    .project-section,
+    .closing-section {
+      padding-block: 75px;
+    }
+
+    .section-eyebrow,
+    .small-label {
+      font-size: .61rem;
+      letter-spacing: .12em;
+    }
+
+    .section-intro {
+      margin-bottom: 35px;
+    }
+
+    .section-intro h2,
+    .closing-section h2 {
+      font-size: clamp(2.3rem,9vw,3.5rem);
+    }
+
+    .section-intro > p {
+      font-size: .93rem;
+    }
+
+    /* EXPERIENCIA */
+
+    .experience-header {
+      flex-wrap: wrap;
+      gap: 13px;
+      padding: 20px;
+    }
+
+    .company-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .company-heading h3 {
+      font-size: 1.12rem;
+    }
+
+    .experience-date {
+      margin-left: 61px;
+      font-size: .66rem;
+    }
+
+    .experience-body {
+      padding: 23px;
+    }
+
+    .experience-main h4 {
+      font-size: 2rem;
+    }
+
+    .experience-main > p {
+      font-size: .9rem;
+    }
+
+    .experience-links {
+      gap: 12px;
+    }
+
+    .experience-side {
+      padding: 18px;
+    }
+
+    .subsection-header,
+    .features-intro,
+    .video-section-heading {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 17px;
+      margin-top: 58px;
+    }
+
+    .subsection-header h3,
+    .features-intro h3,
+    .video-section-heading h3 {
+      font-size: clamp(1.9rem,7.6vw,2.8rem);
+    }
+
+    .practice-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .practice-card {
+      min-height: 245px;
+      padding: 23px;
+    }
+
+    .practice-card-top {
+      margin-bottom: 29px;
+    }
+
+    .experience-note,
+    .architecture-note {
+      padding: 15px;
+    }
+
+    /* STACK */
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 13px;
+    }
+
+    .skill-card,
+    .skill-card:last-child {
+      grid-column: auto;
+      min-height: 320px;
+    }
+
+    .skill-card-top {
+      margin-bottom: 32px;
+    }
+
+    .fullstack-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 23px;
+    }
+
+    .fullstack-code {
+      font-size: 3rem;
+    }
+
+    .banner-arrow {
+      display: none;
+    }
+
+    /* DEBUGGING */
+
+    .terminal-body {
+      padding: 22px 9px;
+    }
+
+    .terminal-body p {
+      font-size: clamp(.61rem,2.55vw,.83rem);
+    }
+
+    .terminal-body p > span {
+      width: 20px;
+      margin-right: 5px;
+    }
+
+    .method-step {
+      padding: 21px;
+    }
+
+    .method-conclusion {
+      align-items: flex-start;
+      gap: 15px;
+      margin-top: 48px;
+    }
+
+    .conclusion-mark {
+      font-size: 3.6rem;
+    }
+
+    .method-conclusion p {
+      font-size: 1.12rem;
+    }
+
+    /* PROYECTO */
+
+    .project-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .project-heading h2 {
+      font-size: clamp(4rem,16vw,6rem);
+    }
+
+    .project-score {
+      min-width: 0;
+      width: 100%;
+      min-height: 145px;
+    }
+
+    .project-score strong {
+      font-size: 3.9rem;
+    }
+
+    .project-intro {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .project-intro p {
+      font-size: .92rem;
+    }
+
+    .project-tech {
+      gap: 7px;
+    }
+
+    .project-tech span {
+      font-size: .68rem;
+      padding: 8px 10px;
+    }
+
+    /* VÍDEO */
+
+    .video-section {
+      margin-top: 72px;
+    }
+
+    .video-browser {
+      border-radius: 12px;
+    }
+
+    .video-browser-header,
+    .video-browser-footer {
+      padding-inline: 11px;
+    }
+
+    .video-browser-header {
+      min-height: 43px;
+    }
+
+    .video-browser-footer {
+      min-height: 39px;
+    }
+
+    .video-browser-title,
+    .video-browser-badge,
+    .video-browser-footer span {
+      font-size: .54rem;
+    }
+
+    .video-frame {
+      aspect-ratio: 4 / 3;
+    }
+
+    .video-placeholder {
+      padding: 10px;
+    }
+
+    .demo-window {
+      padding: 12px;
+    }
+
+    .demo-top,
+    .demo-bottom {
+      font-size: .5rem;
+    }
+
+    .demo-eyebrow {
+      font-size: .53rem;
+    }
+
+    .demo-play {
+      width: 49px;
+      height: 49px;
+      font-size: 1.1rem;
+    }
+
+    .demo-center strong {
+      font-size: 2.3rem;
+    }
+
+    .demo-center small {
+      font-size: .62rem;
+    }
+
+    .video-overlay-caption {
+      right: 11px;
+      bottom: 7px;
+      font-size: .5rem;
+    }
+
+    /* FUNCIONES DEL PROYECTO */
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .feature-card {
+      min-height: 190px;
+      padding: 23px;
+    }
+
+    .feature-card-header {
+      margin-bottom: 26px;
+    }
+
+    .admin-section,
+    .architecture-section {
+      margin-top: 75px;
+    }
+
+    .admin-visual {
+      padding: 12px;
+    }
+
+    .admin-screen-content {
+      padding: 15px;
+    }
+
+    .mock-chart {
+      height: 120px;
+    }
+
+    .admin-feature {
+      gap: 12px;
+    }
+
+    .architecture-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .architecture-item {
+      min-height: 175px;
+      padding: 23px;
+    }
+
+    .architecture-role {
+      margin-top: 18px;
+    }
+
+    .architecture-arrow {
+      top: auto;
+      right: 50%;
+      bottom: -19px;
+      transform: translateX(50%) rotate(90deg);
+    }
+
+    .architecture-item:nth-child(2) .architecture-arrow {
+      display: grid;
+    }
+
+    .project-bottom {
+      margin-top: 55px;
+      padding: 20px;
+    }
+
+    .project-github-button {
+      font-size: .78rem;
+    }
+
+    /* CHATBOT */
+
+    .chat-widget {
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .chat-panel {
+      width: calc(100vw - 24px);
+      height: min(530px,calc(100dvh - 100px));
+    }
+
+    .chat-toggle {
+      min-height: 48px;
+      padding: 12px 16px;
+      font-size: 12px;
+    }
+
+    .chat-suggestions button {
+      font-size: 9.5px;
+    }
+  }
+
+  @media (max-width: 365px) {
+    .hero-copy h1 {
+      font-size: 2.45rem;
+    }
+
+    .code-line {
+      font-size: .5rem;
+    }
+
+    .project-heading h2 {
+      font-size: 3.6rem;
+    }
+
+    .demo-center strong {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    :global(.scroll-effects-ready) [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .scroll-icon {
+      animation: none;
+    }
+
+    .button,
+    .editor-window,
+    .practice-card,
+    .skill-card,
+    .method-step,
+    .feature-card {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // ======================================
+  //    ANIMACIONES Y BARRA DE PROGRESO
+  // ======================================
+
+  function initScrollExperience(): void {
+    const page = document.querySelector<HTMLElement>(
+      ".dev-hero"
+    );
+
+    if (!page || page.dataset.scrollReady === "true") {
+      return;
+    }
+
+    page.dataset.scrollReady = "true";
+
+    const revealElements =
+      document.querySelectorAll<HTMLElement>(
+        "[data-reveal]"
+      );
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    if (
+      !prefersReducedMotion &&
+      "IntersectionObserver" in window
+    ) {
+      document.documentElement.classList.add(
+        "scroll-effects-ready"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.06,
+          rootMargin: "0px 0px 40px 0px",
+        }
+      );
+
+      revealElements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
+
+    const progressBar =
+      document.querySelector<HTMLElement>(
+        "#reading-progress"
+      );
+
+    function updateReadingProgress(): void {
+      if (!progressBar) return;
+
+      const scrollable =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const fraction =
+        scrollable > 0
+          ? Math.min(1, Math.max(0, window.scrollY / scrollable))
+          : 0;
+
+      progressBar.style.width = `${fraction * 100}%`;
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateReadingProgress,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateReadingProgress
+    );
+
+    updateReadingProgress();
+  }
+
+  // ======================================
+  //       DETECCIÓN DEL VÍDEO
+  // ======================================
+
+  function initProjectVideo(): void {
+    const frame =
+      document.querySelector<HTMLElement>(
+        "#barbers-video-frame"
+      );
+
+    const video =
+      document.querySelector<HTMLVideoElement>(
+        "#barbers-video"
+      );
+
+    if (!frame || !video) {
+      return;
+    }
+
+    if (video.dataset.videoReady === "true") {
+      return;
+    }
+
+    video.dataset.videoReady = "true";
+
+    function showPlayer(): void {
+  frame?.classList.add("is-ready");
+}
+
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      showPlayer();
+    } else {
+      video.addEventListener(
+        "loadedmetadata",
+        showPlayer,
+        { once: true }
+      );
+    }
+  }
+
+  // ======================================
+  //             CHATBOT
+  // ======================================
+
+  type ReplyChannel = "web" | "arte" | "general";
+
+  type Reply = {
+    text: string;
+    channel?: ReplyChannel;
+    link?: {
+      url: string;
+      label: string;
+    };
+  };
+
+  const whatsappBase =
+    "https://wa.me/34622541527?text=";
+
+  const whatsappWeb =
+    whatsappBase +
+    encodeURIComponent(
+      "Hola Marco, me gustaría solicitar un presupuesto para un desarrollo web."
+    );
+
+  const whatsappArte =
+    whatsappBase +
+    encodeURIComponent(
+      "Hola Marco, me gustaría consultar un encargo de pintura al óleo."
+    );
+
+  const whatsappGeneral =
+    whatsappBase +
+    encodeURIComponent(
+      "Hola Marco, he visitado tu página web y me gustaría contactar contigo."
+    );
+
+  function normalizeText(value: string): string {
+    return value
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[¿?¡!.,;:()]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function getReply(question: string): Reply {
+    const q = normalizeText(question);
+
+    const has = (words: string[]) =>
+      words.some((word) => q.includes(word));
+
+    const web = has([
+      "web",
+      "pagina",
+      "sitio",
+      "landing",
+      "ecommerce",
+      "tienda online",
+      "aplicacion",
+      "software",
+    ]);
+
+    const art = has([
+      "cuadro",
+      "pintura",
+      "oleo",
+      "retrato",
+      "lienzo",
+      "pintar",
+      "arte",
+    ]);
+
+    const price = has([
+      "precio",
+      "presupuesto",
+      "cuanto cuesta",
+      "cuanto vale",
+      "tarifa",
+    ]);
+
+    // BARBER'S 18
+
+    if (has([
+      "barber",
+      "barberia",
+      "tfg",
+      "proyecto final",
+    ])) {
+      return {
+        text:
+          "Barber’s 18 es el TFG de Marco, calificado " +
+          "con un 10. Es una aplicación de gestión " +
+          "de barbería desarrollada con Laravel 10, " +
+          "React, Inertia.js y PostgreSQL. Incluye " +
+          "reservas de citas, pagos, valoraciones, " +
+          "gestión administrativa y portal de empleo. " +
+          "El código está disponible en GitHub.",
+        link: {
+          url: "https://github.com/marcosnchez18/tfg-barberia",
+          label: "Ver Barber’s 18 en GitHub ↗",
+        },
+      };
+    }
+
+    // PRÁCTICAS
+
+    if (has([
+      "rentel",
+      "practicas",
+      "practica profesional",
+      "experiencia como programador",
+      "experiencia de desarrollo",
+      "donde trabajo programando",
+    ])) {
+      return {
+        text:
+          "Marco realizó prácticas de desarrollo " +
+          "web full stack en Rentel Comunicaciones, " +
+          "en Sanlúcar de Barrameda, durante 2024. " +
+          "Trabajó con tareas de frontend, backend, " +
+          "PHP, Laravel y bases de datos.",
+        link: {
+          url: "/proyectos#experiencia",
+          label: "Ver experiencia técnica ↗",
+        },
+      };
+    }
+
+    // DEPURACIÓN
+
+    if (has([
+      "error",
+      "depuracion",
+      "debug",
+      "fallos",
+      "resolver problemas",
+      "solucionar problemas",
+    ])) {
+      return {
+        text:
+          "Marco aborda los errores intentando " +
+          "reproducir el fallo, revisar el recorrido " +
+          "de los datos, localizar la causa y probar " +
+          "la corrección. En la sección Cómo trabajo " +
+          "explica su enfoque de depuración.",
+        link: {
+          url: "/proyectos#metodologia",
+          label: "Ver cómo trabaja ↗",
+        },
+      };
+    }
+
+    // TECNOLOGÍAS
+
+    if (has([
+      "tecnologia",
+      "lenguaje",
+      "framework",
+      "javascript",
+      "typescript",
+      "php",
+      "laravel",
+      "react",
+      "angular",
+      "python",
+      "java",
+      "astro",
+      "sql",
+      "backend",
+      "frontend",
+      "inertia",
+      "api",
+    ])) {
+      return {
+        text:
+          "Marco tiene conocimientos de HTML, CSS, " +
+          "JavaScript, TypeScript, React, Angular, " +
+          "Vue, Astro, PHP, Laravel, Java, Python, " +
+          "C#, bases de datos SQL y otras herramientas. " +
+          "Su proyecto Barber’s 18 usa React, " +
+          "Inertia.js, Laravel y PostgreSQL.",
+        link: {
+          url: "/proyectos#tecnologias",
+          label: "Ver tecnologías ↗",
+        },
+      };
+    }
+
+    // GITHUB
+
+    if (has([
+      "github",
+      "repositorio",
+      "codigo fuente",
+      "ver codigo",
+    ])) {
+      return {
+        text:
+          "El código de Barber’s 18 es público " +
+          "y está disponible en GitHub. " +
+          "También puedes visitar el perfil " +
+          "general de Marco.",
+        link: {
+          url: "https://github.com/marcosnchez18/tfg-barberia",
+          label: "Abrir repositorio ↗",
+        },
+      };
+    }
+
+    // FORMACIÓN
+
+    if (has([
+      "estudios",
+      "formacion",
+      "daw",
+      "instituto",
+      "donde estudio",
+    ])) {
+      return {
+        text:
+          "Marco terminó el Grado Superior de " +
+          "Desarrollo de Aplicaciones Web en " +
+          "el IES Doñana, en 2024.",
+        link: {
+          url: "/sobre-mi#formacion",
+          label: "Ver formación ↗",
+        },
+      };
+    }
+
+    // EXPERIENCIAS AJENAS AL DESARROLLO
+
+    if (has([
+      "repsol",
+      "comercial",
+      "proteccion civil",
+      "socorrista",
+      "otras experiencias",
+    ])) {
+      return {
+        text:
+          "Marco también ha trabajado en otros " +
+          "ámbitos profesionales. Esa información " +
+          "está separada de su perfil técnico " +
+          "en Otras experiencias.",
+        link: {
+          url: "/otras-experiencias",
+          label: "Ver otras experiencias ↗",
+        },
+      };
+    }
+
+    // CURRÍCULUM
+
+    if (has([
+      "curriculum",
+      "curriculo",
+      "descargar cv",
+      "ver cv",
+      "empleo",
+      "oferta laboral",
+    ])) {
+      return {
+        text:
+          "Puedes descargar el currículum de " +
+          "Marco para conocer su formación " +
+          "y su experiencia profesional.",
+        link: {
+          url: "/cv/Marco-Sanchez-CV.pdf",
+          label: "Ver currículum ↗",
+        },
+      };
+    }
+
+    // PRECIOS WEB
+
+    if (web && price) {
+      return {
+        text:
+          "Marco prepara presupuestos de desarrollo " +
+          "web personalizados. El coste depende " +
+          "del tipo de página, sus funcionalidades " +
+          "y el alcance del proyecto.",
+        channel: "web",
+      };
+    }
+
+    // PRECIOS ARTE
+
+    if (art && price) {
+      return {
+        text:
+          "Los cuadros al óleo se presupuestan " +
+          "según la fotografía de referencia, " +
+          "las dimensiones y los detalles solicitados. " +
+          "Se requiere varios meses de antelación.",
+        channel: "arte",
+      };
+    }
+
+    // ARTE
+
+    if (art) {
+      return {
+        text:
+          "Marco también pinta cuadros realistas " +
+          "al óleo. Puedes conocer esa faceta " +
+          "en el apartado Arte.",
+        link: {
+          url: "/arte",
+          label: "Ver arte ↗",
+        },
+      };
+    }
+
+    // SERVICIOS WEB
+
+    if (web) {
+      return {
+        text:
+          "Marco acepta proyectos de desarrollo " +
+          "web como páginas corporativas, portfolios, " +
+          "landing pages, tiendas online, blogs " +
+          "y aplicaciones personalizadas. Puedes " +
+          "consultarle tu idea por WhatsApp.",
+        channel: "web",
+      };
+    }
+
+    // CONTACTO
+
+    if (has([
+      "contactar",
+      "contacto",
+      "whatsapp",
+      "telefono",
+      "hablar con marco",
+      "escribir",
+    ])) {
+      return {
+        text:
+          "Puedes contactar con Marco a través " +
+          "de WhatsApp o de su página de Contacto " +
+          "para hablar sobre proyectos, " +
+          "colaboraciones u oportunidades laborales.",
+        channel: "general",
+        link: {
+          url: "/contacto",
+          label: "Ir a Contacto ↗",
+        },
+      };
+    }
+
+    // SALUDOS
+
+    if (has(["hola", "buenas", "hey", "hello"])) {
+      return {
+        text:
+          "¡Hola! 👋 Puedo contarte qué tecnologías " +
+          "conoce Marco, dónde realizó sus prácticas, " +
+          "cómo trabaja y qué es Barber’s 18.",
+      };
+    }
+
+    // GRACIAS
+
+    if (has(["gracias", "adios", "hasta luego"])) {
+      return {
+        text:
+          "¡Gracias por visitar la web de Marco! " +
+          "Si necesitas algo más, aquí estaré.",
+      };
+    }
+
+    return {
+      text:
+        "No tengo una respuesta preparada para esa " +
+        "pregunta. Puedo ayudarte con desarrollo web, " +
+        "tecnologías, prácticas, Barber’s 18 " +
+        "y contacto. También puedes escribir " +
+        "directamente a Marco.",
+      channel: "general",
+    };
+  }
+
+  function initMarcoChat(): void {
+    const widget =
+      document.querySelector<HTMLElement>(
+        "#marco-chat"
+      );
+
+    if (
+      !widget ||
+      widget.dataset.initialized === "true"
+    ) {
+      return;
+    }
+
+    const toggle =
+      widget.querySelector<HTMLButtonElement>(
+        "#chat-toggle"
+      );
+
+    const close =
+      widget.querySelector<HTMLButtonElement>(
+        "#chat-close"
+      );
+
+    const panel =
+      widget.querySelector<HTMLElement>(
+        "#chat-panel"
+      );
+
+    const form =
+      widget.querySelector<HTMLFormElement>(
+        "#chat-form"
+      );
+
+    const input =
+      widget.querySelector<HTMLInputElement>(
+        "#chat-input"
+      );
+
+    const messages =
+      widget.querySelector<HTMLElement>(
+        "#chat-messages"
+      );
+
+    const suggestions =
+      widget.querySelector<HTMLElement>(
+        "#chat-suggestions"
+      );
+
+    if (
+      !toggle ||
+      !close ||
+      !panel ||
+      !form ||
+      !input ||
+      !messages ||
+      !suggestions
+    ) {
+      return;
+    }
+
+    const ui = {
+      toggle,
+      close,
+      panel,
+      form,
+      input,
+      messages,
+      suggestions,
+    };
+
+    widget.dataset.initialized = "true";
+
+    function setOpen(open: boolean): void {
+      ui.panel.toggleAttribute("hidden", !open);
+
+      ui.panel.setAttribute(
+        "aria-hidden",
+        String(!open)
+      );
+
+      ui.toggle.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+      ui.toggle.setAttribute(
+        "aria-label",
+        open
+          ? "Cerrar asistente virtual"
+          : "Abrir asistente virtual"
+      );
+
+      if (open) {
+        ui.input.focus();
+      } else {
+        ui.toggle.focus();
+      }
+    }
+
+    function addMessage(
+      value: string,
+      sender: "user" | "bot"
+    ): void {
+      const bubble = document.createElement("div");
+
+      bubble.className =
+        sender === "user"
+          ? "chat-bubble user-bubble"
+          : "chat-bubble bot-bubble";
+
+      bubble.textContent = value;
+
+      ui.messages.appendChild(bubble);
+
+      ui.messages.scrollTop =
+        ui.messages.scrollHeight;
+    }
+
+    function addLink(
+      url: string,
+      label: string,
+      isWhatsapp = false
+    ): void {
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.textContent = label;
+
+      link.className = isWhatsapp
+        ? "chat-whatsapp"
+        : "chat-page-link";
+
+      if (url.startsWith("https://")) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+
+      ui.messages.appendChild(link);
+    }
+
+    function sendQuestion(value: string): void {
+      const question = value.trim();
+
+      if (!question) {
+        return;
+      }
+
+      addMessage(question, "user");
+
+      const reply = getReply(question);
+
+      addMessage(reply.text, "bot");
+
+      if (reply.link) {
+        addLink(
+          reply.link.url,
+          reply.link.label
+        );
+      }
+
+      if (reply.channel) {
+        const url =
+          reply.channel === "web"
+            ? whatsappWeb
+            : reply.channel === "arte"
+              ? whatsappArte
+              : whatsappGeneral;
+
+        addLink(
+          url,
+          "Hablar con Marco por WhatsApp ↗",
+          true
+        );
+      }
+
+      ui.messages.scrollTop =
+        ui.messages.scrollHeight;
+    }
+
+    ui.toggle.addEventListener("click", () => {
+      setOpen(
+        ui.panel.hasAttribute("hidden")
+      );
+    });
+
+    ui.close.addEventListener("click", () => {
+      setOpen(false);
+    });
+
+    ui.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      sendQuestion(ui.input.value);
+
+      ui.input.value = "";
+      ui.input.focus();
+    });
+
+    ui.suggestions.addEventListener(
+      "click",
+      (event) => {
+        const target = event.target;
+
+        if (!(target instanceof Element)) {
+          return;
+        }
+
+        const button =
+          target.closest<HTMLButtonElement>(
+            "button[data-question]"
+          );
+
+        if (button) {
+          sendQuestion(
+            button.dataset.question ?? ""
+          );
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key === "Escape" &&
+          !ui.panel.hasAttribute("hidden")
+        ) {
+          setOpen(false);
+        }
+      }
+    );
+  }
+
+  // INICIAR TODAS LAS FUNCIONES
+
+  function initDevelopmentPage(): void {
+    initScrollExperience();
+    initProjectVideo();
+    initMarcoChat();
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initDevelopmentPage
+  );
+
+  document.addEventListener(
+    "astro:page-load",
+    initDevelopmentPage
+  );
+
+  initDevelopmentPage();
+</script>
