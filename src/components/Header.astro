@@ -4,44 +4,21 @@ const currentPath =
   Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 const navigation = [
-  {
-    name: "Inicio",
-    href: "/",
-    routes: ["/"],
-  },
-  {
-    name: "Sobre mí",
-    href: "/sobre-mi",
-    routes: ["/sobre-mi"],
-  },
-  {
-    name: "Desarrollo",
-    href: "/desarrollo",
-    routes: ["/desarrollo", "/desarrollo"],
-  },
+  { name: "Inicio", href: "/", routes: ["/"] },
+  { name: "Sobre mí", href: "/sobre-mi", routes: ["/sobre-mi"] },
+  { name: "Desarrollo", href: "/desarrollo", routes: ["/desarrollo"] },
   {
     name: "Otras experiencias",
     href: "/otras-experiencias",
     routes: ["/otras-experiencias"],
   },
-  {
-    name: "Arte",
-    href: "/arte",
-    routes: ["/arte"],
-  },
-  {
-    name: "Contacto",
-    href: "/contacto",
-    routes: ["/contacto"],
-  },
+  { name: "Arte", href: "/arte", routes: ["/arte"] },
+  { name: "Contacto", href: "/contacto", routes: ["/contacto"] },
 ];
 
 function isActive(routes: string[]): boolean {
   return routes.some((route) => {
-    if (route === "/") {
-      return currentPath === "/";
-    }
-
+    if (route === "/") return currentPath === "/";
     return (
       currentPath === route ||
       currentPath.startsWith(`${route}/`)
@@ -54,6 +31,8 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
 
 <header class="site-header" id="site-header">
   <div class="header-container">
+
+    <!-- LOGO -->
     <a
       href="/"
       class="header-brand"
@@ -69,6 +48,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
       </span>
     </a>
 
+    <!-- NAVEGACIÓN -->
     <nav
       class="main-navigation"
       id="main-navigation"
@@ -96,10 +76,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
                 {item.name}
               </span>
 
-              <span
-                class="nav-arrow"
-                aria-hidden="true"
-              >
+              <span class="nav-arrow" aria-hidden="true">
                 ↗
               </span>
             </a>
@@ -127,21 +104,65 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
         </svg>
 
         Descargar mi CV
-
         <span aria-hidden="true">↗</span>
       </a>
 
       <div class="mobile-navigation-footer">
         <span class="mobile-status-dot"></span>
         MI ESPACIO PERSONAL
-
         <span class="mobile-footer-symbol">
           &lt;/&gt;
         </span>
       </div>
     </nav>
 
+    <!-- BOTONES DERECHA -->
     <div class="header-actions">
+
+      <!-- NUEVO BOTÓN DE TEMA -->
+      <button
+        type="button"
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Activar modo claro"
+        aria-pressed="false"
+        title="Cambiar modo claro / oscuro"
+      >
+        <!-- SOL: VISIBLE EN MODO OSCURO -->
+        <svg
+          class="theme-sun"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+          />
+        </svg>
+
+        <!-- LUNA: VISIBLE EN MODO CLARO -->
+        <svg
+          class="theme-moon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486A9 9 0 0 1 11.5 3.015 9 9 0 1 0 20.985 12.486Z"
+          />
+        </svg>
+      </button>
+
+      <!-- BOTÓN CV -->
       <a
         href={cvUrl}
         class="header-cv"
@@ -161,10 +182,10 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
           <path d="m7 10 5 5 5-5" />
           <path d="M5 17v3h14v-3" />
         </svg>
-
         <span>Mi CV</span>
       </a>
 
+      <!-- MENÚ MÓVIL -->
       <button
         type="button"
         class="menu-toggle"
@@ -179,13 +200,11 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
           <span></span>
         </span>
       </button>
+
     </div>
   </div>
 
-  <div
-    class="header-bottom-line"
-    aria-hidden="true"
-  ></div>
+  <div class="header-bottom-line" aria-hidden="true"></div>
 </header>
 
 <style>
@@ -255,9 +274,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     font-size: 1.18rem;
     font-weight: 850;
     letter-spacing: -.08em;
-    transition:
-      transform .22s ease,
-      border-color .22s ease;
+    transition: transform .22s ease, border-color .22s ease;
   }
 
   .brand-symbol span {
@@ -372,7 +389,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     display: none;
   }
 
-  /* BOTÓN CV */
+  /* BOTONES */
 
   .header-actions {
     display: flex;
@@ -395,9 +412,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     font-size: .81rem;
     font-weight: 750;
     text-decoration: none;
-    transition:
-      transform .22s ease,
-      background .22s ease;
+    transition: transform .22s ease, background .22s ease;
   }
 
   .header-cv svg {
@@ -408,6 +423,40 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
   .header-cv:hover {
     transform: translateY(-2px);
     background: #edbe79;
+  }
+
+  /* SELECTOR SOL / LUNA */
+
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    padding: 0;
+    border: 1px solid rgba(215,166,92,.5);
+    border-radius: 10px;
+    background: #20242b;
+    color: #d7a65c;
+    cursor: pointer;
+    transition:
+      background .2s ease,
+      border-color .2s ease,
+      transform .2s ease;
+  }
+
+  .theme-toggle:hover {
+    border-color: #d7a65c;
+    transform: translateY(-2px);
+  }
+
+  .theme-toggle svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .theme-toggle .theme-moon {
+    display: none;
   }
 
   /* MENÚ MÓVIL */
@@ -444,9 +493,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     height: 2px;
     border-radius: 999px;
     background: #d7a65c;
-    transition:
-      transform .22s ease,
-      opacity .22s ease;
+    transition: transform .22s ease, opacity .22s ease;
   }
 
   .menu-toggle[aria-expanded="true"]
@@ -473,10 +520,13 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
   .nav-link:focus-visible,
   .header-cv:focus-visible,
   .mobile-cv:focus-visible,
-  .menu-toggle:focus-visible {
+  .menu-toggle:focus-visible,
+  .theme-toggle:focus-visible {
     outline: 2px solid #edbe79;
     outline-offset: 4px;
   }
+
+  /* TABLET */
 
   @media (max-width: 1200px) {
     .header-container {
@@ -625,6 +675,8 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     }
   }
 
+  /* MÓVIL */
+
   @media (max-width: 600px) {
     .site-header {
       height: 70px;
@@ -632,7 +684,7 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
 
     .header-container {
       width: calc(100% - 32px);
-      gap: 15px;
+      gap: 12px;
     }
 
     .brand-symbol {
@@ -656,6 +708,15 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
       height: 42px;
     }
 
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+    }
+
+    .header-actions {
+      gap: 8px;
+    }
+
     .main-navigation {
       max-height: calc(100dvh - 70px);
       padding: 13px 16px 23px;
@@ -672,30 +733,62 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     }
   }
 
+  @media (max-width: 380px) {
+    .brand-information small {
+      font-size: .45rem;
+    }
+
+    .header-brand {
+      gap: 7px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .brand-symbol,
     .nav-link,
     .nav-link::after,
     .header-cv,
-    .menu-lines span {
+    .menu-lines span,
+    .theme-toggle {
       transition: none;
     }
   }
 </style>
 
+<!-- MODO CLARO GLOBAL: VERSIÓN RÁPIDA -->
+<style is:global>
+  html[data-theme="light"] {
+    filter: invert(1) hue-rotate(180deg);
+    color-scheme: light;
+  }
+
+  /* Recuperar los colores originales de las fotos */
+  html[data-theme="light"] img,
+  html[data-theme="light"] video,
+  html[data-theme="light"] canvas,
+  html[data-theme="light"] iframe {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  html[data-theme="light"] #theme-toggle .theme-sun {
+    display: none;
+  }
+
+  html[data-theme="light"] #theme-toggle .theme-moon {
+    display: block;
+  }
+</style>
+
 <script>
   function initHeader(): void {
-    const header = document.querySelector<HTMLElement>(
-      "#site-header"
-    );
+    const header =
+      document.querySelector<HTMLElement>("#site-header");
 
-    const navigation = document.querySelector<HTMLElement>(
-      "#main-navigation"
-    );
+    const navigation =
+      document.querySelector<HTMLElement>("#main-navigation");
 
-    const toggle = document.querySelector<HTMLButtonElement>(
-      "#nav-toggle"
-    );
+    const toggle =
+      document.querySelector<HTMLButtonElement>("#nav-toggle");
 
     if (
       !header ||
@@ -707,6 +800,69 @@ const cvUrl = "/cv/Marco-Sanchez-CV.pdf";
     }
 
     header.dataset.initialized = "true";
+
+    // ===================================
+    // CAMBIO DE TEMA
+    // ===================================
+
+    const themeToggle =
+      header.querySelector<HTMLButtonElement>(
+        "#theme-toggle"
+      );
+
+    function setTheme(theme: "dark" | "light"): void {
+      document.documentElement.dataset.theme = theme;
+
+      themeToggle?.setAttribute(
+        "aria-pressed",
+        String(theme === "light")
+      );
+
+      themeToggle?.setAttribute(
+        "aria-label",
+        theme === "light"
+          ? "Activar modo oscuro"
+          : "Activar modo claro"
+      );
+    }
+
+    let savedTheme: string | null = null;
+
+    try {
+      savedTheme = localStorage.getItem(
+        "marco-portfolio-theme"
+      );
+    } catch {
+      savedTheme = null;
+    }
+
+    setTheme(
+      savedTheme === "light" ? "light" : "dark"
+    );
+
+    themeToggle?.addEventListener("click", () => {
+      const currentTheme =
+        document.documentElement.dataset.theme;
+
+      const nextTheme =
+        currentTheme === "light" ? "dark" : "light";
+
+      setTheme(nextTheme);
+
+      try {
+        localStorage.setItem(
+          "marco-portfolio-theme",
+          nextTheme
+        );
+      } catch {
+        // El cambio visual seguirá funcionando
+        // aunque el almacenamiento esté bloqueado.
+      }
+    });
+
+    // ===================================
+    // MENÚ DE NAVEGACIÓN
+    // ===================================
 
     function closeMenu(): void {
       navigation?.classList.remove("is-open");
